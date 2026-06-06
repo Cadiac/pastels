@@ -4,6 +4,7 @@ import { Plus, Sparkles, Trash2 } from "lucide-react";
 import type { ColorWithInventory, Level } from "shared";
 import { SwatchImg } from "./SwatchImg";
 import { LevelChip } from "./LevelChip";
+import { HexDot } from "./HexDot";
 import { useSetInventory } from "../api/hooks";
 
 interface Props {
@@ -77,7 +78,10 @@ export function ColorCard({ color, view }: Props) {
         />
         <div className="min-w-0 flex-1">
           <div className="truncate text-sm font-medium text-slate-900">{color.name}</div>
-          <div className="font-mono text-xs text-slate-400">{color.code}</div>
+          <div className="flex items-center gap-1.5">
+            <HexDot hex={color.hex} size={10} />
+            <span className="font-mono text-xs leading-none text-slate-400">{color.code}</span>
+          </div>
         </div>
         {Controls}
       </Link>
@@ -103,7 +107,10 @@ export function ColorCard({ color, view }: Props) {
             </span>
             {color.iridescent && <Sparkles size={13} className="shrink-0 text-amber-500" />}
           </div>
-          <div className="font-mono text-xs text-slate-400">{color.code}</div>
+          <div className="flex items-center gap-1.5">
+            <HexDot hex={color.hex} size={11} />
+            <span className="font-mono text-xs leading-none text-slate-400">{color.code}</span>
+          </div>
         </div>
         <div className="mt-auto">{Controls}</div>
       </div>

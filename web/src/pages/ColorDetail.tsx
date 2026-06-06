@@ -5,6 +5,7 @@ import { ChevronLeft, Sparkles } from "lucide-react";
 import { type Level } from "shared";
 import { api } from "../api/client";
 import { SwatchImg } from "../components/SwatchImg";
+import { HexDot } from "../components/HexDot";
 import { LevelChip } from "../components/LevelChip";
 import { QuantityStepper } from "../components/QuantityStepper";
 import { useSetInventory } from "../api/hooks";
@@ -104,18 +105,26 @@ export function ColorDetail() {
             value={color.lightfastness ? (LIGHTFAST[color.lightfastness] ?? color.lightfastness) : "—"}
           />
           <Row label="Pigments" value={color.pigments.length ? color.pigments.join(", ") : "—"} />
-          <Row label="Hex" value={color.hex.toUpperCase()} mono />
+          <Row
+            label="Hex"
+            value={
+              <span className="inline-flex items-center gap-2 leading-none">
+                <HexDot hex={color.hex} size={14} />
+                <span className="font-mono">{color.hex.toUpperCase()}</span>
+              </span>
+            }
+          />
         </dl>
       </div>
     </div>
   );
 }
 
-function Row({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
+function Row({ label, value }: { label: string; value: ReactNode }) {
   return (
     <div className="flex justify-between gap-4 py-2.5">
       <dt className="text-slate-500">{label}</dt>
-      <dd className={`text-right text-slate-800 ${mono ? "font-mono" : ""}`}>{value}</dd>
+      <dd className="text-right text-slate-800">{value}</dd>
     </div>
   );
 }
