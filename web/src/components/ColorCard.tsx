@@ -2,9 +2,7 @@ import { type MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Sparkles, Trash2 } from "lucide-react";
 import type { ColorWithInventory, Level } from "shared";
-import { SwatchImg } from "./SwatchImg";
 import { LevelChip } from "./LevelChip";
-import { HexDot } from "./HexDot";
 import { useSetInventory } from "../api/hooks";
 
 interface Props {
@@ -12,14 +10,20 @@ interface Props {
   view: "grid" | "list";
 }
 
+// Cream "wrapper". Owned reads as solid/crisp; not-owned recedes (translucent
+// wrapper + muted text) while the opaque swatch keeps the colour fully accurate.
+const CARD_OWNED = "bg-[#f3ebd5] text-stone-800 shadow-md";
+const CARD_UNOWNED = "bg-[#f3ebd5]/55 text-stone-500 shadow-sm";
 const ICON_BTN =
-  "flex h-7 w-7 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-600 active:scale-95";
+  "flex h-7 w-7 items-center justify-center rounded-full border border-stone-300 bg-stone-50 text-stone-600 active:scale-95";
 
 export function ColorCard({ color, view }: Props) {
   const setInventory = useSetInventory();
   const inv = color.inventory;
   const quantity = inv?.quantity ?? 0;
   const level: Level = inv?.level ?? "full";
+
+  const wrapper = inv ? CARD_OWNED : CARD_UNOWNED;
 
   const set = (q: number, l: Level | null) =>
     setInventory.mutate({ code: color.code, input: { quantity: q, level: l } });
@@ -37,12 +41,12 @@ export function ColorCard({ color, view }: Props) {
       <button
         type="button"
         onClick={act(() => set(quantity - 1, quantity - 1 > 0 ? "full" : null))}
-        className={`${ICON_BTN} border-red-200 text-red-500`}
+        className={`${ICON_BTN} border-red-300 text-red-600`}
         aria-label="Remove one stick"
       >
         <Trash2 size={14} />
       </button>
-      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">
+      <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-800">
         ×{quantity}
       </span>
       <button
@@ -58,7 +62,7 @@ export function ColorCard({ color, view }: Props) {
     <button
       type="button"
       onClick={act(() => set(1, "full"))}
-      className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-2.5 py-1 text-xs font-medium text-slate-700 active:scale-95"
+      className="inline-flex items-center gap-1 rounded-full border border-stone-300 bg-stone-50 px-2.5 py-1 text-xs font-medium text-stone-700 active:scale-95"
     >
       <Plus size={14} /> Add
     </button>
@@ -68,20 +72,15 @@ export function ColorCard({ color, view }: Props) {
     return (
       <Link
         to={`/c/${color.code}`}
-        className="flex items-center gap-3 border-b border-slate-100 bg-white px-3 py-2 active:bg-slate-50"
+        className={`flex items-center gap-3 border-b border-black/5 px-3 py-2 active:brightness-95 ${wrapper}`}
       >
-        <SwatchImg
-          code={color.code}
-          hex={color.hex}
-          name={color.name}
-          className="h-9 w-16 shrink-0 rounded object-cover"
+        <div
+          style={{ backgroundColor: color.hex }}
+          className="h-9 w-16 shrink-0 rounded ring-1 ring-black/10"
         />
         <div className="min-w-0 flex-1">
-          <div className="truncate text-sm font-medium text-slate-900">{color.name}</div>
-          <div className="flex items-center gap-1.5">
-            <HexDot hex={color.hex} size={10} />
-            <span className="font-mono text-xs leading-none text-slate-400">{color.code}</span>
-          </div>
+          <div className="truncate text-sm font-semibold">{color.name}</div>
+          <div className="font-mono text-xs leading-none text-stone-500">{color.code}</div>
         </div>
         {Controls}
       </Link>
@@ -91,29 +90,23 @@ export function ColorCard({ color, view }: Props) {
   return (
     <Link
       to={`/c/${color.code}`}
-      className="flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm active:scale-[0.99]"
+      className={`flex min-h-32 flex-col overflow-hidden rounded-lg ring-1 ring-black/5 transition active:scale-[0.99] ${wrapper}`}
     >
-      <SwatchImg
-        code={color.code}
-        hex={color.hex}
-        name={color.name}
-        className="h-16 w-full object-cover"
-      />
-      <div className="flex flex-1 flex-col gap-2 p-2.5">
-        <div className="min-w-0">
-          <div className="flex items-center gap-1">
-            <span className="truncate text-sm font-medium leading-tight text-slate-900">
-              {color.name}
-            </span>
-            {color.iridescent && <Sparkles size={13} className="shrink-0 text-amber-500" />}
-          </div>
-          <div className="flex items-center gap-1.5">
-            <HexDot hex={color.hex} size={11} />
-            <span className="font-mono text-xs leading-none text-slate-400">{color.code}</span>
-          </div>
+      {/* name → flat hex colour block (the detail page shows the real swatch) → controls */}
+      <div className="min-w-0 px-2.5 pb-1.5 pt-2.5">
+        <div className="flex items-center gap-1">
+          <span className="truncate text-sm font-semibold leading-tight">{color.name}</span>
+          {color.iridescent && <Sparkles size={13} className="shrink-0 text-amber-600" />}
         </div>
-        <div className="mt-auto">{Controls}</div>
+        <div className="mt-0.5 font-mono text-xs leading-none text-stone-500">{color.code}</div>
       </div>
+      <div className="px-2.5">
+        <div
+          style={{ backgroundColor: color.hex }}
+          className="h-16 w-full rounded-md ring-1 ring-black/10"
+        />
+      </div>
+      <div className="mt-auto px-2.5 pb-2.5 pt-2">{Controls}</div>
     </Link>
   );
 }

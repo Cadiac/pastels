@@ -35,30 +35,30 @@ export function Login() {
   return (
     <div className="flex min-h-full items-center justify-center p-4">
       <div className="w-full max-w-sm">
-        <h1 className="mb-1 text-center text-2xl font-bold text-slate-900">Oil Pastels</h1>
-        <p className="mb-6 text-center text-sm text-slate-500">
+        <h1 className="mb-1 text-center text-2xl font-bold text-stone-50">Oil Pastels</h1>
+        <p className="mb-6 text-center text-sm text-stone-300">
           {mode === "login" ? "Sign in to your inventory" : "Create an account"}
         </p>
 
-        <form onSubmit={submit} className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <label className="flex flex-col gap-1 text-sm font-medium text-slate-700">
+        <form onSubmit={submit} className="flex flex-col gap-3 rounded-2xl bg-[#f3ebd5] p-5 text-stone-800 shadow-md ring-1 ring-black/5">
+          <label className="flex flex-col gap-1 text-sm font-medium text-stone-700">
             Username
             <input
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               autoComplete="username"
               autoCapitalize="none"
-              className="rounded-lg border border-slate-300 px-3 py-2 text-base outline-none focus:border-slate-500"
+              className="rounded-lg border border-stone-300 bg-stone-50 px-3 py-2 text-base text-stone-900 outline-none focus:border-stone-500"
             />
           </label>
-          <label className="flex flex-col gap-1 text-sm font-medium text-slate-700">
+          <label className="flex flex-col gap-1 text-sm font-medium text-stone-700">
             Password
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete={mode === "login" ? "current-password" : "new-password"}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-base outline-none focus:border-slate-500"
+              className="rounded-lg border border-stone-300 bg-stone-50 px-3 py-2 text-base text-stone-900 outline-none focus:border-stone-500"
             />
           </label>
 
@@ -67,7 +67,7 @@ export function Login() {
           <button
             type="submit"
             disabled={busy || loading}
-            className="mt-1 rounded-lg bg-slate-900 py-2.5 font-semibold text-white disabled:opacity-50 active:scale-[0.99]"
+            className="mt-1 rounded-lg bg-stone-800 py-2.5 font-semibold text-stone-50 disabled:opacity-50 active:scale-[0.99]"
           >
             {busy ? "…" : mode === "login" ? "Sign in" : "Register"}
           </button>
@@ -78,7 +78,7 @@ export function Login() {
               setMode(mode === "login" ? "register" : "login");
               setError(null);
             }}
-            className="text-center text-sm text-slate-500 underline-offset-2 hover:underline"
+            className="text-center text-sm text-stone-500 underline-offset-2 hover:underline"
           >
             {mode === "login" ? "Need an account? Register" : "Have an account? Sign in"}
           </button>

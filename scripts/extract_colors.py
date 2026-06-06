@@ -45,17 +45,16 @@ NAMES_FILE = DATA / "names.json"
 BAND_Y = [65, 127, 189, 251, 313, 376, 438, 500]
 BAND_TOL = 4
 
-SWATCH_DPI = 300          # crisp crops for the app
+SWATCH_DPI = 150          # source swatches are ~130x47px @100ppi; don't upscale much
 SAMPLE_DPI = 150          # raster used only for colour sampling
 # Swatch box, in PDF points: a strip just above the code, clear of the previous
 # band's pigment line (~code.y-41) and of this cell's own text (code.y).
 SWATCH_TOP = 34
 SWATCH_BOTTOM = 5
-SWATCH_PAD_X = 3           # right-side inset from the next column
-# Start the crop right of the code so the "New" marker (which ends ~code.x+20) is
-# excluded entirely. Strokes start ~code.x+14-23, so this only trims a sliver of
-# the feathered left edge, and keeps the "New" text out of the hex sample too.
-SWATCH_LEFT_INSET = 21
+SWATCH_PAD_X = 3          # right-side inset from the next column
+# Extend a little left of the code so the stroke's left edge has horizontal
+# breathing room (and the "New" marker, when present, is fully shown).
+SWATCH_LEFT = 5
 
 LIGHTFAST = {3: "I", 2: "II", 1: "III"}     # *** is the most lightfast (= I)
 
@@ -193,7 +192,13 @@ def read_ppm(path):
 
 
 def sample_hex(px, w, h, x0, y0, x1, y1):
-    """Median colour of non-background pixels in a box (background = near white)."""
+    """Representative colour of a swatch box.
+
+    Normally the median of the pigment (non-paper) pixels. But for a white/pale
+    pastel the pigment is itself near-white, so almost nothing reads as non-paper
+    (only the faint grey outline) — in that case fall back to the median of ALL
+    pixels, which is the true near-white. A clean near-white then snaps to #FFFFFF.
+    """
     x0, y0, x1, y1 = max(0, x0), max(0, y0), min(w, x1), min(h, y1)
     rs, gs, bs, allc = [], [], [], []
     for y in range(y0, y1):
@@ -204,15 +209,20 @@ def sample_hex(px, w, h, x0, y0, x1, y1):
             allc.append((r, g, b))
             if not (r > 232 and g > 232 and b > 232):
                 rs.append(r); gs.append(g); bs.append(b)
-    if len(rs) >= 8:
+
+    paper_frac = 1 - (len(rs) / len(allc)) if allc else 1
+    if rs and paper_frac < 0.75:                 # enough real pigment: use it
         chans = (rs, gs, bs)
-    else:
+    else:                                        # white/near-white pigment
         chans = ([c[0] for c in allc], [c[1] for c in allc], [c[2] for c in allc])
 
     def med(v):
         v = sorted(v)
         return v[len(v) // 2] if v else 255
-    return "#{:02X}{:02X}{:02X}".format(med(chans[0]), med(chans[1]), med(chans[2]))
+    r, g, b = med(chans[0]), med(chans[1]), med(chans[2])
+    if min(r, g, b) >= 250:                       # clean near-white -> pure white
+        r = g = b = 255
+    return f"#{r:02X}{g:02X}{b:02X}"
 
 
 def main():
@@ -258,9 +268,9 @@ def main():
 
             transparency, pigments, iridescent = pigment_rows[code]
 
-            # swatch box = the stroke region above the code, inset on the left so
-            # the "New" marker is cropped out
-            sx0, sx1 = cx + SWATCH_LEFT_INSET, next_x - SWATCH_PAD_X
+            # swatch box: extend a little left of the code so the stroke's left
+            # edge (and the "New" marker, when present) is fully shown
+            sx0, sx1 = cx - SWATCH_LEFT, next_x - SWATCH_PAD_X
             sy0, sy1 = cy - SWATCH_TOP, cy - SWATCH_BOTTOM
             run(["pdftoppm", "-png", "-r", str(SWATCH_DPI), "-f", "1", "-l", "1",
                  "-x", str(round(sx0 * SWATCH_DPI / 72)), "-y", str(round(sy0 * SWATCH_DPI / 72)),

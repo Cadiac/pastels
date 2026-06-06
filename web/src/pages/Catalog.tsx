@@ -50,11 +50,11 @@ export function Catalog() {
 
   return (
     <div className="mx-auto flex min-h-full max-w-4xl flex-col">
-      <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/90 px-3 pb-2 pt-3 backdrop-blur">
+      <header className="sticky top-0 z-10 border-b border-black/10 bg-[#6b665e]/90 px-3 pb-2 pt-3 backdrop-blur">
         <div className="mb-2 flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-bold leading-none text-slate-900">Oil Pastels</h1>
-            <p className="mt-0.5 text-xs text-slate-500">
+            <h1 className="text-lg font-bold leading-none text-stone-50">Oil Pastels</h1>
+            <p className="mt-0.5 text-xs text-stone-300">
               {ownedCount}/{all.length} owned
               {lowCount > 0 && <> · {lowCount} low</>}
             </p>
@@ -62,7 +62,7 @@ export function Catalog() {
           <button
             type="button"
             onClick={() => logout()}
-            className="flex items-center gap-1.5 rounded-full border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-600"
+            className="flex items-center gap-1.5 rounded-full border border-stone-400/70 px-3 py-1.5 text-xs font-medium text-stone-100"
           >
             <LogOut size={14} />
             <span className="hidden sm:inline">{user?.username}</span>
@@ -98,7 +98,7 @@ export function Catalog() {
             ))}
           </div>
         ) : (
-          <div className="overflow-hidden rounded-xl border border-slate-200">
+          <div className="overflow-hidden rounded-xl border border-black/10">
             {visible.map((c) => (
               <ColorCard key={c.code} color={c} view="list" />
             ))}

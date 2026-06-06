@@ -12,8 +12,6 @@
 }
 
 :root {
-  /* The UI is light-only; pin the scheme so OS dark mode doesn't flip default
-     text (canvastext) or native control styling. */
   color-scheme: light;
 }
 
@@ -26,6 +24,6 @@ body,
 body {
   margin: 0;
   -webkit-tap-highlight-color: transparent;
-  background: #f8fafc;
-  color: #0f172a; /* slate-900 fallback for any otherwise-uncoloured text */
+  background: #6b665e; /* warm grey (à la the Sennelier studio-grey backdrop) */
+  color: #f5f1e8; /* warm off-white */
 }

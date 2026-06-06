@@ -26,8 +26,8 @@ export function LevelChip({ level, onCycle, size = "sm" }: Props) {
         size === "sm" ? "text-xs" : "text-sm"
       } ${
         low
-          ? "border-amber-300 bg-amber-50 text-amber-800"
-          : "border-slate-300 bg-white text-slate-700"
+          ? "border-amber-400 bg-amber-100 text-amber-900"
+          : "border-stone-300 bg-stone-50 text-stone-700"
       }`}
     >
       <svg width={dim} height={dim} viewBox={`0 0 ${dim} ${dim}`} className="shrink-0">

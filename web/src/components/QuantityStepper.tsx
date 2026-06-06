@@ -9,7 +9,7 @@ interface Props {
 
 export function QuantityStepper({ value, onChange, min = 0, max = 99 }: Props) {
   const btn =
-    "flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 disabled:opacity-40 active:scale-95 transition";
+    "flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-stone-50 text-stone-700 disabled:opacity-40 active:scale-95 transition";
   return (
     <div className="inline-flex items-center gap-2" onClick={(e) => e.preventDefault()}>
       <button
@@ -21,7 +21,7 @@ export function QuantityStepper({ value, onChange, min = 0, max = 99 }: Props) {
       >
         <Minus size={16} />
       </button>
-      <span className="w-6 text-center text-base font-semibold tabular-nums text-slate-900">
+      <span className="w-6 text-center text-base font-semibold tabular-nums text-stone-800">
         {value}
       </span>
       <button

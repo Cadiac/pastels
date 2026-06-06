@@ -18,7 +18,7 @@
     "iridescent": false,
     "new": false,
     "giant": true,
-    "hex": "#DEDEDE",
+    "hex": "#FFFFFF",
     "swatch": "swatches/001.png"
   },
   {
@@ -41,7 +41,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#1997C5",
+    "hex": "#1B97C5",
     "swatch": "swatches/002.png"
   },
   {
@@ -66,7 +66,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#18A1CE",
+    "hex": "#19A1CE",
     "swatch": "swatches/003.png"
   },
   {
@@ -89,7 +89,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#224F9E",
+    "hex": "#234F9F",
     "swatch": "swatches/004.png"
   },
   {
@@ -111,7 +111,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#324298",
+    "hex": "#324398",
     "swatch": "swatches/005.png"
   },
   {
@@ -156,7 +156,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#2E527A",
+    "hex": "#2F537B",
     "swatch": "swatches/007.png"
   },
   {
@@ -179,7 +179,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#883753",
+    "hex": "#883854",
     "swatch": "swatches/008.png"
   },
   {
@@ -203,7 +203,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#C2CFD1",
+    "hex": "#C3CFD1",
     "swatch": "swatches/011.png"
   },
   {
@@ -250,7 +250,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#CFC099",
+    "hex": "#CFC09A",
     "swatch": "swatches/013.png"
   },
   {
@@ -273,7 +273,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#C3D0D1",
+    "hex": "#C4D0D1",
     "swatch": "swatches/014.png"
   },
   {
@@ -297,7 +297,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#B9A798",
+    "hex": "#B9A799",
     "swatch": "swatches/015.png"
   },
   {
@@ -345,7 +345,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#A696B1",
+    "hex": "#A697B1",
     "swatch": "swatches/017.png"
   },
   {
@@ -369,7 +369,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#F6BC76",
+    "hex": "#F6BC77",
     "swatch": "swatches/018.png"
   },
   {
@@ -391,7 +391,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#FDF02F",
+    "hex": "#FDF030",
     "swatch": "swatches/019.png"
   },
   {
@@ -413,7 +413,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#FCD612",
+    "hex": "#FCD613",
     "swatch": "swatches/020.png"
   },
   {
@@ -436,7 +436,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#FFF7B7",
+    "hex": "#FEF7B8",
     "swatch": "swatches/021.png"
   },
   {
@@ -458,7 +458,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#FDF00B",
+    "hex": "#FDF00C",
     "swatch": "swatches/022.png"
   },
   {
@@ -481,7 +481,7 @@
     "iridescent": false,
     "new": false,
     "giant": true,
-    "hex": "#293237",
+    "hex": "#2A3337",
     "swatch": "swatches/023.png"
   },
   {
@@ -506,7 +506,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#F0BA9B",
+    "hex": "#F0BB9C",
     "swatch": "swatches/025.png"
   },
   {
@@ -529,7 +529,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#EE9B36",
+    "hex": "#EE9B37",
     "swatch": "swatches/026.png"
   },
   {
@@ -552,7 +552,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#D43091",
+    "hex": "#D43291",
     "swatch": "swatches/027.png"
   },
   {
@@ -575,7 +575,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#E65A5A",
+    "hex": "#E65B5B",
     "swatch": "swatches/028.png"
   },
   {
@@ -597,7 +597,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#E45348",
+    "hex": "#E45449",
     "swatch": "swatches/029.png"
   },
   {
@@ -619,7 +619,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#DA3A39",
+    "hex": "#DA3B3A",
     "swatch": "swatches/030.png"
   },
   {
@@ -664,7 +664,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#AB4841",
+    "hex": "#AB4842",
     "swatch": "swatches/032.png"
   },
   {
@@ -688,7 +688,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#353535",
+    "hex": "#363636",
     "swatch": "swatches/033.png"
   },
   {
@@ -712,7 +712,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#544342",
+    "hex": "#554443",
     "swatch": "swatches/034.png"
   },
   {
@@ -736,7 +736,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#4C4644",
+    "hex": "#4D4745",
     "swatch": "swatches/035.png"
   },
   {
@@ -759,7 +759,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#834F49",
+    "hex": "#83504A",
     "swatch": "swatches/036.png"
   },
   {
@@ -783,7 +783,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#CA8A5C",
+    "hex": "#CA8A5D",
     "swatch": "swatches/037.png"
   },
   {
@@ -829,7 +829,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#1E6F5E",
+    "hex": "#20705F",
     "swatch": "swatches/039.png"
   },
   {
@@ -853,7 +853,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#55BC94",
+    "hex": "#56BC95",
     "swatch": "swatches/040.png"
   },
   {
@@ -876,7 +876,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#18A15B",
+    "hex": "#18A25B",
     "swatch": "swatches/041.png"
   },
   {
@@ -899,7 +899,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#15AB56",
+    "hex": "#16AB57",
     "swatch": "swatches/042.png"
   },
   {
@@ -922,7 +922,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#1FB491",
+    "hex": "#20B491",
     "swatch": "swatches/043.png"
   },
   {
@@ -944,7 +944,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#18905A",
+    "hex": "#19905B",
     "swatch": "swatches/044.png"
   },
   {
@@ -1040,7 +1040,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#9B5790",
+    "hex": "#9B5890",
     "swatch": "swatches/048.png"
   },
   {
@@ -1063,7 +1063,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#F6EC6B",
+    "hex": "#F6EC6C",
     "swatch": "swatches/072.png"
   },
   {
@@ -1085,7 +1085,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#FDF029",
+    "hex": "#FDF02A",
     "swatch": "swatches/074.png"
   },
   {
@@ -1107,7 +1107,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#0B76A7",
+    "hex": "#0C77A7",
     "swatch": "swatches/075.png"
   },
   {
@@ -1130,7 +1130,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#8B3884",
+    "hex": "#8B3984",
     "swatch": "swatches/076.png"
   },
   {
@@ -1178,7 +1178,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#365F71",
+    "hex": "#375F71",
     "swatch": "swatches/080.png"
   },
   {
@@ -1202,7 +1202,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#17A78B",
+    "hex": "#19A78B",
     "swatch": "swatches/082.png"
   },
   {
@@ -1227,7 +1227,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#468DBB",
+    "hex": "#478DBB",
     "swatch": "swatches/084.png"
   },
   {
@@ -1275,7 +1275,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#B0B046",
+    "hex": "#B1B047",
     "swatch": "swatches/086.png"
   },
   {
@@ -1297,7 +1297,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#264138",
+    "hex": "#274239",
     "swatch": "swatches/087.png"
   },
   {
@@ -1345,7 +1345,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#EC6A36",
+    "hex": "#EC6B36",
     "swatch": "swatches/090.png"
   },
   {
@@ -1391,7 +1391,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#88443C",
+    "hex": "#88453D",
     "swatch": "swatches/092.png"
   },
   {
@@ -1439,7 +1439,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#856645",
+    "hex": "#866645",
     "swatch": "swatches/094.png"
   },
   {
@@ -1487,7 +1487,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#3B3D46",
+    "hex": "#3B3D47",
     "swatch": "swatches/096.png"
   },
   {
@@ -1509,7 +1509,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#32393E",
+    "hex": "#34393E",
     "swatch": "swatches/098.png"
   },
   {
@@ -1533,7 +1533,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#F5D28F",
+    "hex": "#F5D290",
     "swatch": "swatches/099.png"
   },
   {
@@ -1553,7 +1553,7 @@
     "iridescent": true,
     "new": false,
     "giant": false,
-    "hex": "#B2B4BD",
+    "hex": "#B3B4BD",
     "swatch": "swatches/111.png"
   },
   {
@@ -1573,7 +1573,7 @@
     "iridescent": true,
     "new": false,
     "giant": false,
-    "hex": "#CCAB8B",
+    "hex": "#CCAC8B",
     "swatch": "swatches/112.png"
   },
   {
@@ -1593,7 +1593,7 @@
     "iridescent": true,
     "new": false,
     "giant": false,
-    "hex": "#CFB48E",
+    "hex": "#CFB48F",
     "swatch": "swatches/113.png"
   },
   {
@@ -1613,7 +1613,7 @@
     "iridescent": true,
     "new": false,
     "giant": false,
-    "hex": "#D0B788",
+    "hex": "#D1B789",
     "swatch": "swatches/114.png"
   },
   {
@@ -1655,7 +1655,7 @@
     "iridescent": true,
     "new": false,
     "giant": false,
-    "hex": "#98D3E1",
+    "hex": "#99D4E1",
     "swatch": "swatches/123.png"
   },
   {
@@ -1675,7 +1675,7 @@
     "iridescent": true,
     "new": false,
     "giant": false,
-    "hex": "#FEFAF8",
+    "hex": "#FFFFFF",
     "swatch": "swatches/125.png"
   },
   {
@@ -1717,7 +1717,7 @@
     "iridescent": true,
     "new": false,
     "giant": false,
-    "hex": "#F08E5C",
+    "hex": "#F08E5D",
     "swatch": "swatches/134.png"
   },
   {
@@ -1760,7 +1760,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#E95946",
+    "hex": "#E85B48",
     "swatch": "swatches/200.png"
   },
   {
@@ -1783,7 +1783,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#FDF376",
+    "hex": "#FDF377",
     "swatch": "swatches/201.png"
   },
   {
@@ -1806,7 +1806,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#EC7A8A",
+    "hex": "#EC7B8A",
     "swatch": "swatches/202.png"
   },
   {
@@ -1830,7 +1830,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#1082C2",
+    "hex": "#1283C2",
     "swatch": "swatches/203.png"
   },
   {
@@ -1852,7 +1852,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#C8973C",
+    "hex": "#C8983D",
     "swatch": "swatches/204.png"
   },
   {
@@ -1875,7 +1875,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#FADA41",
+    "hex": "#FADA42",
     "swatch": "swatches/205.png"
   },
   {
@@ -1897,7 +1897,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#38BDC0",
+    "hex": "#3BBDC0",
     "swatch": "swatches/206.png"
   },
   {
@@ -1920,7 +1920,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#83CFEF",
+    "hex": "#85CFEF",
     "swatch": "swatches/207.png"
   },
   {
@@ -1942,7 +1942,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#EC7A3D",
+    "hex": "#EC7B3E",
     "swatch": "swatches/208.png"
   },
   {
@@ -1989,7 +1989,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#876D4D",
+    "hex": "#886D4E",
     "swatch": "swatches/210.png"
   },
   {
@@ -2011,7 +2011,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#178F9D",
+    "hex": "#1C909D",
     "swatch": "swatches/211.png"
   },
   {
@@ -2056,7 +2056,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#3D8468",
+    "hex": "#408569",
     "swatch": "swatches/213.png"
   },
   {
@@ -2079,7 +2079,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#199C86",
+    "hex": "#1C9D87",
     "swatch": "swatches/214.png"
   },
   {
@@ -2104,7 +2104,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#BF8750",
+    "hex": "#BF8851",
     "swatch": "swatches/215.png"
   },
   {
@@ -2127,7 +2127,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#685CA5",
+    "hex": "#695DA5",
     "swatch": "swatches/216.png"
   },
   {
@@ -2149,7 +2149,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#996FAB",
+    "hex": "#9A70AB",
     "swatch": "swatches/217.png"
   },
   {
@@ -2171,7 +2171,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#18A18B",
+    "hex": "#1BA18B",
     "swatch": "swatches/218.png"
   },
   {
@@ -2194,7 +2194,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#08AAAD",
+    "hex": "#0AAAAD",
     "swatch": "swatches/219.png"
   },
   {
@@ -2216,7 +2216,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#E03F43",
+    "hex": "#DF4346",
     "swatch": "swatches/220.png"
   },
   {
@@ -2236,7 +2236,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#DEDEDE",
+    "hex": "#FFFFFF",
     "swatch": "swatches/221.png"
   },
   {
@@ -2259,7 +2259,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#55ACC6",
+    "hex": "#57ACC6",
     "swatch": "swatches/222.png"
   },
   {
@@ -2282,7 +2282,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#E2E2E3",
+    "hex": "#E2E2E2",
     "swatch": "swatches/223.png"
   },
   {
@@ -2305,7 +2305,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#A0A1AE",
+    "hex": "#A1A1AE",
     "swatch": "swatches/224.png"
   },
   {
@@ -2329,7 +2329,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#1297D1",
+    "hex": "#1497D1",
     "swatch": "swatches/225.png"
   },
   {
@@ -2353,7 +2353,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#39BCE9",
+    "hex": "#3CBCE8",
     "swatch": "swatches/226.png"
   },
   {
@@ -2377,7 +2377,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#3880BF",
+    "hex": "#3B81BF",
     "swatch": "swatches/227.png"
   },
   {
@@ -2400,7 +2400,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#50585E",
+    "hex": "#51595F",
     "swatch": "swatches/228.png"
   },
   {
@@ -2426,7 +2426,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#80BDCE",
+    "hex": "#81BDCE",
     "swatch": "swatches/229.png"
   },
   {
@@ -2449,7 +2449,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#F8D6C0",
+    "hex": "#F8D6C1",
     "swatch": "swatches/230.png"
   },
   {
@@ -2472,7 +2472,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#EA946C",
+    "hex": "#E9956E",
     "swatch": "swatches/231.png"
   },
   {
@@ -2496,7 +2496,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#F09653",
+    "hex": "#F09655",
     "swatch": "swatches/232.png"
   },
   {
@@ -2542,7 +2542,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#13A857",
+    "hex": "#16A858",
     "swatch": "swatches/234.png"
   },
   {
@@ -2568,7 +2568,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#2E6E81",
+    "hex": "#306F81",
     "swatch": "swatches/235.png"
   },
   {
@@ -2591,7 +2591,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#F7D2D4",
+    "hex": "#F6D2D4",
     "swatch": "swatches/236.png"
   },
   {
@@ -2613,7 +2613,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#2A4699",
+    "hex": "#2A4899",
     "swatch": "swatches/237.png"
   },
   {
@@ -2661,7 +2661,7 @@
     "iridescent": false,
     "new": false,
     "giant": false,
-    "hex": "#BC4F3F",
+    "hex": "#BC5040",
     "swatch": "swatches/239.png"
   },
   {
@@ -2684,7 +2684,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#D77E66",
+    "hex": "#D77E67",
     "swatch": "swatches/240.png"
   },
   {
@@ -2710,7 +2710,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#D7A467",
+    "hex": "#D7A468",
     "swatch": "swatches/241.png"
   },
   {
@@ -2758,7 +2758,7 @@
     "iridescent": false,
     "new": true,
     "giant": false,
-    "hex": "#AC7B57",
+    "hex": "#AD7B58",
     "swatch": "swatches/243.png"
   }
 ]

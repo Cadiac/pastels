@@ -35,6 +35,15 @@ export function nextLevel(level: Level): Level {
   return LEVELS[(i + 1) % LEVELS.length];
 }
 
+/** True if a `#rrggbb` colour is light enough to need dark text on top. */
+export function isLight(hex: string): boolean {
+  const m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
+  if (!m) return true;
+  const [r, g, b] = [m[1], m[2], m[3]].map((h) => parseInt(h, 16));
+  // perceived brightness (ITU-R BT.601)
+  return (r * 299 + g * 587 + b * 114) / 1000 > 150;
+}
+
 /**
  * Hue (0..360) derived from a `#rrggbb` string, for the "rainbow" sort.
  * Greys/near-neutrals get a large sentinel so they sort to the end.
