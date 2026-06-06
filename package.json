@@ -1,0 +1,24 @@
+{
+  "name": "sennelier-pastels",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal inventory app for Sennelier oil pastels",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "dev": "concurrently -n server,web -c blue,green \"pnpm --filter server dev\" \"pnpm --filter web dev\"",
+    "seed": "pnpm --filter server seed",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter server start",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}

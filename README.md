@@ -1,8 +1,35 @@
-# Sennelier Oil Pastels — colour data
+# Sennelier Oil Pastels
 
-Structured catalogue of the **120** Sennelier oil-pastel colours, extracted from
-the official colour chart (`Colourchart_Oilpastels.pdf`). Intended as the data
-foundation for a personal inventory app.
+A mobile-first web app to track a personal inventory of Sennelier oil pastels,
+built on a structured catalogue of the **120** colours extracted from the
+official colour chart (`Colourchart_Oilpastels.pdf`).
+
+## Web app
+
+Monorepo (pnpm workspaces): `web/` (React + Vite + Tailwind), `server/`
+(Hono + `node:sqlite`), `shared/` (Zod schemas + types used by both). Username/
+password login, per-colour quantity + a remaining-level chip (Full → Empty).
+
+```sh
+pnpm install
+pnpm seed     # create SQLite db (server/var/app.db) + load the catalogue
+pnpm dev      # web on http://localhost:5173, API on :3000 (Vite proxies /api, /swatches)
+```
+
+Open `http://localhost:5173`, register an account, and browse. Other scripts:
+`pnpm build` + `pnpm start` (single Node process serving API + `web/dist`),
+`pnpm test`, `pnpm typecheck`.
+
+- **Requirements:** Node ≥ 22.5 (uses the built-in `node:sqlite`; no native
+  build needed — portable to any recent-Node host). A dev account `jaakko` /
+  `pastels123` already exists in the seeded db; delete `server/var/app.db` to reset.
+- **Auth:** session cookie; registration is open (local/personal use). OAuth
+  social login is a planned follow-up (the schema leaves room for it).
+
+## Colour data
+
+Structured catalogue extracted from the official chart; the app seeds from it and
+the extractor (`scripts/extract_colors.py`) remains its single source of truth.
 
 ## Files
 
