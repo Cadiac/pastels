@@ -1,7 +1,20 @@
 @import "tailwindcss";
 
+/* Tailwind v4's preflight leaves buttons at the browser default (cursor: default);
+   restore a pointer cursor for enabled interactive controls. */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  label,
+  select:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
 :root {
-  color-scheme: light dark;
+  /* The UI is light-only; pin the scheme so OS dark mode doesn't flip default
+     text (canvastext) or native control styling. */
+  color-scheme: light;
 }
 
 html,
@@ -14,4 +27,5 @@ body {
   margin: 0;
   -webkit-tap-highlight-color: transparent;
   background: #f8fafc;
+  color: #0f172a; /* slate-900 fallback for any otherwise-uncoloured text */
 }

@@ -1,5 +1,6 @@
+import { type MouseEvent } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Sparkles } from "lucide-react";
+import { Plus, Sparkles, Trash2 } from "lucide-react";
 import type { ColorWithInventory, Level } from "shared";
 import { SwatchImg } from "./SwatchImg";
 import { LevelChip } from "./LevelChip";
@@ -10,33 +11,55 @@ interface Props {
   view: "grid" | "list";
 }
 
+const ICON_BTN =
+  "flex h-7 w-7 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-600 active:scale-95";
+
 export function ColorCard({ color, view }: Props) {
   const setInventory = useSetInventory();
   const inv = color.inventory;
   const quantity = inv?.quantity ?? 0;
   const level: Level = inv?.level ?? "full";
 
-  const own = () => setInventory.mutate({ code: color.code, input: { quantity: 1, level: "full" } });
-  const cycle = (next: Level) =>
-    setInventory.mutate({ code: color.code, input: { quantity: quantity || 1, level: next } });
+  const set = (q: number, l: Level | null) =>
+    setInventory.mutate({ code: color.code, input: { quantity: q, level: l } });
+
+  // Keep button taps from also triggering the card's <Link> navigation.
+  const act = (fn: () => void) => (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    fn();
+  };
 
   const Controls = inv ? (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-1.5">
+      <LevelChip level={level} onCycle={(next) => set(quantity || 1, next)} />
+      <button
+        type="button"
+        onClick={act(() => set(quantity - 1, quantity - 1 > 0 ? "full" : null))}
+        className={`${ICON_BTN} border-red-200 text-red-500`}
+        aria-label="Remove one stick"
+      >
+        <Trash2 size={14} />
+      </button>
       <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">
         ×{quantity}
       </span>
-      <LevelChip level={level} onCycle={cycle} />
+      <button
+        type="button"
+        onClick={act(() => set(Math.min(99, quantity + 1), level))}
+        className={ICON_BTN}
+        aria-label="Add another stick"
+      >
+        <Plus size={15} />
+      </button>
     </div>
   ) : (
     <button
       type="button"
-      onClick={(e) => {
-        e.preventDefault();
-        own();
-      }}
+      onClick={act(() => set(1, "full"))}
       className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-2.5 py-1 text-xs font-medium text-slate-700 active:scale-95"
     >
-      <Plus size={14} /> Own
+      <Plus size={14} /> Add
     </button>
   );
 

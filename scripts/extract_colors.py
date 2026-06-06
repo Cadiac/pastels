@@ -51,8 +51,11 @@ SAMPLE_DPI = 150          # raster used only for colour sampling
 # band's pigment line (~code.y-41) and of this cell's own text (code.y).
 SWATCH_TOP = 34
 SWATCH_BOTTOM = 5
-SWATCH_PAD_X = 3          # right-side inset from the next column
-SWATCH_LEFT = 5          # extend left of the code so the "New" marker fits
+SWATCH_PAD_X = 3           # right-side inset from the next column
+# Start the crop right of the code so the "New" marker (which ends ~code.x+20) is
+# excluded entirely. Strokes start ~code.x+14-23, so this only trims a sliver of
+# the feathered left edge, and keeps the "New" text out of the hex sample too.
+SWATCH_LEFT_INSET = 21
 
 LIGHTFAST = {3: "I", 2: "II", 1: "III"}     # *** is the most lightfast (= I)
 
@@ -255,9 +258,9 @@ def main():
 
             transparency, pigments, iridescent = pigment_rows[code]
 
-            # swatch box = the text cell's span, just above the code (extended a
-            # little to the left so the "New" marker, when present, fits)
-            sx0, sx1 = cx - SWATCH_LEFT, next_x - SWATCH_PAD_X
+            # swatch box = the stroke region above the code, inset on the left so
+            # the "New" marker is cropped out
+            sx0, sx1 = cx + SWATCH_LEFT_INSET, next_x - SWATCH_PAD_X
             sy0, sy1 = cy - SWATCH_TOP, cy - SWATCH_BOTTOM
             run(["pdftoppm", "-png", "-r", str(SWATCH_DPI), "-f", "1", "-l", "1",
                  "-x", str(round(sx0 * SWATCH_DPI / 72)), "-y", str(round(sy0 * SWATCH_DPI / 72)),

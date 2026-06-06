@@ -38,7 +38,9 @@ export function ColorDetail() {
   const setQuantity = (n: number) =>
     setInventory.mutate({
       code: color.code,
-      input: { quantity: n, level: n > 0 ? level : null },
+      // Removing a stick discards the part-used one, so the rest are full again;
+      // adding a stick keeps the current working level.
+      input: { quantity: n, level: n <= 0 ? null : n < quantity ? "full" : level },
     });
   const cycle = (next: Level) =>
     setInventory.mutate({ code: color.code, input: { quantity: quantity || 1, level: next } });
@@ -77,7 +79,6 @@ export function ColorDetail() {
 
         <div className="mt-2 flex flex-wrap gap-1.5">
           {color.new && <Badge className="bg-sky-100 text-sky-700">New</Badge>}
-          {color.giant && <Badge className="bg-violet-100 text-violet-700">Giant 78 ml</Badge>}
         </div>
 
         {/* Inventory controls */}

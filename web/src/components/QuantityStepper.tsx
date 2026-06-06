@@ -21,7 +21,9 @@ export function QuantityStepper({ value, onChange, min = 0, max = 99 }: Props) {
       >
         <Minus size={16} />
       </button>
-      <span className="w-6 text-center text-base font-semibold tabular-nums">{value}</span>
+      <span className="w-6 text-center text-base font-semibold tabular-nums text-slate-900">
+        {value}
+      </span>
       <button
         type="button"
         className={btn}
