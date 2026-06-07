@@ -75,7 +75,7 @@ export function ColorCard({ color, view }: Props) {
       >
         <div
           style={{ backgroundColor: color.hex }}
-          className="h-9 w-14 shrink-0 rounded-md ring-1 ring-inset ring-black/10"
+          className="h-9 w-14 shrink-0 rounded-chip ring-1 ring-inset ring-black/10"
         />
         <div className="min-w-0 flex-1">
           <div className={`truncate text-sm font-semibold ${owned ? "text-stone-800" : "text-stone-400"}`}>
@@ -91,7 +91,7 @@ export function ColorCard({ color, view }: Props) {
   return (
     <Link
       to={`/c/${color.code}`}
-      className={`flex flex-col overflow-hidden rounded-2xl ring-1 transition active:scale-[0.99] ${
+      className={`flex flex-col overflow-hidden rounded-card ring-1 transition active:scale-[0.99] ${
         owned ? "bg-white shadow-md ring-black/5" : "bg-white/25 ring-black/10"
       }`}
     >
@@ -102,7 +102,7 @@ export function ColorCard({ color, view }: Props) {
       >
         <span
           style={{ backgroundColor: codeChipBg, color: color.hex }}
-          className="absolute left-2 top-2 rounded-md px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none shadow-sm"
+          className="absolute left-2 top-2 rounded-chip px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none shadow-sm"
         >
           {color.code}
         </span>

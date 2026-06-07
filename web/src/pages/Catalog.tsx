@@ -100,7 +100,7 @@ export function Catalog() {
             ))}
           </div>
         ) : (
-          <div className="overflow-hidden rounded-xl border border-black/10">
+          <div className="overflow-hidden rounded-card border border-black/10">
             {visible.map((c) => (
               <ColorCard key={c.code} color={c} view="list" />
             ))}

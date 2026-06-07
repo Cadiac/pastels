@@ -72,7 +72,7 @@ export function ColorDetail() {
 
           <div
             style={{ backgroundColor: fg, color: color.hex }}
-            className="shrink-0 rounded-xl px-3.5 py-2 text-center shadow-sm"
+            className="shrink-0 rounded-card px-3.5 py-2 text-center shadow-sm"
           >
             <div className="text-[10px] font-bold uppercase tracking-wider opacity-60">No.</div>
             <div className="font-mono text-3xl font-bold leading-none">{color.code}</div>
@@ -84,7 +84,7 @@ export function ColorDetail() {
       <div className="grid gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16">
         <div className="flex flex-col gap-6">
           {/* Inventory controls */}
-          <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5">
+          <section className="rounded-card bg-white p-4 shadow-sm ring-1 ring-black/5">
             <h2 className="mb-3 text-sm font-semibold text-stone-700">Your inventory</h2>
             <div className="flex items-center justify-between">
               <span className="text-sm text-stone-600">Sticks owned</span>
@@ -105,7 +105,7 @@ export function ColorDetail() {
             <img
               src={`/swatches/${color.code}.png`}
               alt={`${color.name} swatch`}
-              className="h-16 w-full max-w-[260px] rounded-lg bg-white object-cover ring-1 ring-black/10"
+              className="h-16 w-full max-w-[260px] rounded-card bg-white object-cover ring-1 ring-black/10"
             />
           </div>
         </div>

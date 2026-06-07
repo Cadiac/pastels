@@ -88,7 +88,7 @@ export function FilterBar({ q, owned, sort, view, onChange }: Props) {
             />
           </button>
           {sortOpen && (
-            <div className="absolute right-0 z-30 mt-1.5 w-36 overflow-hidden rounded-2xl border border-stone-200 bg-white p-1 shadow-lg">
+            <div className="absolute right-0 z-30 mt-1.5 w-36 overflow-hidden rounded-card border border-stone-200 bg-white p-1 shadow-lg">
               <div className="px-3 pb-1 pt-1.5 text-[10px] font-semibold uppercase tracking-wide text-stone-400">
                 Sort by
               </div>
@@ -100,7 +100,7 @@ export function FilterBar({ q, owned, sort, view, onChange }: Props) {
                     onChange({ sort: o.value });
                     setSortOpen(false);
                   }}
-                  className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm ${
+                  className={`flex w-full items-center justify-between rounded-chip px-3 py-2 text-sm ${
                     sort === o.value
                       ? "bg-stone-100 font-semibold text-stone-900"
                       : "text-stone-700 hover:bg-stone-50"
