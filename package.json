@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "description": "Personal inventory app for Sennelier oil pastels",
+  "packageManager": "pnpm@10.4.1",
   "engines": {
     "node": ">=22.5.0"
   },

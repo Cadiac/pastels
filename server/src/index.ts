@@ -14,6 +14,8 @@ if (colourCount === 0) {
 
 const app = createApp();
 const port = Number(process.env.PORT ?? 3000);
-serve({ fetch: app.fetch, port }, (info) => {
-  console.log(`API listening on http://localhost:${info.port}`);
+// Bind to localhost by default; in production nginx is the only public listener.
+const hostname = process.env.HOST ?? "127.0.0.1";
+serve({ fetch: app.fetch, port, hostname }, (info) => {
+  console.log(`API listening on http://${hostname}:${info.port}`);
 });

@@ -21,10 +21,27 @@ Open `http://localhost:5173`, register an account, and browse. Other scripts:
 `pnpm test`, `pnpm typecheck`.
 
 - **Requirements:** Node ≥ 22.5 (uses the built-in `node:sqlite`; no native
-  build needed — portable to any recent-Node host). A dev account `jaakko` /
-  `pastels123` already exists in the seeded db; delete `server/var/app.db` to reset.
-- **Auth:** session cookie; registration is open (local/personal use). OAuth
-  social login is a planned follow-up (the schema leaves room for it).
+  build needed — portable to any recent-Node host). Register an account in the
+  app to get started; delete `server/var/app.db` to reset the local db.
+- **Auth:** session cookie; registration is open. OAuth social login is a planned
+  follow-up (the schema leaves room for it).
+
+## Deployment
+
+A live instance runs at **pastels.cadi.ac**, deployed without Docker: the single
+Node process (serving the API, the built SPA, and the swatch images) runs as a
+**systemd** service behind **nginx**, which terminates TLS via **Let's Encrypt**.
+Data is the built-in `node:sqlite` file under `server/var/` — gitignored and
+**persisted across redeploys**.
+
+Update after pushing to `main` (on the server, as root):
+
+```sh
+bash /opt/pastels/deploy/update.sh   # git pull → pnpm install → build → restart
+```
+
+First-time server provisioning (Node, the systemd unit, the nginx site, and
+certbot) is scripted in [`deploy/`](deploy/README.md).
 
 ## Colour data
 

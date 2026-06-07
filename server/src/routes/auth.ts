@@ -21,7 +21,7 @@ function issueSession(c: Context<AppEnv>, userId: number): void {
     sameSite: "Lax",
     path: "/",
     maxAge: SESSION_MAX_AGE,
-    secure: process.env.NODE_ENV === "production",
+    secure: process.env.COOKIE_SECURE === "true", // set true when served over HTTPS
   });
 }
 

@@ -1,0 +1,18 @@
+[Unit]
+Description=Pastels inventory app
+After=network.target
+
+[Service]
+Type=simple
+User=pastels
+WorkingDirectory=/opt/pastels
+EnvironmentFile=/etc/pastels.env
+ExecStart=/opt/pastels/server/node_modules/.bin/tsx server/src/index.ts
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=full
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
