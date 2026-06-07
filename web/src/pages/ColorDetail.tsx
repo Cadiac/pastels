@@ -46,7 +46,7 @@ export function ColorDetail() {
     setInventory.mutate({ code: color.code, input: { quantity: quantity || 1, level: next } });
 
   return (
-    <div className="mx-auto min-h-full max-w-2xl bg-[#f3ebd5] text-stone-800">
+    <div className="min-h-full w-full bg-[#f3ebd5] text-stone-800">
       {/* colour hero — the chosen colour, with name and a popping ID chip */}
       <div style={{ backgroundColor: color.hex, color: fg }} className="px-4 pb-6 pt-3">
         <Link
@@ -80,36 +80,38 @@ export function ColorDetail() {
         </div>
       </div>
 
-      {/* content on the beige page */}
-      <div className="p-4">
-        <div>
-          <div className="mb-1.5 text-xs font-medium uppercase tracking-wide text-stone-500">
-            Swatch
+      {/* content — single column on phones, two columns on tablet+ */}
+      <div className="grid gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16">
+        <div className="flex flex-col gap-6">
+          {/* Inventory controls */}
+          <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5">
+            <h2 className="mb-3 text-sm font-semibold text-stone-700">Your inventory</h2>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-stone-600">Sticks owned</span>
+              <QuantityStepper value={quantity} onChange={setQuantity} />
+            </div>
+            {quantity > 0 && (
+              <div className="mt-4 flex items-center justify-between border-t border-stone-200 pt-4">
+                <span className="text-sm text-stone-600">Remaining</span>
+                <LevelChip level={level} onCycle={cycle} size="md" />
+              </div>
+            )}
+          </section>
+
+          <div>
+            <div className="mb-1.5 text-xs font-medium uppercase tracking-wide text-stone-500">
+              Swatch
+            </div>
+            <img
+              src={`/swatches/${color.code}.png`}
+              alt={`${color.name} swatch`}
+              className="h-16 w-full max-w-[260px] rounded-lg bg-white object-cover ring-1 ring-black/10"
+            />
           </div>
-          <img
-            src={`/swatches/${color.code}.png`}
-            alt={`${color.name} swatch`}
-            className="h-16 w-full max-w-[260px] rounded-lg bg-white object-cover ring-1 ring-black/10"
-          />
         </div>
 
-        {/* Inventory controls */}
-        <section className="mt-5 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5">
-          <h2 className="mb-3 text-sm font-semibold text-stone-700">Your inventory</h2>
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-stone-600">Sticks owned</span>
-            <QuantityStepper value={quantity} onChange={setQuantity} />
-          </div>
-          {quantity > 0 && (
-            <div className="mt-4 flex items-center justify-between border-t border-stone-200 pt-4">
-              <span className="text-sm text-stone-600">Remaining</span>
-              <LevelChip level={level} onCycle={cycle} size="md" />
-            </div>
-          )}
-        </section>
-
         {/* Metadata */}
-        <dl className="mt-5 divide-y divide-black/10 text-sm">
+        <dl className="divide-y divide-black/10 text-sm">
           <Row label="Transparency" value={TRANSPARENCY[color.transparency] ?? color.transparency} />
           <Row
             label="Lightfastness"

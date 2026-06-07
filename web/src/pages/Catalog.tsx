@@ -49,12 +49,12 @@ export function Catalog() {
   );
 
   return (
-    <div className="mx-auto flex min-h-full max-w-4xl flex-col">
-      <header className="sticky top-0 z-10 border-b border-black/10 bg-[#6b665e]/90 px-3 pb-2 pt-3 backdrop-blur">
+    <div className="flex min-h-full flex-col">
+      <header className="sticky top-0 z-10 border-b border-black/10 bg-[#f3ebd5]/90 px-3 pb-2 pt-3 backdrop-blur">
         <div className="mb-2 flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-bold leading-none text-stone-50">Oil Pastels</h1>
-            <p className="mt-0.5 text-xs text-stone-300">
+            <h1 className="text-lg font-bold leading-none text-stone-900">Oil Pastels</h1>
+            <p className="mt-0.5 text-xs text-stone-500">
               {ownedCount}/{all.length} owned
               {lowCount > 0 && <> · {lowCount} low</>}
             </p>
@@ -62,7 +62,7 @@ export function Catalog() {
           <button
             type="button"
             onClick={() => logout()}
-            className="flex items-center gap-1.5 rounded-full border border-stone-400/70 px-3 py-1.5 text-xs font-medium text-stone-100"
+            className="flex items-center gap-1.5 rounded-full border border-stone-300 bg-white/60 px-3 py-1.5 text-xs font-medium text-stone-600"
           >
             <LogOut size={14} />
             <span className="hidden sm:inline">{user?.username}</span>
@@ -83,12 +83,12 @@ export function Catalog() {
       </header>
 
       <main className="flex-1 p-3">
-        {isLoading && <p className="py-12 text-center text-sm text-slate-400">Loading…</p>}
+        {isLoading && <p className="py-12 text-center text-sm text-stone-500">Loading…</p>}
         {isError && (
           <p className="py-12 text-center text-sm text-red-500">Couldn’t load the catalogue.</p>
         )}
         {!isLoading && !isError && visible.length === 0 && (
-          <p className="py-12 text-center text-sm text-slate-400">No colours match.</p>
+          <p className="py-12 text-center text-sm text-stone-500">No colours match.</p>
         )}
 
         {view === "grid" ? (

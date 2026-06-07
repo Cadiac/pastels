@@ -24,6 +24,6 @@ body,
 body {
   margin: 0;
   -webkit-tap-highlight-color: transparent;
-  background: #6b665e; /* warm grey (à la the Sennelier studio-grey backdrop) */
-  color: #f5f1e8; /* warm off-white */
+  background: #f3ebd5; /* warm cream — light & fresh, matches the detail view */
+  color: #292524; /* stone-800 */
 }
