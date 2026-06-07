@@ -1,7 +1,7 @@
 import { type MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Sparkles, Trash2 } from "lucide-react";
-import type { ColorWithInventory, Level } from "shared";
+import { isLight, type ColorWithInventory, type Level } from "shared";
 import { LevelChip } from "./LevelChip";
 import { useSetInventory } from "../api/hooks";
 
@@ -19,6 +19,8 @@ export function ColorCard({ color, view }: Props) {
   const owned = !!inv;
   const quantity = inv?.quantity ?? 0;
   const level: Level = inv?.level ?? "full";
+  // Inverted code chip that pops on any hue (dark chip on light colours, vice versa).
+  const codeChipBg = isLight(color.hex) ? "#1c1917" : "#ffffff";
 
   const set = (q: number, l: Level | null) =>
     setInventory.mutate({ code: color.code, input: { quantity: q, level: l } });
@@ -93,13 +95,20 @@ export function ColorCard({ color, view }: Props) {
         owned ? "bg-white shadow-md" : "bg-white/55 shadow-sm"
       }`}
     >
-      {/* colour hero (always full fidelity) → name · code → controls */}
+      {/* colour hero with a corner code chip → name → controls */}
       <div
         style={{ backgroundColor: color.hex }}
-        className="h-28 w-full border-b border-black/[0.06]"
-      />
+        className="relative h-28 w-full border-b border-black/[0.06]"
+      >
+        <span
+          style={{ backgroundColor: codeChipBg, color: color.hex }}
+          className="absolute left-2 top-2 rounded-md px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none shadow-sm"
+        >
+          {color.code}
+        </span>
+      </div>
       <div className="flex flex-1 flex-col p-2.5">
-        <div className="flex items-baseline gap-1.5">
+        <div className="flex items-center gap-1.5">
           <span
             className={`min-w-0 truncate text-sm font-semibold leading-tight ${
               owned ? "text-stone-900" : "text-stone-500"
@@ -107,10 +116,7 @@ export function ColorCard({ color, view }: Props) {
           >
             {color.name}
           </span>
-          {color.iridescent && (
-            <Sparkles size={12} className="shrink-0 self-center text-amber-500" />
-          )}
-          <span className="shrink-0 font-mono text-[11px] text-stone-400">{color.code}</span>
+          {color.iridescent && <Sparkles size={12} className="shrink-0 text-amber-500" />}
         </div>
         <div className="mt-2">{Controls}</div>
       </div>
