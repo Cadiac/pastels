@@ -30,13 +30,13 @@ export function FilterBar({ q, owned, sort, view, onChange }: Props) {
             onChange={(e) => onChange({ q: e.target.value })}
             placeholder="Search name, code, pigment…"
             inputMode="search"
-            className="w-full rounded-full border border-stone-300 bg-stone-100 py-2 pl-9 pr-3 text-sm text-stone-800 placeholder:text-stone-400 outline-none focus:border-stone-500"
+            className="w-full rounded-full border border-stone-300 bg-stone-100 py-2 pl-9 pr-3 text-base text-stone-800 placeholder:text-stone-400 outline-none focus:border-stone-500"
           />
         </div>
         <select
           value={sort}
           onChange={(e) => onChange({ sort: e.target.value as Sort })}
-          className="rounded-full border border-stone-300 bg-stone-100 px-3 py-2 text-sm text-stone-800 outline-none"
+          className="rounded-full border border-stone-300 bg-stone-100 px-3 py-2 text-base text-stone-800 outline-none"
           aria-label="Sort order"
         >
           <option value="code">Code</option>
