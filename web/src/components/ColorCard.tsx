@@ -70,7 +70,7 @@ export function ColorCard({ color, view }: Props) {
       <Link
         to={`/c/${color.code}`}
         className={`flex items-center gap-3 border-b border-black/5 px-3 py-2 active:brightness-95 ${
-          owned ? "bg-white" : "bg-white/55"
+          owned ? "bg-white" : "bg-white/20"
         }`}
       >
         <div
@@ -78,7 +78,7 @@ export function ColorCard({ color, view }: Props) {
           className="h-9 w-14 shrink-0 rounded-md ring-1 ring-inset ring-black/10"
         />
         <div className="min-w-0 flex-1">
-          <div className={`truncate text-sm font-semibold ${owned ? "text-stone-800" : "text-stone-500"}`}>
+          <div className={`truncate text-sm font-semibold ${owned ? "text-stone-800" : "text-stone-400"}`}>
             {color.name}
           </div>
           <div className="font-mono text-xs leading-none text-stone-400">{color.code}</div>
@@ -91,8 +91,8 @@ export function ColorCard({ color, view }: Props) {
   return (
     <Link
       to={`/c/${color.code}`}
-      className={`flex flex-col overflow-hidden rounded-2xl ring-1 ring-black/5 transition active:scale-[0.99] ${
-        owned ? "bg-white shadow-md" : "bg-white/55 shadow-sm"
+      className={`flex flex-col overflow-hidden rounded-2xl ring-1 transition active:scale-[0.99] ${
+        owned ? "bg-white shadow-md ring-black/5" : "bg-white/25 ring-black/10"
       }`}
     >
       {/* colour hero with a corner code chip → name → controls */}
@@ -111,7 +111,7 @@ export function ColorCard({ color, view }: Props) {
         <div className="flex items-center gap-1.5">
           <span
             className={`min-w-0 truncate text-sm font-semibold leading-tight ${
-              owned ? "text-stone-900" : "text-stone-500"
+              owned ? "text-stone-900" : "text-stone-400"
             }`}
           >
             {color.name}
