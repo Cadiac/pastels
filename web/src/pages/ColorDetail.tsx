@@ -46,7 +46,7 @@ export function ColorDetail() {
     setInventory.mutate({ code: color.code, input: { quantity: quantity || 1, level: next } });
 
   return (
-    <div className="min-h-full w-full bg-[#f3ebd5] text-stone-800">
+    <div className="mx-auto min-h-full w-full max-w-[1280px] bg-[#f3ebd5] text-stone-800">
       {/* colour hero — the chosen colour, with name and a popping ID chip */}
       <div style={{ backgroundColor: color.hex, color: fg }} className="px-4 pb-6 pt-3">
         <Link

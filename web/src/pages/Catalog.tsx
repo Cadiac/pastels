@@ -50,8 +50,9 @@ export function Catalog() {
 
   return (
     <div className="flex min-h-full flex-col">
-      <header className="sticky top-0 z-10 border-b border-black/10 bg-[#f3ebd5]/90 px-3 pb-2 pt-3 backdrop-blur">
-        <div className="mb-2 flex items-center justify-between">
+      <header className="sticky top-0 z-10 border-b border-black/10 bg-[#f3ebd5]/90 backdrop-blur">
+        <div className="mx-auto max-w-[1280px] px-3 pb-2 pt-3">
+          <div className="mb-2 flex items-center justify-between">
           <div>
             <h1 className="text-lg font-bold leading-none text-stone-900">Oil Pastels</h1>
             <p className="mt-0.5 text-xs text-stone-500">
@@ -80,9 +81,10 @@ export function Catalog() {
             if (p.view !== undefined) setView(p.view);
           }}
         />
+        </div>
       </header>
 
-      <main className="flex-1 p-3">
+      <main className="mx-auto w-full max-w-[1280px] flex-1 p-3">
         {isLoading && <p className="py-12 text-center text-sm text-stone-500">Loading…</p>}
         {isError && (
           <p className="py-12 text-center text-sm text-red-500">Couldn’t load the catalogue.</p>
@@ -92,7 +94,7 @@ export function Catalog() {
         )}
 
         {view === "grid" ? (
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {visible.map((c) => (
               <ColorCard key={c.code} color={c} view="grid" />
             ))}
