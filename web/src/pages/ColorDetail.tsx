@@ -1,13 +1,13 @@
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { ChevronLeft, Sparkles } from "lucide-react";
-import { isLight, type Level } from "shared";
+import { Bookmark, ChevronLeft, Heart, Sparkles } from "lucide-react";
+import { isLight, LEVEL_META, type HistoryEvent, type Level } from "shared";
 import { api } from "../api/client";
 import { LevelChip } from "../components/LevelChip";
 import { QuantityStepper } from "../components/QuantityStepper";
 import { ValueScale } from "../components/ValueScale";
-import { useSetInventory } from "../api/hooks";
+import { useSetInventory, useSetMeta } from "../api/hooks";
 
 const TRANSPARENCY: Record<string, string> = {
   T: "Transparent",
@@ -20,12 +20,35 @@ const LIGHTFAST: Record<string, string> = {
   III: "Moderate (III)",
 };
 
+function describeEvent(e: HistoryEvent): string {
+  if (e.type === "add") return `+${e.amount} ${e.amount === 1 ? "stick" : "sticks"}`;
+  if (e.type === "remove") return `−${e.amount} ${e.amount === 1 ? "stick" : "sticks"}`;
+  return `Remaining → ${e.level ? LEVEL_META[e.level].label : "?"}`;
+}
+
+/** SQLite's UTC `YYYY-MM-DD HH:MM:SS` rendered in the viewer's locale. */
+function formatAt(at: string): string {
+  return new Date(`${at.replace(" ", "T")}Z`).toLocaleDateString(undefined, {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
 export function ColorDetail() {
   const { code = "" } = useParams();
   const setInventory = useSetInventory();
+  const setMeta = useSetMeta();
+  // null = not editing; the textarea otherwise shows the saved notes.
+  const [notesDraft, setNotesDraft] = useState<string | null>(null);
   const { data: color, isLoading, isError } = useQuery({
     queryKey: ["color", code],
     queryFn: () => api.color(code),
+  });
+  const { data: history } = useQuery({
+    queryKey: ["history", code],
+    queryFn: () => api.history(code),
+    enabled: !!code,
   });
 
   if (isLoading) return <p className="p-8 text-center text-sm text-stone-300">Loading…</p>;
@@ -45,6 +68,17 @@ export function ColorDetail() {
     });
   const cycle = (next: Level) =>
     setInventory.mutate({ code: color.code, input: { quantity: quantity || 1, level: next } });
+
+  const saveNotes = () => {
+    if (notesDraft === null) return;
+    const trimmed = notesDraft.trim();
+    if (trimmed !== (color.notes ?? ""))
+      setMeta.mutate({ code: color.code, input: { notes: trimmed || null } });
+    setNotesDraft(null);
+  };
+
+  const TOGGLE =
+    "flex flex-1 items-center justify-center gap-1.5 rounded-full border px-3 py-2 text-sm font-medium transition active:scale-[0.98]";
 
   return (
     <div className="mx-auto min-h-full w-full max-w-[1280px] bg-[#f3ebd5] text-stone-800">
@@ -84,6 +118,36 @@ export function ColorDetail() {
       {/* content — single column on phones, two columns on tablet+ */}
       <div className="grid gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16">
         <div className="flex flex-col gap-6">
+          {/* Favourite / want list toggles */}
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setMeta.mutate({ code: color.code, input: { favorite: !color.favorite } })}
+              aria-pressed={color.favorite}
+              className={`${TOGGLE} ${
+                color.favorite
+                  ? "border-red-200 bg-red-50 text-red-600"
+                  : "border-stone-300 bg-white text-stone-600"
+              }`}
+            >
+              <Heart size={15} fill={color.favorite ? "currentColor" : "none"} />
+              Favourite
+            </button>
+            <button
+              type="button"
+              onClick={() => setMeta.mutate({ code: color.code, input: { want: !color.want } })}
+              aria-pressed={color.want}
+              className={`${TOGGLE} ${
+                color.want
+                  ? "border-amber-300 bg-amber-50 text-amber-700"
+                  : "border-stone-300 bg-white text-stone-600"
+              }`}
+            >
+              <Bookmark size={15} fill={color.want ? "currentColor" : "none"} />
+              Want
+            </button>
+          </div>
+
           {/* Inventory controls */}
           <section className="rounded-card bg-white p-4 shadow-sm ring-1 ring-black/5">
             <h2 className="mb-3 text-sm font-semibold text-stone-700">Your inventory</h2>
@@ -113,16 +177,51 @@ export function ColorDetail() {
           <ValueScale hex={color.hex} />
         </div>
 
-        {/* Metadata */}
-        <dl className="divide-y divide-black/10 text-sm">
-          <Row label="Transparency" value={TRANSPARENCY[color.transparency] ?? color.transparency} />
-          <Row
-            label="Lightfastness"
-            value={color.lightfastness ? (LIGHTFAST[color.lightfastness] ?? color.lightfastness) : "—"}
-          />
-          <Row label="Pigments" value={color.pigments.length ? color.pigments.join(", ") : "—"} />
-          <Row label="Hex" value={<span className="font-mono">{color.hex.toUpperCase()}</span>} />
-        </dl>
+        <div className="flex flex-col gap-6">
+          {/* Metadata */}
+          <dl className="divide-y divide-black/10 text-sm">
+            <Row label="Transparency" value={TRANSPARENCY[color.transparency] ?? color.transparency} />
+            <Row
+              label="Lightfastness"
+              value={color.lightfastness ? (LIGHTFAST[color.lightfastness] ?? color.lightfastness) : "—"}
+            />
+            <Row label="Pigments" value={color.pigments.length ? color.pigments.join(", ") : "—"} />
+            <Row label="Hex" value={<span className="font-mono">{color.hex.toUpperCase()}</span>} />
+          </dl>
+
+          {/* Notes */}
+          <section className="rounded-card bg-white p-4 shadow-sm ring-1 ring-black/5">
+            <div className="mb-2 flex items-baseline justify-between">
+              <h2 className="text-sm font-semibold text-stone-700">Notes</h2>
+              {setMeta.isPending && <span className="text-xs text-stone-400">Saving…</span>}
+            </div>
+            <textarea
+              value={notesDraft ?? color.notes ?? ""}
+              onChange={(e) => setNotesDraft(e.target.value)}
+              onBlur={saveNotes}
+              rows={3}
+              placeholder="Add a note…"
+              className="w-full resize-y rounded-chip border border-stone-200 bg-stone-50 p-2.5 text-base text-stone-800 outline-none placeholder:text-stone-400 focus:border-stone-400"
+            />
+          </section>
+
+          {/* Usage history */}
+          {history && history.length > 0 && (
+            <section>
+              <div className="mb-1.5 text-xs font-medium uppercase tracking-wide text-stone-500">
+                History
+              </div>
+              <ul className="divide-y divide-black/5 overflow-hidden rounded-card bg-white text-sm shadow-sm ring-1 ring-black/5">
+                {history.map((e) => (
+                  <li key={e.id} className="flex items-baseline justify-between px-3.5 py-2">
+                    <span className="font-medium text-stone-700">{describeEvent(e)}</span>
+                    <span className="text-xs text-stone-400">{formatAt(e.at)}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </div>
       </div>
     </div>
   );

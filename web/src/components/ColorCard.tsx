@@ -1,9 +1,9 @@
 import { type MouseEvent } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Sparkles, Trash2 } from "lucide-react";
+import { Bookmark, Heart, Plus, Sparkles, Trash2 } from "lucide-react";
 import { isLight, type ColorWithInventory, type Level } from "shared";
 import { LevelChip } from "./LevelChip";
-import { useSetInventory } from "../api/hooks";
+import { useSetInventory, useSetMeta } from "../api/hooks";
 
 interface Props {
   color: ColorWithInventory;
@@ -15,12 +15,14 @@ const ICON_BTN =
 
 export function ColorCard({ color, view }: Props) {
   const setInventory = useSetInventory();
+  const setMeta = useSetMeta();
   const inv = color.inventory;
   const owned = !!inv;
   const quantity = inv?.quantity ?? 0;
   const level: Level = inv?.level ?? "full";
+  const light = isLight(color.hex);
   // Inverted code chip that pops on any hue (dark chip on light colours, vice versa).
-  const codeChipBg = isLight(color.hex) ? "#1c1917" : "#ffffff";
+  const codeChipBg = light ? "#1c1917" : "#ffffff";
 
   const set = (q: number, l: Level | null) =>
     setInventory.mutate({ code: color.code, input: { quantity: q, level: l } });
@@ -56,13 +58,24 @@ export function ColorCard({ color, view }: Props) {
       </button>
     </div>
   ) : (
-    <button
-      type="button"
-      onClick={act(() => set(1, "full"))}
-      className="inline-flex items-center gap-1 rounded-full border border-stone-300 bg-white px-2.5 py-1 text-xs font-medium text-stone-700 active:scale-95"
-    >
-      <Plus size={14} /> Add
-    </button>
+    <div className="flex items-center gap-1.5">
+      <button
+        type="button"
+        onClick={act(() => set(1, "full"))}
+        className="inline-flex items-center gap-1 rounded-full border border-stone-300 bg-white px-2.5 py-1 text-xs font-medium text-stone-700 active:scale-95"
+      >
+        <Plus size={14} /> Add
+      </button>
+      <button
+        type="button"
+        onClick={act(() => setMeta.mutate({ code: color.code, input: { want: !color.want } }))}
+        className={`${ICON_BTN} ${color.want ? "border-amber-400 bg-amber-50 text-amber-600" : ""}`}
+        aria-label={color.want ? "Remove from want list" : "Add to want list"}
+        aria-pressed={color.want}
+      >
+        <Bookmark size={14} fill={color.want ? "currentColor" : "none"} />
+      </button>
+    </div>
   );
 
   if (view === "list") {
@@ -78,8 +91,18 @@ export function ColorCard({ color, view }: Props) {
           className="h-9 w-14 shrink-0 rounded-chip ring-1 ring-inset ring-black/10"
         />
         <div className="min-w-0 flex-1">
-          <div className={`truncate text-sm font-semibold ${owned ? "text-stone-800" : "text-stone-400"}`}>
-            {color.name}
+          <div className="flex items-center gap-1">
+            <span
+              className={`truncate text-sm font-semibold ${owned ? "text-stone-800" : "text-stone-400"}`}
+            >
+              {color.name}
+            </span>
+            {color.favorite && (
+              <Heart size={12} fill="currentColor" className="shrink-0 text-red-500" />
+            )}
+            {color.want && !owned && (
+              <Bookmark size={12} fill="currentColor" className="shrink-0 text-amber-500" />
+            )}
           </div>
           <div className="font-mono text-xs leading-none text-stone-400">{color.code}</div>
         </div>
@@ -106,6 +129,21 @@ export function ColorCard({ color, view }: Props) {
         >
           {color.code}
         </span>
+        <button
+          type="button"
+          onClick={act(() => setMeta.mutate({ code: color.code, input: { favorite: !color.favorite } }))}
+          aria-label={color.favorite ? "Remove from favourites" : "Add to favourites"}
+          aria-pressed={color.favorite}
+          className={`absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full transition active:scale-95 ${
+            color.favorite
+              ? "bg-white text-red-500 shadow-sm"
+              : light
+                ? "bg-black/10 text-stone-900/60"
+                : "bg-white/25 text-white/80"
+          }`}
+        >
+          <Heart size={14} fill={color.favorite ? "currentColor" : "none"} />
+        </button>
       </div>
       <div className="flex flex-1 flex-col p-2.5">
         <div className="flex items-center gap-1.5">

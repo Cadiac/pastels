@@ -54,5 +54,26 @@ export function migrate(): void {
       updated_at TEXT NOT NULL DEFAULT (datetime('now')),
       PRIMARY KEY (user_id, code)
     );
+
+    CREATE TABLE IF NOT EXISTS color_meta (
+      user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      code       TEXT NOT NULL REFERENCES colors(code),
+      favorite   INTEGER NOT NULL DEFAULT 0,
+      want       INTEGER NOT NULL DEFAULT 0,
+      notes      TEXT,
+      updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+      PRIMARY KEY (user_id, code)
+    );
+
+    CREATE TABLE IF NOT EXISTS inventory_events (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      code       TEXT NOT NULL REFERENCES colors(code),
+      type       TEXT NOT NULL,
+      amount     INTEGER,
+      level      TEXT,
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+    CREATE INDEX IF NOT EXISTS idx_events_user_code ON inventory_events (user_id, code, id);
   `);
 }

@@ -1,7 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { LogOut } from "lucide-react";
-import { isLowLevel, type ColorWithInventory, type OwnedFilter, type Sort } from "shared";
+import {
+  isLowLevel,
+  OwnedFilterSchema,
+  SortSchema,
+  type ColorWithInventory,
+  type OwnedFilter,
+  type Sort,
+} from "shared";
 import { api } from "../api/client";
 import { useAuth } from "../auth/AuthProvider";
 import { FilterBar } from "../components/FilterBar";
@@ -21,18 +28,44 @@ function matchesOwned(c: ColorWithInventory, owned: OwnedFilter): boolean {
       return !c.inventory;
     case "low":
       return !!c.inventory && isLowLevel(c.inventory.level);
+    case "favorites":
+      return c.favorite;
+    case "wanted":
+      return c.want;
     default:
       return true;
   }
 }
 
+// Sort/view/filter survive reloads via localStorage (validated, so stale or
+// hand-edited values fall back to defaults instead of crashing).
+const PREFS_KEY = "pastels.prefs";
+
+function loadPrefs(): { owned: OwnedFilter; sort: Sort; view: "grid" | "list" } {
+  let raw: Record<string, unknown> = {};
+  try {
+    raw = JSON.parse(localStorage.getItem(PREFS_KEY) ?? "{}");
+  } catch {
+    /* corrupt JSON — use defaults */
+  }
+  return {
+    owned: OwnedFilterSchema.catch("all").parse(raw.owned),
+    sort: SortSchema.catch("code").parse(raw.sort),
+    view: raw.view === "list" ? "list" : "grid",
+  };
+}
+
 export function Catalog() {
   const { user, logout } = useAuth();
   const [q, setQ] = useState("");
-  const [owned, setOwned] = useState<OwnedFilter>("all");
-  const [sort, setSort] = useState<Sort>("code");
-  const [view, setView] = useState<"grid" | "list">("grid");
+  const [owned, setOwned] = useState<OwnedFilter>(() => loadPrefs().owned);
+  const [sort, setSort] = useState<Sort>(() => loadPrefs().sort);
+  const [view, setView] = useState<"grid" | "list">(() => loadPrefs().view);
   const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ owned, sort, view }));
+  }, [owned, sort, view]);
 
   // Collapse the title row when scrolled, with hysteresis so shrinking the
   // header (which shifts scrollY) can't flip it right back.

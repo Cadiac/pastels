@@ -54,6 +54,27 @@ describe("API smoke test", () => {
     const ownedList = (await owned.json()) as Array<{ code: string }>;
     expect(ownedList).toHaveLength(1);
     expect(ownedList[0].code).toBe("038");
+
+    // favourite/want/notes meta + the wanted filter
+    const meta = await app.request("/api/colors/002/meta", {
+      method: "PATCH",
+      headers: { "content-type": "application/json", cookie },
+      body: JSON.stringify({ favorite: true, want: true, notes: "buy two" }),
+    });
+    expect(meta.status).toBe(200);
+    const metaColor = (await meta.json()) as { favorite: boolean; want: boolean; notes: string };
+    expect(metaColor).toMatchObject({ favorite: true, want: true, notes: "buy two" });
+
+    const wanted = await app.request("/api/colors?owned=wanted", { headers: { cookie } });
+    const wantedList = (await wanted.json()) as Array<{ code: string }>;
+    expect(wantedList.map((c) => c.code)).toEqual(["002"]);
+
+    // usage history: the PUT above (0 -> 2 sticks) was recorded
+    const hist = await app.request("/api/colors/038/history", { headers: { cookie } });
+    expect(hist.status).toBe(200);
+    const events = (await hist.json()) as Array<{ type: string; amount: number | null }>;
+    expect(events).toHaveLength(1);
+    expect(events[0]).toMatchObject({ type: "add", amount: 2 });
   });
 
   it("rejects invalid credentials with a Zod 400", async () => {

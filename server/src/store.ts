@@ -1,4 +1,4 @@
-import type { ColorWithInventory, Level } from "shared";
+import type { ColorMetaInput, ColorWithInventory, HistoryEvent, Level } from "shared";
 import { db } from "./db";
 
 interface ColorRow {
@@ -15,6 +15,9 @@ interface ColorRow {
   swatch: string;
   quantity: number | null;
   level: string | null;
+  favorite: number | null;
+  want: number | null;
+  notes: string | null;
 }
 
 function mapRow(r: ColorRow): ColorWithInventory {
@@ -34,13 +37,18 @@ function mapRow(r: ColorRow): ColorWithInventory {
       r.quantity != null && r.quantity > 0
         ? { quantity: r.quantity, level: (r.level as Level | null) ?? null }
         : null,
+    favorite: !!r.favorite,
+    want: !!r.want,
+    notes: r.notes ?? null,
   };
 }
 
 const SELECT = `
-  SELECT c.*, i.quantity AS quantity, i.level AS level
+  SELECT c.*, i.quantity AS quantity, i.level AS level,
+         m.favorite AS favorite, m.want AS want, m.notes AS notes
   FROM colors c
   LEFT JOIN inventory i ON i.code = c.code AND i.user_id = @userId
+  LEFT JOIN color_meta m ON m.code = c.code AND m.user_id = @userId
 `;
 
 export function getColorsForUser(userId: number): ColorWithInventory[] {
@@ -71,6 +79,62 @@ export function setInventory(
      ON CONFLICT(user_id, code) DO UPDATE SET
        quantity = excluded.quantity, level = excluded.level, updated_at = datetime('now')`,
   ).run(userId, code, quantity, level);
+}
+
+/** Merge a partial favourite/want/notes update; drop the row when all-default. */
+export function setColorMeta(userId: number, code: string, patch: ColorMetaInput): void {
+  const current = db
+    .prepare("SELECT favorite, want, notes FROM color_meta WHERE user_id = ? AND code = ?")
+    .get(userId, code) as { favorite: number; want: number; notes: string | null } | undefined;
+
+  const favorite = patch.favorite ?? !!current?.favorite;
+  const want = patch.want ?? !!current?.want;
+  const notes = patch.notes !== undefined ? patch.notes || null : (current?.notes ?? null);
+
+  if (!favorite && !want && !notes) {
+    db.prepare("DELETE FROM color_meta WHERE user_id = ? AND code = ?").run(userId, code);
+    return;
+  }
+  db.prepare(
+    `INSERT INTO color_meta (user_id, code, favorite, want, notes, updated_at)
+     VALUES (?, ?, ?, ?, ?, datetime('now'))
+     ON CONFLICT(user_id, code) DO UPDATE SET
+       favorite = excluded.favorite, want = excluded.want, notes = excluded.notes,
+       updated_at = datetime('now')`,
+  ).run(userId, code, favorite ? 1 : 0, want ? 1 : 0, notes);
+}
+
+/**
+ * Record what an inventory upsert changed: sticks added/removed, or — when the
+ * count stayed put — the working stick's level moving (a level reset that rides
+ * along with a removal is incidental, so it isn't logged separately).
+ */
+export function logInventoryEvent(
+  userId: number,
+  code: string,
+  prev: { quantity: number; level: Level | null },
+  next: { quantity: number; level: Level | null },
+): void {
+  const insert = db.prepare(
+    "INSERT INTO inventory_events (user_id, code, type, amount, level) VALUES (?, ?, ?, ?, ?)",
+  );
+  if (next.quantity > prev.quantity) {
+    insert.run(userId, code, "add", next.quantity - prev.quantity, null);
+  } else if (next.quantity < prev.quantity) {
+    insert.run(userId, code, "remove", prev.quantity - next.quantity, null);
+  } else if (next.quantity > 0 && next.level !== prev.level) {
+    insert.run(userId, code, "level", null, next.level);
+  }
+}
+
+export function getHistory(userId: number, code: string, limit = 50): HistoryEvent[] {
+  const rows = db
+    .prepare(
+      `SELECT id, type, amount, level, created_at AS at FROM inventory_events
+       WHERE user_id = ? AND code = ? ORDER BY id DESC LIMIT ?`,
+    )
+    .all(userId, code, limit) as unknown as HistoryEvent[];
+  return rows;
 }
 
 export function colorExists(code: string): boolean {

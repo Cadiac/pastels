@@ -47,19 +47,48 @@ export const InventoryInputSchema = z.object({
 });
 export type InventoryInput = z.infer<typeof InventoryInputSchema>;
 
+// --- Per-user colour metadata (favourite / wantlist / notes) -----------------
+
+/** What the PATCH /api/colors/:code/meta endpoint accepts (partial update). */
+export const ColorMetaInputSchema = z.object({
+  favorite: z.boolean().optional(),
+  want: z.boolean().optional(),
+  notes: z.string().trim().max(2000).nullable().optional(),
+});
+export type ColorMetaInput = z.infer<typeof ColorMetaInputSchema>;
+
 export const ColorWithInventorySchema = ColorSchema.extend({
   inventory: InventoryItemSchema.nullable(),
+  favorite: z.boolean(),
+  want: z.boolean(),
+  notes: z.string().nullable(),
 });
 export type ColorWithInventory = z.infer<typeof ColorWithInventorySchema>;
 
 export const ColorsResponseSchema = z.array(ColorWithInventorySchema);
+
+// --- Usage history ------------------------------------------------------------
+
+export const HistoryEventSchema = z.object({
+  id: z.number().int(),
+  type: z.enum(["add", "remove", "level"]),
+  /** Sticks added/removed (for add/remove events). */
+  amount: z.number().int().nullable(),
+  /** New working-stick level (for level events). */
+  level: LevelSchema.nullable(),
+  /** UTC timestamp, `YYYY-MM-DD HH:MM:SS`. */
+  at: z.string(),
+});
+export type HistoryEvent = z.infer<typeof HistoryEventSchema>;
+
+export const HistoryResponseSchema = z.array(HistoryEventSchema);
 
 // --- Filters / query --------------------------------------------------------
 
 export const SortSchema = z.enum(["code", "name", "hue", "value"]);
 export type Sort = z.infer<typeof SortSchema>;
 
-export const OwnedFilterSchema = z.enum(["all", "owned", "missing", "low"]);
+export const OwnedFilterSchema = z.enum(["all", "owned", "missing", "low", "favorites", "wanted"]);
 export type OwnedFilter = z.infer<typeof OwnedFilterSchema>;
 
 // --- Auth -------------------------------------------------------------------

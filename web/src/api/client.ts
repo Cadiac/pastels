@@ -1,9 +1,12 @@
 import {
   ColorsResponseSchema,
   ColorWithInventorySchema,
+  HistoryResponseSchema,
   UserSchema,
+  type ColorMetaInput,
   type ColorWithInventory,
   type Credentials,
+  type HistoryEvent,
   type InventoryInput,
   type OwnedFilter,
   type Sort,
@@ -85,5 +88,15 @@ export const api = {
     return ColorWithInventorySchema.parse(
       await request(`/api/inventory/${code}`, { method: "PUT", body: JSON.stringify(input) }),
     );
+  },
+
+  async setMeta(code: string, input: ColorMetaInput): Promise<ColorWithInventory> {
+    return ColorWithInventorySchema.parse(
+      await request(`/api/colors/${code}/meta`, { method: "PATCH", body: JSON.stringify(input) }),
+    );
+  },
+
+  async history(code: string): Promise<HistoryEvent[]> {
+    return HistoryResponseSchema.parse(await request(`/api/colors/${code}/history`));
   },
 };

@@ -15,6 +15,8 @@ const OWNED_OPTIONS: { value: OwnedFilter; label: string }[] = [
   { value: "owned", label: "Owned" },
   { value: "missing", label: "Missing" },
   { value: "low", label: "Low" },
+  { value: "favorites", label: "Favourites" },
+  { value: "wanted", label: "Wanted" },
 ];
 
 const SORT_OPTIONS: { value: Sort; label: string }[] = [

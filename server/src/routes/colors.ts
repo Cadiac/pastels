@@ -1,6 +1,15 @@
 import { Hono } from "hono";
-import { hexToHue, hexValue, isLowLevel, OwnedFilterSchema, SortSchema, type Level } from "shared";
-import { getColorForUser, getColorsForUser } from "../store";
+import { zValidator } from "@hono/zod-validator";
+import {
+  ColorMetaInputSchema,
+  hexToHue,
+  hexValue,
+  isLowLevel,
+  OwnedFilterSchema,
+  SortSchema,
+  type Level,
+} from "shared";
+import { colorExists, getColorForUser, getColorsForUser, getHistory, setColorMeta } from "../store";
 import { requireAuth } from "../middleware";
 import type { AppEnv } from "../types";
 
@@ -34,6 +43,8 @@ colors.get("/", (c) => {
   else if (owned === "missing") list = list.filter((c) => !c.inventory);
   else if (owned === "low")
     list = list.filter((c) => c.inventory && isLowLevel((c.inventory.level as Level) ?? null));
+  else if (owned === "favorites") list = list.filter((c) => c.favorite);
+  else if (owned === "wanted") list = list.filter((c) => c.want);
 
   if (sort === "name") list.sort((a, b) => a.name.localeCompare(b.name));
   else if (sort === "hue") list.sort((a, b) => hexToHue(a.hex) - hexToHue(b.hex));
@@ -48,4 +59,21 @@ colors.get("/:code", (c) => {
   const color = getColorForUser(user.id, c.req.param("code"));
   if (!color) return c.json({ error: "Not found" }, 404);
   return c.json(color);
+});
+
+colors.patch("/:code/meta", zValidator("json", ColorMetaInputSchema), (c) => {
+  const user = c.get("user")!;
+  const code = c.req.param("code");
+  if (!colorExists(code)) return c.json({ error: "Unknown colour" }, 404);
+
+  setColorMeta(user.id, code, c.req.valid("json"));
+  return c.json(getColorForUser(user.id, code));
+});
+
+colors.get("/:code/history", (c) => {
+  const user = c.get("user")!;
+  const code = c.req.param("code");
+  if (!colorExists(code)) return c.json({ error: "Unknown colour" }, 404);
+
+  return c.json(getHistory(user.id, code));
 });
