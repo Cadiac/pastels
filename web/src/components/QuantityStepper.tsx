@@ -1,4 +1,5 @@
 import { Minus, Plus } from "lucide-react";
+import { usePop } from "../usePop";
 
 interface Props {
   value: number;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export function QuantityStepper({ value, onChange, min = 0, max = 99 }: Props) {
+  const pop = usePop(value);
   const btn =
     "flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-stone-50 text-stone-700 disabled:opacity-40 active:scale-95 transition";
   return (
@@ -21,7 +23,10 @@ export function QuantityStepper({ value, onChange, min = 0, max = 99 }: Props) {
       >
         <Minus size={16} />
       </button>
-      <span className="w-6 text-center text-base font-semibold tabular-nums text-stone-800">
+      <span
+        key={pop.key}
+        className={`w-6 text-center text-base font-semibold tabular-nums text-stone-800 ${pop.className}`}
+      >
         {value}
       </span>
       <button

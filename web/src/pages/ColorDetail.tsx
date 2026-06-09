@@ -10,6 +10,7 @@ import { ValueScale } from "../components/ValueScale";
 import { Harmonies } from "../components/Harmonies";
 import { useSetInventory, useSetMeta } from "../api/hooks";
 import { useThemeColor } from "../useThemeColor";
+import { usePop } from "../usePop";
 
 const TRANSPARENCY: Record<string, string> = {
   T: "Transparent",
@@ -54,6 +55,8 @@ export function ColorDetail() {
   });
   // Blend Safari's top bar into the colour hero while this page is open.
   useThemeColor(color?.hex);
+  const favPop = usePop(color?.favorite);
+  const wantPop = usePop(color?.want);
 
   if (isLoading) return <p className="p-8 text-center text-sm text-stone-300">Loading…</p>;
   if (isError || !color)
@@ -120,7 +123,7 @@ export function ColorDetail() {
       </div>
 
       {/* content — single column on phones, two columns on tablet+ */}
-      <div className="grid gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16">
+      <div className="grid animate-rise-in gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16">
         <div className="flex flex-col gap-6">
           {/* Favourite / want list toggles */}
           <div className="flex gap-2">
@@ -134,7 +137,12 @@ export function ColorDetail() {
                   : "border-stone-300 bg-white text-stone-600"
               }`}
             >
-              <Heart size={15} fill={color.favorite ? "currentColor" : "none"} />
+              <Heart
+                key={favPop.key}
+                size={15}
+                fill={color.favorite ? "currentColor" : "none"}
+                className={favPop.className}
+              />
               Favourite
             </button>
             <button
@@ -147,7 +155,12 @@ export function ColorDetail() {
                   : "border-stone-300 bg-white text-stone-600"
               }`}
             >
-              <Bookmark size={15} fill={color.want ? "currentColor" : "none"} />
+              <Bookmark
+                key={wantPop.key}
+                size={15}
+                fill={color.want ? "currentColor" : "none"}
+                className={wantPop.className}
+              />
               Want
             </button>
           </div>

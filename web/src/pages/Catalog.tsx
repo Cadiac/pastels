@@ -136,7 +136,7 @@ export function Catalog() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-[1280px] flex-1 p-3">
+      <main className="mx-auto w-full max-w-[1280px] flex-1 animate-rise-in p-3">
         {isLoading && <p className="py-12 text-center text-sm text-stone-500">Loading…</p>}
         {isError && (
           <p className="py-12 text-center text-sm text-red-500">Couldn’t load the catalogue.</p>

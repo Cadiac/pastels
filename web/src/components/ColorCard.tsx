@@ -4,6 +4,7 @@ import { Bookmark, Heart, Plus, Sparkles, Trash2 } from "lucide-react";
 import { isLight, type ColorWithInventory, type Level } from "shared";
 import { LevelChip } from "./LevelChip";
 import { useSetInventory, useSetMeta } from "../api/hooks";
+import { usePop } from "../usePop";
 
 interface Props {
   color: ColorWithInventory;
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const ICON_BTN =
-  "flex h-7 w-7 items-center justify-center rounded-full border border-stone-300 bg-white text-stone-600 active:scale-95";
+  "flex h-7 w-7 items-center justify-center rounded-full border border-stone-300 bg-white text-stone-600 transition active:scale-95";
 
 export function ColorCard({ color, view }: Props) {
   const setInventory = useSetInventory();
@@ -23,6 +24,9 @@ export function ColorCard({ color, view }: Props) {
   const light = isLight(color.hex);
   // Inverted code chip that pops on any hue (dark chip on light colours, vice versa).
   const codeChipBg = light ? "#1c1917" : "#ffffff";
+  const favPop = usePop(color.favorite);
+  const wantPop = usePop(color.want);
+  const qtyPop = usePop(quantity);
 
   const set = (q: number, l: Level | null) =>
     setInventory.mutate({ code: color.code, input: { quantity: q, level: l } });
@@ -45,7 +49,10 @@ export function ColorCard({ color, view }: Props) {
       >
         <Trash2 size={14} />
       </button>
-      <span className="rounded-full bg-stone-100 px-2 py-0.5 text-xs font-semibold text-stone-600">
+      <span
+        key={qtyPop.key}
+        className={`rounded-full bg-stone-100 px-2 py-0.5 text-xs font-semibold text-stone-600 ${qtyPop.className}`}
+      >
         ×{quantity}
       </span>
       <button
@@ -73,7 +80,12 @@ export function ColorCard({ color, view }: Props) {
         aria-label={color.want ? "Remove from want list" : "Add to want list"}
         aria-pressed={color.want}
       >
-        <Bookmark size={14} fill={color.want ? "currentColor" : "none"} />
+        <Bookmark
+          key={wantPop.key}
+          size={14}
+          fill={color.want ? "currentColor" : "none"}
+          className={wantPop.className}
+        />
       </button>
     </div>
   );
@@ -114,8 +126,8 @@ export function ColorCard({ color, view }: Props) {
   return (
     <Link
       to={`/c/${color.code}`}
-      className={`flex flex-col overflow-hidden rounded-card ring-1 transition active:scale-[0.99] ${
-        owned ? "bg-white shadow-md ring-black/5" : "bg-white/25 ring-black/10"
+      className={`flex flex-col overflow-hidden rounded-card ring-1 transition active:scale-[0.99] hover:-translate-y-0.5 ${
+        owned ? "bg-white shadow-md ring-black/5 hover:shadow-lg" : "bg-white/25 ring-black/10"
       }`}
     >
       {/* colour hero with a corner code chip → name → controls */}
@@ -142,7 +154,12 @@ export function ColorCard({ color, view }: Props) {
                 : "bg-white/25 text-white/80"
           }`}
         >
-          <Heart size={14} fill={color.favorite ? "currentColor" : "none"} />
+          <Heart
+            key={favPop.key}
+            size={14}
+            fill={color.favorite ? "currentColor" : "none"}
+            className={favPop.className}
+          />
         </button>
       </div>
       <div className="flex flex-1 flex-col p-2.5">

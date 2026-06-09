@@ -6,6 +6,44 @@
 @theme {
   --radius-card: 1rem;
   --radius-chip: 0.375rem;
+
+  /* Micro-interactions: a springy pop for toggles/counters, a quick scale-fade
+     for menus, and a gentle rise for page content. */
+  --animate-pop: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --animate-drop-in: drop-in 0.15s ease-out;
+  --animate-rise-in: rise-in 0.3s ease-out both;
+
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.35);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes drop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 /* Tailwind v4's preflight leaves buttons at the browser default (cursor: default);
@@ -16,6 +54,26 @@
   label,
   select:not(:disabled) {
     cursor: pointer;
+  }
+
+  /* Skip the double-tap-to-zoom heuristic so rapid taps (steppers, level
+     cycling) register immediately on iOS. */
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

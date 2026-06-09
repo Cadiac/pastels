@@ -1,5 +1,6 @@
 import { type MouseEvent } from "react";
 import { LEVEL_META, nextLevel, type Level } from "shared";
+import { usePop } from "../usePop";
 
 interface Props {
   level: Level;
@@ -19,8 +20,15 @@ export function LevelChip({ level, onCycle, size = "sm", compact = false }: Prop
     ? "border-amber-400 bg-amber-100 text-amber-900"
     : "border-stone-300 bg-white text-stone-700";
 
+  const pop = usePop(level);
   const pie = (
-    <svg width={dim} height={dim} viewBox={`0 0 ${dim} ${dim}`} className="shrink-0">
+    <svg
+      key={pop.key}
+      width={dim}
+      height={dim}
+      viewBox={`0 0 ${dim} ${dim}`}
+      className={`shrink-0 ${pop.className}`}
+    >
       <circle cx={dim / 2} cy={dim / 2} r={r} fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
       {fraction > 0 && <path d={piePath(dim / 2, dim / 2, r, fraction)} fill="currentColor" />}
     </svg>
