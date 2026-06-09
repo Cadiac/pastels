@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { LogOut } from "lucide-react";
 import { isLowLevel, type ColorWithInventory, type OwnedFilter, type Sort } from "shared";
@@ -32,6 +32,16 @@ export function Catalog() {
   const [owned, setOwned] = useState<OwnedFilter>("all");
   const [sort, setSort] = useState<Sort>("code");
   const [view, setView] = useState<"grid" | "list">("grid");
+  const [collapsed, setCollapsed] = useState(false);
+
+  // Collapse the title row when scrolled, with hysteresis so shrinking the
+  // header (which shifts scrollY) can't flip it right back.
+  useEffect(() => {
+    const onScroll = () => setCollapsed((c) => (c ? window.scrollY > 16 : window.scrollY > 72));
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Fetch the full catalogue (server sorts); search/owned are filtered locally.
   const { data, isLoading, isError } = useQuery({
@@ -52,23 +62,32 @@ export function Catalog() {
     <div className="flex min-h-full flex-col">
       <header className="sticky top-0 z-10 border-b border-black/10 bg-[#f3ebd5]/90 backdrop-blur">
         <div className="mx-auto max-w-[1280px] px-3 pb-2 pt-3">
-          <div className="mb-2 flex items-center justify-between">
-          <div>
-            <h1 className="text-lg font-bold leading-none text-stone-900">Oil Pastels</h1>
-            <p className="mt-0.5 text-xs text-stone-500">
-              {ownedCount}/{all.length} owned
-              {lowCount > 0 && <> · {lowCount} low</>}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => logout()}
-            className="flex items-center gap-1.5 rounded-full border border-stone-300 bg-white/60 px-3 py-1.5 text-xs font-medium text-stone-600"
+          {/* title row — collapses away on scroll so the sticky header stays slim */}
+          <div
+            aria-hidden={collapsed}
+            className={`grid transition-all duration-300 ${
+              collapsed ? "grid-rows-[0fr] opacity-0" : "mb-2 grid-rows-[1fr] opacity-100"
+            }`}
           >
-            <LogOut size={14} />
-            <span className="hidden sm:inline">{user?.username}</span>
-          </button>
-        </div>
+            <div className="flex items-center justify-between overflow-hidden">
+              <div>
+                <h1 className="text-lg font-bold leading-none text-stone-900">Oil Pastels - Sennelier</h1>
+                <p className="mt-0.5 text-xs text-stone-500">
+                  {ownedCount}/{all.length} owned
+                  {lowCount > 0 && <> · {lowCount} low</>}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => logout()}
+                tabIndex={collapsed ? -1 : 0}
+                className="flex items-center gap-1.5 rounded-full border border-stone-300 bg-white/60 px-3 py-1.5 text-xs font-medium text-stone-600"
+              >
+                <LogOut size={14} />
+                <span className="hidden sm:inline">{user?.username}</span>
+              </button>
+            </div>
+          </div>
         <FilterBar
           q={q}
           owned={owned}
