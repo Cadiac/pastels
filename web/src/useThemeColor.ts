@@ -10,11 +10,12 @@ export const THEME_BG = "#f3ebd5";
 export function useThemeColor(hex: string | undefined): void {
   useEffect(() => {
     if (!hex) return;
-    const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
-    if (!meta) return;
-    meta.content = hex;
+    // There's one meta per appearance mode (plus a fallback) — keep them in step.
+    const metas = document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]');
+    if (metas.length === 0) return;
+    metas.forEach((m) => (m.content = hex));
     return () => {
-      meta.content = THEME_BG;
+      metas.forEach((m) => (m.content = THEME_BG));
     };
   }, [hex]);
 }

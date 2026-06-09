@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- The app is light-only: pin the cream bar colour in both appearance modes,
+         and declare the page light so Safari doesn't darken its chrome around it. -->
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f3ebd5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#f3ebd5" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#f3ebd5" />
     <link
       rel="icon"
