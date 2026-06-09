@@ -126,7 +126,7 @@ export function ColorCard({ color, view }: Props) {
   return (
     <Link
       to={`/c/${color.code}`}
-      className={`flex flex-col overflow-hidden rounded-card ring-1 transition active:scale-[0.99] hover:-translate-y-0.5 ${
+      className={`flex flex-col overflow-hidden rounded-card ring-1 transition active:scale-[0.99] hover:-translate-y-px ${
         owned ? "bg-white shadow-md ring-black/5 hover:shadow-lg" : "bg-white/25 ring-black/10"
       }`}
     >
