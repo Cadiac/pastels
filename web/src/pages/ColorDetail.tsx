@@ -6,6 +6,7 @@ import { isLight, type Level } from "shared";
 import { api } from "../api/client";
 import { LevelChip } from "../components/LevelChip";
 import { QuantityStepper } from "../components/QuantityStepper";
+import { ValueScale } from "../components/ValueScale";
 import { useSetInventory } from "../api/hooks";
 
 const TRANSPARENCY: Record<string, string> = {
@@ -108,6 +109,8 @@ export function ColorDetail() {
               className="h-16 w-full max-w-[260px] rounded-card bg-white object-cover ring-1 ring-black/10"
             />
           </div>
+
+          <ValueScale hex={color.hex} />
         </div>
 
         {/* Metadata */}

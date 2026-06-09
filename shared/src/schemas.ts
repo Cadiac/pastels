@@ -56,7 +56,7 @@ export const ColorsResponseSchema = z.array(ColorWithInventorySchema);
 
 // --- Filters / query --------------------------------------------------------
 
-export const SortSchema = z.enum(["code", "name", "hue"]);
+export const SortSchema = z.enum(["code", "name", "hue", "value"]);
 export type Sort = z.infer<typeof SortSchema>;
 
 export const OwnedFilterSchema = z.enum(["all", "owned", "missing", "low"]);

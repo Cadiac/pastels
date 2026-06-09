@@ -21,6 +21,7 @@ const SORT_OPTIONS: { value: Sort; label: string }[] = [
   { value: "code", label: "Code" },
   { value: "name", label: "Name" },
   { value: "hue", label: "Hue" },
+  { value: "value", label: "Value" },
 ];
 
 const CTRL =

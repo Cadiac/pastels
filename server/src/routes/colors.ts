@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { hexToHue, isLowLevel, OwnedFilterSchema, SortSchema, type Level } from "shared";
+import { hexToHue, hexValue, isLowLevel, OwnedFilterSchema, SortSchema, type Level } from "shared";
 import { getColorForUser, getColorsForUser } from "../store";
 import { requireAuth } from "../middleware";
 import type { AppEnv } from "../types";
@@ -37,6 +37,7 @@ colors.get("/", (c) => {
 
   if (sort === "name") list.sort((a, b) => a.name.localeCompare(b.name));
   else if (sort === "hue") list.sort((a, b) => hexToHue(a.hex) - hexToHue(b.hex));
+  else if (sort === "value") list.sort((a, b) => hexValue(a.hex) - hexValue(b.hex));
   // "code" already comes ordered from the store.
 
   return c.json(list);
