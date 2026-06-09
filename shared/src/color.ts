@@ -44,6 +44,12 @@ export function isLight(hex: string): boolean {
   return (r * 299 + g * 587 + b * 114) / 1000 > 150;
 }
 
+/** Smallest angular distance between two hues, in degrees (0..180). */
+export function hueDistance(a: number, b: number): number {
+  const d = Math.abs(a - b) % 360;
+  return d > 180 ? 360 - d : d;
+}
+
 /**
  * Hue (0..360) derived from a `#rrggbb` string, for the "rainbow" sort.
  * Greys/near-neutrals get a large sentinel so they sort to the end.

@@ -7,6 +7,7 @@ import { api } from "../api/client";
 import { LevelChip } from "../components/LevelChip";
 import { QuantityStepper } from "../components/QuantityStepper";
 import { ValueScale } from "../components/ValueScale";
+import { Harmonies } from "../components/Harmonies";
 import { useSetInventory, useSetMeta } from "../api/hooks";
 import { useThemeColor } from "../useThemeColor";
 
@@ -178,6 +179,8 @@ export function ColorDetail() {
           </div>
 
           <ValueScale hex={color.hex} />
+
+          <Harmonies code={color.code} hex={color.hex} />
         </div>
 
         <div className="flex flex-col gap-6">
