@@ -8,6 +8,7 @@ import { LevelChip } from "../components/LevelChip";
 import { QuantityStepper } from "../components/QuantityStepper";
 import { ValueScale } from "../components/ValueScale";
 import { useSetInventory, useSetMeta } from "../api/hooks";
+import { useThemeColor } from "../useThemeColor";
 
 const TRANSPARENCY: Record<string, string> = {
   T: "Transparent",
@@ -50,6 +51,8 @@ export function ColorDetail() {
     queryFn: () => api.history(code),
     enabled: !!code,
   });
+  // Blend Safari's top bar into the colour hero while this page is open.
+  useThemeColor(color?.hex);
 
   if (isLoading) return <p className="p-8 text-center text-sm text-stone-300">Loading…</p>;
   if (isError || !color)
