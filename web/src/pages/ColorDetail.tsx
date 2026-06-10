@@ -149,7 +149,16 @@ export function ColorDetail() {
           The hero's colour bleeds softly into the page, like pigment on paper. */}
       <div
         style={{
-          background: `linear-gradient(to bottom, color-mix(in oklab, ${color.hex} 14%, transparent), transparent 260px)`,
+          // Drop-shadow-like falloff: strong right under the hero, gone within
+          // ~160px — eased stops so it doesn't read as a page-long gradient.
+          // Opaque pastel mixes (not alpha veils): dark hues like ultramarine
+          // would otherwise grey out against the warm cream.
+          background: `linear-gradient(to bottom, ${[
+            `color-mix(in oklab, ${color.hex} 22%, #f3ebd5)`,
+            `color-mix(in oklab, ${color.hex} 9%, #f3ebd5) 56px`,
+            `color-mix(in oklab, ${color.hex} 3%, #f3ebd5) 110px`,
+            `#f3ebd5 160px`,
+          ].join(", ")})`,
         }}
       >
       <div className="mx-auto grid w-full max-w-5xl animate-rise-in gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16">
