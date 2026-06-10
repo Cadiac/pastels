@@ -10,5 +10,11 @@
     "brand": "Mungyo",
     "name": "Mungyo Gallery Artists' Soft Oil Pastels (MOPV)",
     "shortName": "Mungyo Gallery"
+  },
+  {
+    "id": "vangogh",
+    "brand": "Royal Talens",
+    "name": "Van Gogh Oil Pastels",
+    "shortName": "Van Gogh"
   }
 ]

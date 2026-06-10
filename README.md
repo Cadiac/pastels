@@ -21,9 +21,10 @@ A live instance runs at **pastels.cadi.ac**.
   marked.
 - **Installable PWA**, designed for phone and tablet use first.
 - **Multiple brand catalogues** — currently Sennelier Oil Pastels (120
-  colours) and Mungyo Gallery Artists' Soft Oil Pastels (the MOPV-120
-  "Renewal Color" assortment, 120 colours), switchable in the app. Inventory,
-  favourites and notes are kept per colour across all of them.
+  colours), Mungyo Gallery Artists' Soft Oil Pastels (the MOPV-120 "Renewal
+  Color" assortment, 120 colours), and Van Gogh Oil Pastels by Royal Talens
+  (60 colours), switchable in the app. Inventory, favourites and notes are
+  kept per colour across all of them.
 
 ## Stack
 
@@ -137,6 +138,22 @@ names and pigment lists overflow horizontally into neighbouring columns, so:
 - **lightfastness** comes from the `*` group at each cell's line-3 anchor.
 - **swatches/hex** are cropped/sampled from a render of the region just above
   each code (`[code.x, next_code.x)`).
+
+### Extracting the Van Gogh chart
+
+Extracted from Royal Talens' official "colour chart Van Gogh oil pastels"
+PDF, which has a clean text layer with names, pigments, and ASTM
+lightfastness signs (`+++`/`++`/`+`/`o`). Cells are anchored on the code
+tokens (`504.5`-style — the suffix is Talens' tone system: .3 with black,
+.5 full shade, .7/.8/.9 with increasing white); centre-aligned names and
+pigments overflow their columns, so each row's words are split by nearest
+column centre. The painted strokes' exact boxes are detected from the
+rendered raster (with a fixed fallback for the near-white ones). Requires
+poppler:
+
+```sh
+python3 scripts/vangogh/extract_colors.py
+```
 
 ### Extracting the Mungyo chart
 

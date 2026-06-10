@@ -18,9 +18,15 @@ const TRANSPARENCY: Record<string, string> = {
   "T/O": "Semi-opaque",
 };
 const LIGHTFAST: Record<string, string> = {
+  // Sennelier's roman scale
   I: "Excellent (I)",
   II: "Very good (II)",
   III: "Moderate (III)",
+  // Royal Talens' ASTM signs
+  "+++": "100+ years (+++)",
+  "++": "25–100 years (++)",
+  "+": "10–25 years (+)",
+  o: "0–10 years (o)",
 };
 
 function describeEvent(e: HistoryEvent): string {
