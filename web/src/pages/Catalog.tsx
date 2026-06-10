@@ -13,6 +13,7 @@ import { api } from "../api/client";
 import { useAuth } from "../auth/AuthProvider";
 import { FilterBar } from "../components/FilterBar";
 import { ColorCard } from "../components/ColorCard";
+import { RainbowRibbon } from "../components/Rainbow";
 
 function matchesQuery(c: ColorWithInventory, q: string): boolean {
   if (!q) return true;
@@ -95,6 +96,7 @@ export function Catalog() {
 
   return (
     <div className="flex min-h-full flex-col">
+      <RainbowRibbon />
       {/* title row scrolls away with the page; only the filter bar below is sticky.
           Scrolling does the "collapse" natively, so it never janks. */}
       <div className="mx-auto w-full max-w-[1280px] px-3 pt-3">

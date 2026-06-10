@@ -1,14 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { Navigate } from "react-router-dom";
-import { CredentialsSchema, hexToHue } from "shared";
+import { CredentialsSchema } from "shared";
 import { useAuth } from "../auth/AuthProvider";
 import { ApiError } from "../api/client";
-import { CATALOG_HEXES } from "../rainbow";
-
-// Every colour in the range, hue-ordered, as one thin decorative band.
-const RAINBOW = `linear-gradient(to right, ${[...CATALOG_HEXES]
-  .sort((a, b) => hexToHue(a) - hexToHue(b))
-  .join(", ")})`;
+import { RainbowRibbon, RAINBOW_CONIC, RAINBOW_GRADIENT } from "../components/Rainbow";
 
 export function Login() {
   const { user, loading, login, register } = useAuth();
@@ -39,8 +34,28 @@ export function Login() {
   }
 
   return (
-    <div className="flex min-h-full items-center justify-center p-4">
-      <div className="w-full max-w-sm">
+    <div className="relative flex min-h-full items-center justify-center overflow-hidden p-4">
+      <div className="absolute inset-x-0 top-0">
+        <RainbowRibbon />
+      </div>
+      {/* the whole range as a big, slowly turning wash of pigment behind the card */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      >
+        {/* 150vmax keeps the circle's rim past the viewport diagonal (~142vmax) at
+            any aspect ratio, and the radial mask dissolves the wash towards the
+            screen edges so it never reads as a shape. */}
+        <div
+          style={{
+            background: RAINBOW_CONIC,
+            maskImage: "radial-gradient(circle, black 15vmax, transparent 55vmax)",
+            WebkitMaskImage: "radial-gradient(circle, black 15vmax, transparent 55vmax)",
+          }}
+          className="h-[150vmax] w-[150vmax] animate-[spin_90s_linear_infinite] rounded-full opacity-40 blur-3xl"
+        />
+      </div>
+      <div className="relative w-full max-w-sm">
         <h1 className="mb-1 text-center font-display text-3xl font-bold text-stone-900">
           Oil Pastels
         </h1>
@@ -48,7 +63,7 @@ export function Login() {
           {mode === "login" ? "Sign in to your inventory" : "Create an account"}
         </p>
         <div
-          style={{ background: RAINBOW }}
+          style={{ background: RAINBOW_GRADIENT }}
           className="mx-auto mb-6 h-1.5 w-48 rounded-full"
           aria-hidden
         />

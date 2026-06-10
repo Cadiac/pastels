@@ -136,9 +136,6 @@ export function ColorCard({ color, view }: Props) {
         style={{ backgroundColor: color.hex }}
         className="relative h-28 w-full border-b border-black/[0.06]"
       >
-        {color.iridescent && (
-          <div className="pointer-events-none absolute inset-0 animate-shimmer bg-gradient-to-br from-white/0 via-white/25 to-white/0 bg-[length:300%_300%]" />
-        )}
         <span
           style={{ backgroundColor: codeChipBg, color: color.hex }}
           className="absolute left-2 top-2 rounded-chip px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none shadow-sm"
@@ -175,7 +172,13 @@ export function ColorCard({ color, view }: Props) {
           >
             {color.name}
           </span>
-          {color.iridescent && <Sparkles size={12} className="shrink-0 text-amber-500" />}
+          {color.iridescent && (
+            <Sparkles
+              size={13}
+              style={{ animationDelay: `${(parseInt(color.code, 10) % 7) * 0.5}s` }}
+              className="shrink-0 animate-twinkle text-amber-500"
+            />
+          )}
         </div>
         <div className="mt-2">{Controls}</div>
       </div>

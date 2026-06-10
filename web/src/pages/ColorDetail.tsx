@@ -60,9 +60,9 @@ export function ColorDetail() {
 
   if (isLoading)
     return (
-      <div className="mx-auto min-h-full w-full max-w-[1280px] animate-pulse">
+      <div className="min-h-full w-full animate-pulse">
         <div className="h-44 w-full bg-stone-200/80" />
-        <div className="grid gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6">
+        <div className="mx-auto grid w-full max-w-5xl gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6">
           <div className="flex flex-col gap-6">
             <div className="h-10 rounded-full bg-white/60" />
             <div className="h-36 rounded-card bg-white/60" />
@@ -101,39 +101,46 @@ export function ColorDetail() {
     "flex flex-1 items-center justify-center gap-1.5 rounded-full border px-3 py-2 text-sm font-medium transition active:scale-[0.98]";
 
   return (
-    <div className="mx-auto min-h-full w-full max-w-[1280px] bg-[#f3ebd5] text-stone-800">
+    <div className="relative min-h-full w-full text-stone-800">
+      {/* paints the rubber-band overscroll area above the page in the hero
+          colour, so bouncing at the top never reveals a cream gap */}
+      <div
+        aria-hidden
+        style={{ backgroundColor: color.hex }}
+        className="absolute inset-x-0 -top-[50rem] h-[50rem]"
+      />
       {/* colour hero — the chosen colour, with name and a popping ID chip */}
-      <div style={{ backgroundColor: color.hex, color: fg }} className="relative px-4 pb-6 pt-3">
-        {color.iridescent && (
-          <div className="pointer-events-none absolute inset-0 animate-shimmer bg-gradient-to-br from-white/0 via-white/20 to-white/0 bg-[length:300%_300%]" />
-        )}
-        <Link
-          to="/"
-          className="-ml-2 inline-flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-medium opacity-90 transition active:bg-black/10"
-        >
-          <ChevronLeft size={18} /> Back
-        </Link>
-
-        <div className="mt-3 flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <h1 className="flex items-center gap-2 font-display text-3xl font-bold leading-tight">
-              {color.name}
-              {color.iridescent && <Sparkles size={20} className="shrink-0 opacity-90" />}
-            </h1>
-            <p className="mt-0.5 text-sm opacity-80">{color.names.fr}</p>
-            {color.new && (
-              <span className="mt-2 inline-block rounded-full bg-black/15 px-2 py-0.5 text-xs font-semibold">
-                New
-              </span>
-            )}
-          </div>
-
-          <div
-            style={{ backgroundColor: fg, color: color.hex }}
-            className="shrink-0 rounded-card px-3.5 py-2 text-center shadow-sm"
+      <div style={{ backgroundColor: color.hex, color: fg }} className="relative pb-6 pt-3">
+        {/* hero is full-bleed; its content lines up with the centred column below */}
+        <div className="mx-auto w-full max-w-5xl px-4 md:px-6">
+          <Link
+            to="/"
+            className="-ml-2 inline-flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-medium opacity-90 transition active:bg-black/10"
           >
-            <div className="text-[10px] font-bold uppercase tracking-wider opacity-60">No.</div>
-            <div className="font-mono text-3xl font-bold leading-none">{color.code}</div>
+            <ChevronLeft size={18} /> Back
+          </Link>
+
+          <div className="mt-3 flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h1 className="flex items-center gap-2 font-display text-3xl font-bold leading-tight">
+                {color.name}
+                {color.iridescent && <Sparkles size={20} className="shrink-0 animate-twinkle opacity-90" />}
+              </h1>
+              <p className="mt-0.5 text-sm opacity-80">{color.names.fr}</p>
+              {color.new && (
+                <span className="mt-2 inline-block rounded-full bg-black/15 px-2 py-0.5 text-xs font-semibold">
+                  New
+                </span>
+              )}
+            </div>
+
+            <div
+              style={{ backgroundColor: fg, color: color.hex }}
+              className="shrink-0 rounded-card px-3.5 py-2 text-center shadow-sm"
+            >
+              <div className="text-[10px] font-bold uppercase tracking-wider opacity-60">No.</div>
+              <div className="font-mono text-3xl font-bold leading-none">{color.code}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -144,8 +151,8 @@ export function ColorDetail() {
         style={{
           background: `linear-gradient(to bottom, color-mix(in oklab, ${color.hex} 14%, transparent), transparent 260px)`,
         }}
-        className="grid animate-rise-in gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16"
       >
+      <div className="mx-auto grid w-full max-w-5xl animate-rise-in gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16">
         <div className="flex flex-col gap-6">
           {/* Favourite / want list toggles */}
           <div className="flex gap-2">
@@ -263,6 +270,7 @@ export function ColorDetail() {
             </section>
           )}
         </div>
+      </div>
       </div>
     </div>
   );
