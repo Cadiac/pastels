@@ -1,8 +1,11 @@
+import { z } from "zod";
 import {
+  CatalogueInfoSchema,
   ColorsResponseSchema,
   ColorWithInventorySchema,
   HistoryResponseSchema,
   UserSchema,
+  type CatalogueInfo,
   type ColorMetaInput,
   type ColorWithInventory,
   type Credentials,
@@ -43,6 +46,7 @@ export interface ColorQuery {
   q?: string;
   owned?: OwnedFilter;
   sort?: Sort;
+  catalogue?: string;
 }
 
 export const api = {
@@ -71,32 +75,37 @@ export const api = {
     await request("/api/auth/logout", { method: "POST" });
   },
 
+  async catalogues(): Promise<CatalogueInfo[]> {
+    return z.array(CatalogueInfoSchema).parse(await request("/api/catalogues"));
+  },
+
   async colors(query: ColorQuery = {}): Promise<ColorWithInventory[]> {
     const params = new URLSearchParams();
     if (query.q) params.set("q", query.q);
     if (query.owned && query.owned !== "all") params.set("owned", query.owned);
     if (query.sort) params.set("sort", query.sort);
+    if (query.catalogue) params.set("catalogue", query.catalogue);
     const qs = params.toString();
     return ColorsResponseSchema.parse(await request(`/api/colors${qs ? `?${qs}` : ""}`));
   },
 
-  async color(code: string): Promise<ColorWithInventory> {
-    return ColorWithInventorySchema.parse(await request(`/api/colors/${code}`));
+  async color(id: string): Promise<ColorWithInventory> {
+    return ColorWithInventorySchema.parse(await request(`/api/colors/${id}`));
   },
 
-  async setInventory(code: string, input: InventoryInput): Promise<ColorWithInventory> {
+  async setInventory(id: string, input: InventoryInput): Promise<ColorWithInventory> {
     return ColorWithInventorySchema.parse(
-      await request(`/api/inventory/${code}`, { method: "PUT", body: JSON.stringify(input) }),
+      await request(`/api/inventory/${id}`, { method: "PUT", body: JSON.stringify(input) }),
     );
   },
 
-  async setMeta(code: string, input: ColorMetaInput): Promise<ColorWithInventory> {
+  async setMeta(id: string, input: ColorMetaInput): Promise<ColorWithInventory> {
     return ColorWithInventorySchema.parse(
-      await request(`/api/colors/${code}/meta`, { method: "PATCH", body: JSON.stringify(input) }),
+      await request(`/api/colors/${id}/meta`, { method: "PATCH", body: JSON.stringify(input) }),
     );
   },
 
-  async history(code: string): Promise<HistoryEvent[]> {
-    return HistoryResponseSchema.parse(await request(`/api/colors/${code}/history`));
+  async history(id: string): Promise<HistoryEvent[]> {
+    return HistoryResponseSchema.parse(await request(`/api/colors/${id}/history`));
   },
 };

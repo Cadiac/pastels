@@ -42,7 +42,12 @@ function matchesOwned(c: ColorWithInventory, owned: OwnedFilter): boolean {
 // hand-edited values fall back to defaults instead of crashing).
 const PREFS_KEY = "pastels.prefs";
 
-function loadPrefs(): { owned: OwnedFilter; sort: Sort; view: "grid" | "list" } {
+function loadPrefs(): {
+  owned: OwnedFilter;
+  sort: Sort;
+  view: "grid" | "list";
+  catalogue: string;
+} {
   let raw: Record<string, unknown> = {};
   try {
     raw = JSON.parse(localStorage.getItem(PREFS_KEY) ?? "{}");
@@ -53,6 +58,7 @@ function loadPrefs(): { owned: OwnedFilter; sort: Sort; view: "grid" | "list" } 
     owned: OwnedFilterSchema.catch("all").parse(raw.owned),
     sort: SortSchema.catch("code").parse(raw.sort),
     view: raw.view === "list" ? "list" : "grid",
+    catalogue: typeof raw.catalogue === "string" ? raw.catalogue : "sennelier",
   };
 }
 
@@ -62,12 +68,23 @@ export function Catalog() {
   const [owned, setOwned] = useState<OwnedFilter>(() => loadPrefs().owned);
   const [sort, setSort] = useState<Sort>(() => loadPrefs().sort);
   const [view, setView] = useState<"grid" | "list">(() => loadPrefs().view);
+  const [catalogue, setCatalogue] = useState(() => loadPrefs().catalogue);
   const [stuck, setStuck] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    localStorage.setItem(PREFS_KEY, JSON.stringify({ owned, sort, view }));
-  }, [owned, sort, view]);
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ owned, sort, view, catalogue }));
+  }, [owned, sort, view, catalogue]);
+
+  const { data: catalogues } = useQuery({
+    queryKey: ["catalogues"],
+    queryFn: api.catalogues,
+  });
+  // A stale stored pref (renamed/removed catalogue) falls back to the first.
+  useEffect(() => {
+    if (catalogues?.length && !catalogues.some((c) => c.id === catalogue))
+      setCatalogue(catalogues[0].id);
+  }, [catalogues, catalogue]);
 
   // The filter bar "lifts" (shadow + border) only once it's actually stuck:
   // a zero-height sentinel right above it leaves the viewport exactly then.
@@ -81,8 +98,8 @@ export function Catalog() {
 
   // Fetch the full catalogue (server sorts); search/owned are filtered locally.
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["colors", { sort }],
-    queryFn: () => api.colors({ sort }),
+    queryKey: ["colors", { sort, catalogue }],
+    queryFn: () => api.colors({ sort, catalogue }),
   });
 
   const all = data ?? [];
@@ -103,7 +120,7 @@ export function Catalog() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="font-display text-xl font-bold leading-none text-stone-900">
-              Oil Pastels - Sennelier
+              Oil Pastels
             </h1>
             <p className="mt-0.5 text-xs text-stone-500">
               {ownedCount}/{all.length} owned
@@ -119,6 +136,33 @@ export function Catalog() {
             <span className="hidden sm:inline">{user?.username}</span>
           </button>
         </div>
+
+        {/* Brand catalogue switcher — scrolls away with the title row. */}
+        {catalogues && catalogues.length > 1 && (
+          <div className="mt-2.5 flex flex-wrap gap-1.5">
+            {catalogues.map((c) => {
+              const active = c.id === catalogue;
+              return (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setCatalogue(c.id)}
+                  aria-pressed={active}
+                  className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition active:scale-95 ${
+                    active
+                      ? "border-stone-800 bg-stone-800 text-stone-50"
+                      : "border-stone-300 bg-white/60 text-stone-600"
+                  }`}
+                >
+                  {c.shortName}
+                  <span className={active ? "opacity-70" : "text-stone-400"}>
+                    {c.owned}/{c.total}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div ref={sentinelRef} aria-hidden />

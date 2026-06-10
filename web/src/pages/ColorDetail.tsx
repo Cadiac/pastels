@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Bookmark, ChevronLeft, Heart, Sparkles } from "lucide-react";
 import { isLight, LEVEL_META, type HistoryEvent, type Level } from "shared";
@@ -39,24 +39,28 @@ function formatAt(at: string): string {
 }
 
 export function ColorDetail() {
-  const { code = "" } = useParams();
+  const { id = "" } = useParams();
   const setInventory = useSetInventory();
   const setMeta = useSetMeta();
   // null = not editing; the textarea otherwise shows the saved notes.
   const [notesDraft, setNotesDraft] = useState<string | null>(null);
   const { data: color, isLoading, isError } = useQuery({
-    queryKey: ["color", code],
-    queryFn: () => api.color(code),
+    queryKey: ["color", id],
+    queryFn: () => api.color(id),
+    enabled: !/^\d+$/.test(id),
   });
   const { data: history } = useQuery({
-    queryKey: ["history", code],
-    queryFn: () => api.history(code),
-    enabled: !!code,
+    queryKey: ["history", id],
+    queryFn: () => api.history(id),
+    enabled: !!id && !/^\d+$/.test(id),
   });
   // Blend Safari's top bar into the colour hero while this page is open.
   useThemeColor(color?.hex);
   const favPop = usePop(color?.favorite);
   const wantPop = usePop(color?.want);
+
+  // Pre-catalogue URLs were /c/<bare code> and always meant Sennelier.
+  if (/^\d+$/.test(id)) return <Navigate to={`/c/sennelier-${id}`} replace />;
 
   if (isLoading)
     return (
@@ -81,19 +85,19 @@ export function ColorDetail() {
 
   const setQuantity = (n: number) =>
     setInventory.mutate({
-      code: color.code,
+      id: color.id,
       // Removing a stick discards the part-used one, so the rest are full again;
       // adding a stick keeps the current working level.
       input: { quantity: n, level: n <= 0 ? null : n < quantity ? "full" : level },
     });
   const cycle = (next: Level) =>
-    setInventory.mutate({ code: color.code, input: { quantity: quantity || 1, level: next } });
+    setInventory.mutate({ id: color.id, input: { quantity: quantity || 1, level: next } });
 
   const saveNotes = () => {
     if (notesDraft === null) return;
     const trimmed = notesDraft.trim();
     if (trimmed !== (color.notes ?? ""))
-      setMeta.mutate({ code: color.code, input: { notes: trimmed || null } });
+      setMeta.mutate({ id: color.id, input: { notes: trimmed || null } });
     setNotesDraft(null);
   };
 
@@ -126,7 +130,7 @@ export function ColorDetail() {
                 {color.name}
                 {color.iridescent && <Sparkles size={20} className="shrink-0 animate-twinkle opacity-90" />}
               </h1>
-              <p className="mt-0.5 text-sm opacity-80">{color.names.fr}</p>
+              {color.names.fr && <p className="mt-0.5 text-sm opacity-80">{color.names.fr}</p>}
               {color.new && (
                 <span className="mt-2 inline-block rounded-full bg-black/15 px-2 py-0.5 text-xs font-semibold">
                   New
@@ -167,7 +171,7 @@ export function ColorDetail() {
           <div className="flex gap-2">
             <button
               type="button"
-              onClick={() => setMeta.mutate({ code: color.code, input: { favorite: !color.favorite } })}
+              onClick={() => setMeta.mutate({ id: color.id, input: { favorite: !color.favorite } })}
               aria-pressed={color.favorite}
               className={`${TOGGLE} ${
                 color.favorite
@@ -185,7 +189,7 @@ export function ColorDetail() {
             </button>
             <button
               type="button"
-              onClick={() => setMeta.mutate({ code: color.code, input: { want: !color.want } })}
+              onClick={() => setMeta.mutate({ id: color.id, input: { want: !color.want } })}
               aria-pressed={color.want}
               className={`${TOGGLE} ${
                 color.want
@@ -223,7 +227,7 @@ export function ColorDetail() {
               Swatch
             </div>
             <img
-              src={`/swatches/${color.code}.png`}
+              src={color.swatch}
               alt={`${color.name} swatch`}
               className="h-16 w-full max-w-[260px] rounded-card bg-white object-cover ring-1 ring-black/10"
             />
@@ -231,18 +235,25 @@ export function ColorDetail() {
 
           <ValueScale hex={color.hex} />
 
-          <Harmonies code={color.code} hex={color.hex} />
+          <Harmonies selfId={color.id} catalogue={color.catalogue} hex={color.hex} />
         </div>
 
         <div className="flex flex-col gap-6">
-          {/* Metadata */}
+          {/* Metadata — rows a brand doesn't publish are omitted entirely. */}
           <dl className="divide-y divide-black/10 text-sm">
-            <Row label="Transparency" value={TRANSPARENCY[color.transparency] ?? color.transparency} />
-            <Row
-              label="Lightfastness"
-              value={color.lightfastness ? (LIGHTFAST[color.lightfastness] ?? color.lightfastness) : "—"}
-            />
-            <Row label="Pigments" value={color.pigments.length ? color.pigments.join(", ") : "—"} />
+            {color.transparency && (
+              <Row
+                label="Transparency"
+                value={TRANSPARENCY[color.transparency] ?? color.transparency}
+              />
+            )}
+            {color.lightfastness && (
+              <Row
+                label="Lightfastness"
+                value={LIGHTFAST[color.lightfastness] ?? color.lightfastness}
+              />
+            )}
+            {color.pigments.length > 0 && <Row label="Pigments" value={color.pigments.join(", ")} />}
             <Row label="Hex" value={<span className="font-mono">{color.hex.toUpperCase()}</span>} />
           </dl>
 

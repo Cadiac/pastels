@@ -15,65 +15,173 @@ export const db = new DatabaseSync(dbFile);
 db.exec("PRAGMA journal_mode = WAL");
 db.exec("PRAGMA foreign_keys = ON");
 
-/** Create tables if they don't exist. Safe to run repeatedly. */
+// Colours from every brand catalogue share one table; `id` is globally unique
+// ("<catalogue>-<code>", e.g. "sennelier-038") so user tables can reference a
+// colour with a single key and codes may repeat across catalogues.
+const DDL = `
+  CREATE TABLE IF NOT EXISTS catalogues (
+    id         TEXT PRIMARY KEY,
+    brand      TEXT NOT NULL,
+    name       TEXT NOT NULL,
+    short_name TEXT NOT NULL,
+    position   INTEGER NOT NULL DEFAULT 0
+  );
+
+  CREATE TABLE IF NOT EXISTS colors (
+    id            TEXT PRIMARY KEY,
+    catalogue     TEXT NOT NULL REFERENCES catalogues(id),
+    code          TEXT NOT NULL,
+    name          TEXT NOT NULL,
+    names_json    TEXT NOT NULL,
+    transparency  TEXT,
+    pigments_json TEXT NOT NULL,
+    lightfastness TEXT,
+    iridescent    INTEGER NOT NULL DEFAULT 0,
+    new           INTEGER NOT NULL DEFAULT 0,
+    giant         INTEGER NOT NULL DEFAULT 0,
+    hex           TEXT NOT NULL,
+    swatch        TEXT NOT NULL,
+    UNIQUE (catalogue, code)
+  );
+
+  CREATE TABLE IF NOT EXISTS users (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    username      TEXT NOT NULL UNIQUE COLLATE NOCASE,
+    password_hash TEXT NOT NULL,
+    created_at    TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS sessions (
+    id         TEXT PRIMARY KEY,
+    user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    expires_at TEXT NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS inventory (
+    user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    color_id   TEXT NOT NULL REFERENCES colors(id),
+    quantity   INTEGER NOT NULL DEFAULT 0,
+    level      TEXT,
+    updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+    PRIMARY KEY (user_id, color_id)
+  );
+
+  CREATE TABLE IF NOT EXISTS color_meta (
+    user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    color_id   TEXT NOT NULL REFERENCES colors(id),
+    favorite   INTEGER NOT NULL DEFAULT 0,
+    want       INTEGER NOT NULL DEFAULT 0,
+    notes      TEXT,
+    updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+    PRIMARY KEY (user_id, color_id)
+  );
+
+  CREATE TABLE IF NOT EXISTS inventory_events (
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    color_id   TEXT NOT NULL REFERENCES colors(id),
+    type       TEXT NOT NULL,
+    amount     INTEGER,
+    level      TEXT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+  CREATE INDEX IF NOT EXISTS idx_events_user_color ON inventory_events (user_id, color_id, id);
+`;
+
+function tableExists(name: string): boolean {
+  return !!db
+    .prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?")
+    .get(name);
+}
+
+function hasColumn(table: string, column: string): boolean {
+  const cols = db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[];
+  return cols.some((c) => c.name === column);
+}
+
+/**
+ * v0 → v1: the single-brand schema keyed user data on the bare Sennelier
+ * `code`. Rebuild the user tables keyed on `color_id` ("sennelier-<code>")
+ * and drop the old colors table (pure catalogue data — reseeded on boot).
+ * Runs on a live production DB, so everything happens in one transaction.
+ */
+function upgradeToV1(): void {
+  // FK enforcement must be off while tables reference a colors table that is
+  // dropped and recreated empty (no-op outside a transaction otherwise).
+  db.exec("PRAGMA foreign_keys = OFF");
+  db.exec("BEGIN");
+  try {
+    db.exec("DROP TABLE colors");
+    db.exec(`
+      CREATE TABLE inventory_v1 (
+        user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        color_id   TEXT NOT NULL REFERENCES colors(id),
+        quantity   INTEGER NOT NULL DEFAULT 0,
+        level      TEXT,
+        updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+        PRIMARY KEY (user_id, color_id)
+      );
+      INSERT INTO inventory_v1 (user_id, color_id, quantity, level, updated_at)
+        SELECT user_id, 'sennelier-' || code, quantity, level, updated_at FROM inventory;
+      DROP TABLE inventory;
+      ALTER TABLE inventory_v1 RENAME TO inventory;
+
+      CREATE TABLE color_meta_v1 (
+        user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        color_id   TEXT NOT NULL REFERENCES colors(id),
+        favorite   INTEGER NOT NULL DEFAULT 0,
+        want       INTEGER NOT NULL DEFAULT 0,
+        notes      TEXT,
+        updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+        PRIMARY KEY (user_id, color_id)
+      );
+      INSERT INTO color_meta_v1 (user_id, color_id, favorite, want, notes, updated_at)
+        SELECT user_id, 'sennelier-' || code, favorite, want, notes, updated_at FROM color_meta;
+      DROP TABLE color_meta;
+      ALTER TABLE color_meta_v1 RENAME TO color_meta;
+
+      CREATE TABLE inventory_events_v1 (
+        id         INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        color_id   TEXT NOT NULL REFERENCES colors(id),
+        type       TEXT NOT NULL,
+        amount     INTEGER,
+        level      TEXT,
+        created_at TEXT NOT NULL DEFAULT (datetime('now'))
+      );
+      INSERT INTO inventory_events_v1 (id, user_id, color_id, type, amount, level, created_at)
+        SELECT id, user_id, 'sennelier-' || code, type, amount, level, created_at FROM inventory_events;
+      DROP TABLE inventory_events;
+      ALTER TABLE inventory_events_v1 RENAME TO inventory_events;
+      DROP INDEX IF EXISTS idx_events_user_code;
+    `);
+    // Now that every legacy table is rekeyed, the full DDL applies cleanly
+    // (creates catalogues, the new colors table, and the events index).
+    db.exec(DDL);
+    db.exec("COMMIT");
+  } catch (err) {
+    db.exec("ROLLBACK");
+    throw err;
+  } finally {
+    db.exec("PRAGMA foreign_keys = ON");
+  }
+}
+
+/** Create/upgrade the schema. Safe to run repeatedly. */
 export function migrate(): void {
-  db.exec(`
-    CREATE TABLE IF NOT EXISTS colors (
-      code          TEXT PRIMARY KEY,
-      name          TEXT NOT NULL,
-      names_json    TEXT NOT NULL,
-      transparency  TEXT NOT NULL,
-      pigments_json TEXT NOT NULL,
-      lightfastness TEXT,
-      iridescent    INTEGER NOT NULL DEFAULT 0,
-      new           INTEGER NOT NULL DEFAULT 0,
-      giant         INTEGER NOT NULL DEFAULT 0,
-      hex           TEXT NOT NULL,
-      swatch        TEXT NOT NULL
-    );
+  const { user_version } = db.prepare("PRAGMA user_version").get() as unknown as {
+    user_version: number;
+  };
+  const legacy =
+    user_version < 1 && tableExists("colors") && !hasColumn("colors", "catalogue");
 
-    CREATE TABLE IF NOT EXISTS users (
-      id            INTEGER PRIMARY KEY AUTOINCREMENT,
-      username      TEXT NOT NULL UNIQUE COLLATE NOCASE,
-      password_hash TEXT NOT NULL,
-      created_at    TEXT NOT NULL DEFAULT (datetime('now'))
-    );
+  if (legacy) upgradeToV1();
+  else db.exec(DDL);
 
-    CREATE TABLE IF NOT EXISTS sessions (
-      id         TEXT PRIMARY KEY,
-      user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-      created_at TEXT NOT NULL DEFAULT (datetime('now')),
-      expires_at TEXT NOT NULL
-    );
+  // Added after v1 shipped; CREATE IF NOT EXISTS won't patch existing tables.
+  if (!hasColumn("catalogues", "position"))
+    db.exec("ALTER TABLE catalogues ADD COLUMN position INTEGER NOT NULL DEFAULT 0");
 
-    CREATE TABLE IF NOT EXISTS inventory (
-      user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-      code       TEXT NOT NULL REFERENCES colors(code),
-      quantity   INTEGER NOT NULL DEFAULT 0,
-      level      TEXT,
-      updated_at TEXT NOT NULL DEFAULT (datetime('now')),
-      PRIMARY KEY (user_id, code)
-    );
-
-    CREATE TABLE IF NOT EXISTS color_meta (
-      user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-      code       TEXT NOT NULL REFERENCES colors(code),
-      favorite   INTEGER NOT NULL DEFAULT 0,
-      want       INTEGER NOT NULL DEFAULT 0,
-      notes      TEXT,
-      updated_at TEXT NOT NULL DEFAULT (datetime('now')),
-      PRIMARY KEY (user_id, code)
-    );
-
-    CREATE TABLE IF NOT EXISTS inventory_events (
-      id         INTEGER PRIMARY KEY AUTOINCREMENT,
-      user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-      code       TEXT NOT NULL REFERENCES colors(code),
-      type       TEXT NOT NULL,
-      amount     INTEGER,
-      level      TEXT,
-      created_at TEXT NOT NULL DEFAULT (datetime('now'))
-    );
-    CREATE INDEX IF NOT EXISTS idx_events_user_code ON inventory_events (user_id, code, id);
-  `);
+  db.exec("PRAGMA user_version = 1");
 }

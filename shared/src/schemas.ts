@@ -1,32 +1,55 @@
 import { z } from "zod";
 import { LEVELS } from "./color";
 
-// --- Catalogue (mirrors data/colors.json exactly) ---------------------------
+// --- Catalogues (brand colour ranges) ----------------------------------------
 
-export const NamesSchema = z.object({
-  fr: z.string(),
-  en: z.string(),
-  de: z.string(),
-  es: z.string(),
-  it: z.string(),
-  nl: z.string(),
+export const CatalogueSchema = z.object({
+  id: z.string(),
+  brand: z.string(),
+  name: z.string(),
+  shortName: z.string(),
 });
+export type Catalogue = z.infer<typeof CatalogueSchema>;
+
+/** What GET /api/catalogues returns: catalogue + per-user ownership counts. */
+export const CatalogueInfoSchema = CatalogueSchema.extend({
+  total: z.number().int(),
+  owned: z.number().int(),
+});
+export type CatalogueInfo = z.infer<typeof CatalogueInfoSchema>;
+
+// English is the app language; other chart languages are kept when a brand
+// publishes them (Sennelier has six, Mungyo only English).
+export const NamesSchema = z.object({ en: z.string() }).catchall(z.string());
+export type Names = z.infer<typeof NamesSchema>;
 
 export const TransparencySchema = z.enum(["T", "O", "T/O"]);
-export const LightfastnessSchema = z.enum(["I", "II", "III"]).nullable();
 
-export const ColorSchema = z.object({
+/**
+ * One entry of a catalogue's colors.json. Fields a brand doesn't publish are
+ * null/empty; `lightfastness` is the brand's own scale as printed (Sennelier
+ * "I"/"II"/"III", Mungyo star counts like "3/5").
+ */
+export const CatalogueColorSchema = z.object({
   code: z.string(),
   name: z.string(),
   names: NamesSchema,
-  transparency: TransparencySchema,
+  transparency: TransparencySchema.nullable(),
   pigments: z.array(z.string()),
-  lightfastness: LightfastnessSchema,
+  lightfastness: z.string().nullable(),
   iridescent: z.boolean(),
   new: z.boolean(),
-  giant: z.boolean(),
+  giant: z.boolean().default(false),
   hex: z.string(),
   swatch: z.string(),
+});
+export type CatalogueColor = z.infer<typeof CatalogueColorSchema>;
+
+/** A colour as the API returns it: globally identified across catalogues. */
+export const ColorSchema = CatalogueColorSchema.extend({
+  /** Globally unique: `<catalogue>-<code>`, e.g. "sennelier-038". */
+  id: z.string(),
+  catalogue: z.string(),
 });
 export type Color = z.infer<typeof ColorSchema>;
 

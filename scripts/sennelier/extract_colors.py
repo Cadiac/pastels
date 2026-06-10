@@ -34,9 +34,9 @@ import subprocess
 from collections import defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-PDF = ROOT / "Colourchart_Oilpastels.pdf"
-DATA = ROOT / "data"
+ROOT = Path(__file__).resolve().parent.parent.parent
+DATA = ROOT / "data" / "sennelier"
+PDF = DATA / "source" / "Colourchart_Oilpastels.pdf"
 SWATCH_DIR = DATA / "swatches"
 NAMES_FILE = DATA / "names.json"
 
@@ -298,8 +298,8 @@ def main():
 
     colors.sort(key=lambda c: c["code"])
     (DATA / "colors.json").write_text(json.dumps(colors, ensure_ascii=False, indent=2) + "\n")
-    print(f"Extracted {len(colors)} colours -> data/colors.json")
-    print("Swatch crops -> data/swatches/<code>.png")
+    print(f"Extracted {len(colors)} colours -> data/sennelier/colors.json")
+    print("Swatch crops -> data/sennelier/swatches/<code>.png")
     if warnings:
         print(f"\n{len(warnings)} cross-check warning(s) "
               f"(geometry fooled by overflow; names.json is authoritative):")

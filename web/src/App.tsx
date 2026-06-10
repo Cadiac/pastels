@@ -25,7 +25,7 @@ export function App() {
         }
       />
       <Route
-        path="/c/:code"
+        path="/c/:id"
         element={
           <RequireAuth>
             <ColorDetail />

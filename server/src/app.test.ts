@@ -35,13 +35,26 @@ describe("API smoke test", () => {
     const cookie = cookieFrom(reg);
     expect(cookie).toMatch(/^sid=/);
 
-    const list = await app.request("/api/colors", { headers: { cookie } });
+    const list = await app.request("/api/colors?catalogue=sennelier", { headers: { cookie } });
     expect(list.status).toBe(200);
-    const colors = (await list.json()) as Array<{ code: string; inventory: unknown }>;
+    const colors = (await list.json()) as Array<{
+      id: string;
+      code: string;
+      swatch: string;
+      inventory: unknown;
+    }>;
     expect(colors).toHaveLength(120);
     expect(colors.every((c) => c.inventory === null)).toBe(true);
+    expect(colors[0].id).toBe("sennelier-001");
+    expect(colors[0].swatch).toBe("/swatches/sennelier/001.png");
 
-    const put = await app.request("/api/inventory/038", {
+    const cats = await app.request("/api/catalogues", { headers: { cookie } });
+    expect(cats.status).toBe(200);
+    const catList = (await cats.json()) as Array<{ id: string; total: number; owned: number }>;
+    expect(catList.map((c) => c.id)).toEqual(["sennelier", "mungyo"]);
+    expect(catList.find((c) => c.id === "sennelier")).toMatchObject({ total: 120, owned: 0 });
+
+    const put = await app.request("/api/inventory/sennelier-038", {
       method: "PUT",
       headers: { "content-type": "application/json", cookie },
       body: JSON.stringify({ quantity: 2, level: "half" }),
@@ -56,7 +69,7 @@ describe("API smoke test", () => {
     expect(ownedList[0].code).toBe("038");
 
     // favourite/want/notes meta + the wanted filter
-    const meta = await app.request("/api/colors/002/meta", {
+    const meta = await app.request("/api/colors/sennelier-002/meta", {
       method: "PATCH",
       headers: { "content-type": "application/json", cookie },
       body: JSON.stringify({ favorite: true, want: true, notes: "buy two" }),
@@ -70,7 +83,7 @@ describe("API smoke test", () => {
     expect(wantedList.map((c) => c.code)).toEqual(["002"]);
 
     // usage history: the PUT above (0 -> 2 sticks) was recorded
-    const hist = await app.request("/api/colors/038/history", { headers: { cookie } });
+    const hist = await app.request("/api/colors/sennelier-038/history", { headers: { cookie } });
     expect(hist.status).toBe(200);
     const events = (await hist.json()) as Array<{ type: string; amount: number | null }>;
     expect(events).toHaveLength(1);

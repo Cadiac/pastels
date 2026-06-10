@@ -1,11 +1,19 @@
-import type { ColorMetaInput, ColorWithInventory, HistoryEvent, Level } from "shared";
+import type {
+  CatalogueInfo,
+  ColorMetaInput,
+  ColorWithInventory,
+  HistoryEvent,
+  Level,
+} from "shared";
 import { db } from "./db";
 
 interface ColorRow {
+  id: string;
+  catalogue: string;
   code: string;
   name: string;
   names_json: string;
-  transparency: string;
+  transparency: string | null;
   pigments_json: string;
   lightfastness: string | null;
   iridescent: number;
@@ -22,17 +30,21 @@ interface ColorRow {
 
 function mapRow(r: ColorRow): ColorWithInventory {
   return {
+    id: r.id,
+    catalogue: r.catalogue,
     code: r.code,
     name: r.name,
     names: JSON.parse(r.names_json),
     transparency: r.transparency as ColorWithInventory["transparency"],
     pigments: JSON.parse(r.pigments_json),
-    lightfastness: r.lightfastness as ColorWithInventory["lightfastness"],
+    lightfastness: r.lightfastness,
     iridescent: !!r.iridescent,
     new: !!r.new,
     giant: !!r.giant,
     hex: r.hex,
-    swatch: r.swatch,
+    // Swatches live at data/<catalogue>/swatches/<code>.png; the app serves
+    // them under this URL regardless of what the data file stored.
+    swatch: `/swatches/${r.catalogue}/${r.code}.png`,
     inventory:
       r.quantity != null && r.quantity > 0
         ? { quantity: r.quantity, level: (r.level as Level | null) ?? null }
@@ -47,61 +59,83 @@ const SELECT = `
   SELECT c.*, i.quantity AS quantity, i.level AS level,
          m.favorite AS favorite, m.want AS want, m.notes AS notes
   FROM colors c
-  LEFT JOIN inventory i ON i.code = c.code AND i.user_id = @userId
-  LEFT JOIN color_meta m ON m.code = c.code AND m.user_id = @userId
+  LEFT JOIN inventory i ON i.color_id = c.id AND i.user_id = @userId
+  LEFT JOIN color_meta m ON m.color_id = c.id AND m.user_id = @userId
 `;
 
-export function getColorsForUser(userId: number): ColorWithInventory[] {
-  const rows = db.prepare(`${SELECT} ORDER BY c.code`).all({ userId }) as unknown as ColorRow[];
+export function getColorsForUser(userId: number, catalogue?: string): ColorWithInventory[] {
+  const rows = (
+    catalogue
+      ? db
+          .prepare(`${SELECT} WHERE c.catalogue = @catalogue ORDER BY c.code`)
+          .all({ userId, catalogue })
+      : db.prepare(`${SELECT} ORDER BY c.catalogue, c.code`).all({ userId })
+  ) as unknown as ColorRow[];
   return rows.map(mapRow);
 }
 
-export function getColorForUser(userId: number, code: string): ColorWithInventory | null {
-  const row = db.prepare(`${SELECT} WHERE c.code = @code`).get({ userId, code }) as unknown as
+export function getColorForUser(userId: number, id: string): ColorWithInventory | null {
+  const row = db.prepare(`${SELECT} WHERE c.id = @id`).get({ userId, id }) as unknown as
     | ColorRow
     | undefined;
   return row ? mapRow(row) : null;
 }
 
+export function getCataloguesForUser(userId: number): CatalogueInfo[] {
+  const rows = db
+    .prepare(
+      `SELECT g.id, g.brand, g.name, g.short_name AS shortName,
+              COUNT(c.id) AS total,
+              COUNT(i.color_id) AS owned
+       FROM catalogues g
+       LEFT JOIN colors c ON c.catalogue = g.id
+       LEFT JOIN inventory i ON i.color_id = c.id AND i.user_id = ? AND i.quantity > 0
+       GROUP BY g.id
+       ORDER BY g.position, g.id`,
+    )
+    .all(userId) as unknown as CatalogueInfo[];
+  return rows;
+}
+
 export function setInventory(
   userId: number,
-  code: string,
+  colorId: string,
   quantity: number,
   level: Level | null,
 ): void {
   if (quantity <= 0) {
-    db.prepare("DELETE FROM inventory WHERE user_id = ? AND code = ?").run(userId, code);
+    db.prepare("DELETE FROM inventory WHERE user_id = ? AND color_id = ?").run(userId, colorId);
     return;
   }
   db.prepare(
-    `INSERT INTO inventory (user_id, code, quantity, level, updated_at)
+    `INSERT INTO inventory (user_id, color_id, quantity, level, updated_at)
      VALUES (?, ?, ?, ?, datetime('now'))
-     ON CONFLICT(user_id, code) DO UPDATE SET
+     ON CONFLICT(user_id, color_id) DO UPDATE SET
        quantity = excluded.quantity, level = excluded.level, updated_at = datetime('now')`,
-  ).run(userId, code, quantity, level);
+  ).run(userId, colorId, quantity, level);
 }
 
 /** Merge a partial favourite/want/notes update; drop the row when all-default. */
-export function setColorMeta(userId: number, code: string, patch: ColorMetaInput): void {
+export function setColorMeta(userId: number, colorId: string, patch: ColorMetaInput): void {
   const current = db
-    .prepare("SELECT favorite, want, notes FROM color_meta WHERE user_id = ? AND code = ?")
-    .get(userId, code) as { favorite: number; want: number; notes: string | null } | undefined;
+    .prepare("SELECT favorite, want, notes FROM color_meta WHERE user_id = ? AND color_id = ?")
+    .get(userId, colorId) as { favorite: number; want: number; notes: string | null } | undefined;
 
   const favorite = patch.favorite ?? !!current?.favorite;
   const want = patch.want ?? !!current?.want;
   const notes = patch.notes !== undefined ? patch.notes || null : (current?.notes ?? null);
 
   if (!favorite && !want && !notes) {
-    db.prepare("DELETE FROM color_meta WHERE user_id = ? AND code = ?").run(userId, code);
+    db.prepare("DELETE FROM color_meta WHERE user_id = ? AND color_id = ?").run(userId, colorId);
     return;
   }
   db.prepare(
-    `INSERT INTO color_meta (user_id, code, favorite, want, notes, updated_at)
+    `INSERT INTO color_meta (user_id, color_id, favorite, want, notes, updated_at)
      VALUES (?, ?, ?, ?, ?, datetime('now'))
-     ON CONFLICT(user_id, code) DO UPDATE SET
+     ON CONFLICT(user_id, color_id) DO UPDATE SET
        favorite = excluded.favorite, want = excluded.want, notes = excluded.notes,
        updated_at = datetime('now')`,
-  ).run(userId, code, favorite ? 1 : 0, want ? 1 : 0, notes);
+  ).run(userId, colorId, favorite ? 1 : 0, want ? 1 : 0, notes);
 }
 
 /**
@@ -111,32 +145,32 @@ export function setColorMeta(userId: number, code: string, patch: ColorMetaInput
  */
 export function logInventoryEvent(
   userId: number,
-  code: string,
+  colorId: string,
   prev: { quantity: number; level: Level | null },
   next: { quantity: number; level: Level | null },
 ): void {
   const insert = db.prepare(
-    "INSERT INTO inventory_events (user_id, code, type, amount, level) VALUES (?, ?, ?, ?, ?)",
+    "INSERT INTO inventory_events (user_id, color_id, type, amount, level) VALUES (?, ?, ?, ?, ?)",
   );
   if (next.quantity > prev.quantity) {
-    insert.run(userId, code, "add", next.quantity - prev.quantity, null);
+    insert.run(userId, colorId, "add", next.quantity - prev.quantity, null);
   } else if (next.quantity < prev.quantity) {
-    insert.run(userId, code, "remove", prev.quantity - next.quantity, null);
+    insert.run(userId, colorId, "remove", prev.quantity - next.quantity, null);
   } else if (next.quantity > 0 && next.level !== prev.level) {
-    insert.run(userId, code, "level", null, next.level);
+    insert.run(userId, colorId, "level", null, next.level);
   }
 }
 
-export function getHistory(userId: number, code: string, limit = 50): HistoryEvent[] {
+export function getHistory(userId: number, colorId: string, limit = 50): HistoryEvent[] {
   const rows = db
     .prepare(
       `SELECT id, type, amount, level, created_at AS at FROM inventory_events
-       WHERE user_id = ? AND code = ? ORDER BY id DESC LIMIT ?`,
+       WHERE user_id = ? AND color_id = ? ORDER BY id DESC LIMIT ?`,
     )
-    .all(userId, code, limit) as unknown as HistoryEvent[];
+    .all(userId, colorId, limit) as unknown as HistoryEvent[];
   return rows;
 }
 
-export function colorExists(code: string): boolean {
-  return !!db.prepare("SELECT 1 FROM colors WHERE code = ?").get(code);
+export function colorExists(id: string): boolean {
+  return !!db.prepare("SELECT 1 FROM colors WHERE id = ?").get(id);
 }

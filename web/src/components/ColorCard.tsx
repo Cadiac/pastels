@@ -29,7 +29,7 @@ export function ColorCard({ color, view }: Props) {
   const qtyPop = usePop(quantity);
 
   const set = (q: number, l: Level | null) =>
-    setInventory.mutate({ code: color.code, input: { quantity: q, level: l } });
+    setInventory.mutate({ id: color.id, input: { quantity: q, level: l } });
 
   // Keep button taps from also triggering the card's <Link> navigation.
   const act = (fn: () => void) => (e: MouseEvent) => {
@@ -75,7 +75,7 @@ export function ColorCard({ color, view }: Props) {
       </button>
       <button
         type="button"
-        onClick={act(() => setMeta.mutate({ code: color.code, input: { want: !color.want } }))}
+        onClick={act(() => setMeta.mutate({ id: color.id, input: { want: !color.want } }))}
         className={`${ICON_BTN} ${color.want ? "border-amber-400 bg-amber-50 text-amber-600" : ""}`}
         aria-label={color.want ? "Remove from want list" : "Add to want list"}
         aria-pressed={color.want}
@@ -93,7 +93,7 @@ export function ColorCard({ color, view }: Props) {
   if (view === "list") {
     return (
       <Link
-        to={`/c/${color.code}`}
+        to={`/c/${color.id}`}
         className={`flex items-center gap-3 border-b border-black/5 px-3 py-2 active:brightness-95 ${
           owned ? "bg-white" : "bg-white/20"
         }`}
@@ -125,7 +125,7 @@ export function ColorCard({ color, view }: Props) {
 
   return (
     <Link
-      to={`/c/${color.code}`}
+      to={`/c/${color.id}`}
       style={{ "--tint": color.hex } as CSSProperties}
       className={`flex flex-col overflow-hidden rounded-card ring-1 transition active:scale-[0.99] hover:-translate-y-px ${
         owned ? "bg-white shadow-tinted ring-black/5 hover:shadow-tinted-lg" : "bg-white/25 ring-black/10"
@@ -144,7 +144,7 @@ export function ColorCard({ color, view }: Props) {
         </span>
         <button
           type="button"
-          onClick={act(() => setMeta.mutate({ code: color.code, input: { favorite: !color.favorite } }))}
+          onClick={act(() => setMeta.mutate({ id: color.id, input: { favorite: !color.favorite } }))}
           aria-label={color.favorite ? "Remove from favourites" : "Add to favourites"}
           aria-pressed={color.favorite}
           className={`absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full transition active:scale-95 ${

@@ -9,17 +9,17 @@ export const inventory = new Hono<AppEnv>();
 
 inventory.use("*", requireAuth);
 
-inventory.put("/:code", zValidator("json", InventoryInputSchema), (c) => {
+inventory.put("/:id", zValidator("json", InventoryInputSchema), (c) => {
   const user = c.get("user")!;
-  const code = c.req.param("code");
-  if (!colorExists(code)) return c.json({ error: "Unknown colour" }, 404);
+  const id = c.req.param("id");
+  if (!colorExists(id)) return c.json({ error: "Unknown colour" }, 404);
 
   const { quantity, level } = c.req.valid("json");
-  const prev = getColorForUser(user.id, code)?.inventory ?? { quantity: 0, level: null };
+  const prev = getColorForUser(user.id, id)?.inventory ?? { quantity: 0, level: null };
   const next = { quantity, level: quantity > 0 ? level : null };
   // A stick with no quantity has no remaining level.
-  setInventory(user.id, code, next.quantity, next.level);
-  logInventoryEvent(user.id, code, prev, next);
+  setInventory(user.id, id, next.quantity, next.level);
+  logInventoryEvent(user.id, id, prev, next);
 
-  return c.json(getColorForUser(user.id, code));
+  return c.json(getColorForUser(user.id, id));
 });

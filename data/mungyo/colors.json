@@ -1,0 +1,1802 @@
+[
+  {
+    "code": "201",
+    "name": "Lemon Yellow",
+    "names": {
+      "en": "Lemon Yellow"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F8F160",
+    "swatch": "swatches/201.png"
+  },
+  {
+    "code": "202",
+    "name": "Yellow",
+    "names": {
+      "en": "Yellow"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FEDF17",
+    "swatch": "swatches/202.png"
+  },
+  {
+    "code": "203",
+    "name": "Orangish yellow",
+    "names": {
+      "en": "Orangish yellow"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FCBF6A",
+    "swatch": "swatches/203.png"
+  },
+  {
+    "code": "204",
+    "name": "Golden Yellow",
+    "names": {
+      "en": "Golden Yellow"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": true,
+    "new": false,
+    "giant": false,
+    "hex": "#F4991E",
+    "swatch": "swatches/204.png"
+  },
+  {
+    "code": "205",
+    "name": "Orange",
+    "names": {
+      "en": "Orange"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F4812B",
+    "swatch": "swatches/205.png"
+  },
+  {
+    "code": "206",
+    "name": "Flame Red",
+    "names": {
+      "en": "Flame Red"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F05A23",
+    "swatch": "swatches/206.png"
+  },
+  {
+    "code": "207",
+    "name": "Vermilion",
+    "names": {
+      "en": "Vermilion"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#ED3426",
+    "swatch": "swatches/207.png"
+  },
+  {
+    "code": "208",
+    "name": "Scarlet",
+    "names": {
+      "en": "Scarlet"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#E5283A",
+    "swatch": "swatches/208.png"
+  },
+  {
+    "code": "209",
+    "name": "Carmine",
+    "names": {
+      "en": "Carmine"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B9212C",
+    "swatch": "swatches/209.png"
+  },
+  {
+    "code": "210",
+    "name": "Purple",
+    "names": {
+      "en": "Purple"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#A72573",
+    "swatch": "swatches/210.png"
+  },
+  {
+    "code": "211",
+    "name": "Lilac",
+    "names": {
+      "en": "Lilac"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#4F2B5F",
+    "swatch": "swatches/211.png"
+  },
+  {
+    "code": "212",
+    "name": "Violet",
+    "names": {
+      "en": "Violet"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#402B67",
+    "swatch": "swatches/212.png"
+  },
+  {
+    "code": "213",
+    "name": "Periwinkle Blue",
+    "names": {
+      "en": "Periwinkle Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#625DA7",
+    "swatch": "swatches/213.png"
+  },
+  {
+    "code": "214",
+    "name": "Mauve",
+    "names": {
+      "en": "Mauve"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#8B5DA6",
+    "swatch": "swatches/214.png"
+  },
+  {
+    "code": "215",
+    "name": "Light Purple Violet",
+    "names": {
+      "en": "Light Purple Violet"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#AD92C5",
+    "swatch": "swatches/215.png"
+  },
+  {
+    "code": "216",
+    "name": "Pink",
+    "names": {
+      "en": "Pink"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D37DAF",
+    "swatch": "swatches/216.png"
+  },
+  {
+    "code": "217",
+    "name": "Sky Blue",
+    "names": {
+      "en": "Sky Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#7392CA",
+    "swatch": "swatches/217.png"
+  },
+  {
+    "code": "218",
+    "name": "Ultramarine Blue",
+    "names": {
+      "en": "Ultramarine Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#294295",
+    "swatch": "swatches/218.png"
+  },
+  {
+    "code": "219",
+    "name": "Prussian Blue",
+    "names": {
+      "en": "Prussian Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#193550",
+    "swatch": "swatches/219.png"
+  },
+  {
+    "code": "220",
+    "name": "Sapphire",
+    "names": {
+      "en": "Sapphire"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#233968",
+    "swatch": "swatches/220.png"
+  },
+  {
+    "code": "221",
+    "name": "Cobalt Blue",
+    "names": {
+      "en": "Cobalt Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#125EA9",
+    "swatch": "swatches/221.png"
+  },
+  {
+    "code": "222",
+    "name": "Light Blue",
+    "names": {
+      "en": "Light Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#1990CF",
+    "swatch": "swatches/222.png"
+  },
+  {
+    "code": "223",
+    "name": "Turquoise Blue",
+    "names": {
+      "en": "Turquoise Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#19BDDA",
+    "swatch": "swatches/223.png"
+  },
+  {
+    "code": "224",
+    "name": "Turquoise Green",
+    "names": {
+      "en": "Turquoise Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#15BBAE",
+    "swatch": "swatches/224.png"
+  },
+  {
+    "code": "225",
+    "name": "Lime Green",
+    "names": {
+      "en": "Lime Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#7FC788",
+    "swatch": "swatches/225.png"
+  },
+  {
+    "code": "226",
+    "name": "Jade Green",
+    "names": {
+      "en": "Jade Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#0BB28A",
+    "swatch": "swatches/226.png"
+  },
+  {
+    "code": "227",
+    "name": "Yellow Green",
+    "names": {
+      "en": "Yellow Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#71C058",
+    "swatch": "swatches/227.png"
+  },
+  {
+    "code": "228",
+    "name": "Grass Green",
+    "names": {
+      "en": "Grass Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#019550",
+    "swatch": "swatches/228.png"
+  },
+  {
+    "code": "229",
+    "name": "Emerald Green",
+    "names": {
+      "en": "Emerald Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#0B7149",
+    "swatch": "swatches/229.png"
+  },
+  {
+    "code": "230",
+    "name": "Dark Green",
+    "names": {
+      "en": "Dark Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#053B25",
+    "swatch": "swatches/230.png"
+  },
+  {
+    "code": "231",
+    "name": "Malachite Green",
+    "names": {
+      "en": "Malachite Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#0C6361",
+    "swatch": "swatches/231.png"
+  },
+  {
+    "code": "232",
+    "name": "Moss Green",
+    "names": {
+      "en": "Moss Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#5F6637",
+    "swatch": "swatches/232.png"
+  },
+  {
+    "code": "233",
+    "name": "Olive",
+    "names": {
+      "en": "Olive"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#6E633C",
+    "swatch": "swatches/233.png"
+  },
+  {
+    "code": "234",
+    "name": "Olive Brown",
+    "names": {
+      "en": "Olive Brown"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#765D3C",
+    "swatch": "swatches/234.png"
+  },
+  {
+    "code": "235",
+    "name": "Raw Umber",
+    "names": {
+      "en": "Raw Umber"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#47282A",
+    "swatch": "swatches/235.png"
+  },
+  {
+    "code": "236",
+    "name": "Brown",
+    "names": {
+      "en": "Brown"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#603226",
+    "swatch": "swatches/236.png"
+  },
+  {
+    "code": "237",
+    "name": "Russet",
+    "names": {
+      "en": "Russet"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#BD472F",
+    "swatch": "swatches/237.png"
+  },
+  {
+    "code": "238",
+    "name": "Ochre",
+    "names": {
+      "en": "Ochre"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D19C56",
+    "swatch": "swatches/238.png"
+  },
+  {
+    "code": "239",
+    "name": "Salmon Pink",
+    "names": {
+      "en": "Salmon Pink"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F69578",
+    "swatch": "swatches/239.png"
+  },
+  {
+    "code": "240",
+    "name": "Salmon",
+    "names": {
+      "en": "Salmon"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F9AB7A",
+    "swatch": "swatches/240.png"
+  },
+  {
+    "code": "241",
+    "name": "Light Olive",
+    "names": {
+      "en": "Light Olive"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#9AB23D",
+    "swatch": "swatches/241.png"
+  },
+  {
+    "code": "242",
+    "name": "Olive Yellow",
+    "names": {
+      "en": "Olive Yellow"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B6A134",
+    "swatch": "swatches/242.png"
+  },
+  {
+    "code": "243",
+    "name": "Pale Yellow",
+    "names": {
+      "en": "Pale Yellow"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FFF2AD",
+    "swatch": "swatches/243.png"
+  },
+  {
+    "code": "244",
+    "name": "White",
+    "names": {
+      "en": "White"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FFFFFF",
+    "swatch": "swatches/244.png"
+  },
+  {
+    "code": "245",
+    "name": "Light Grey",
+    "names": {
+      "en": "Light Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#ABC6D3",
+    "swatch": "swatches/245.png"
+  },
+  {
+    "code": "246",
+    "name": "Grey",
+    "names": {
+      "en": "Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#8A9E9F",
+    "swatch": "swatches/246.png"
+  },
+  {
+    "code": "247",
+    "name": "Dark Grey",
+    "names": {
+      "en": "Dark Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#4D5B5A",
+    "swatch": "swatches/247.png"
+  },
+  {
+    "code": "248",
+    "name": "Black",
+    "names": {
+      "en": "Black"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#000000",
+    "swatch": "swatches/248.png"
+  },
+  {
+    "code": "249",
+    "name": "Silver Grey",
+    "names": {
+      "en": "Silver Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": true,
+    "new": false,
+    "giant": false,
+    "hex": "#C9C5C4",
+    "swatch": "swatches/249.png"
+  },
+  {
+    "code": "250",
+    "name": "Pale Ochre",
+    "names": {
+      "en": "Pale Ochre"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#E7B15C",
+    "swatch": "swatches/250.png"
+  },
+  {
+    "code": "251",
+    "name": "Dark Yellow",
+    "names": {
+      "en": "Dark Yellow"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FCB136",
+    "swatch": "swatches/251.png"
+  },
+  {
+    "code": "252",
+    "name": "Golden Ochre",
+    "names": {
+      "en": "Golden Ochre"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": true,
+    "new": false,
+    "giant": false,
+    "hex": "#D87F34",
+    "swatch": "swatches/252.png"
+  },
+  {
+    "code": "253",
+    "name": "Burnt Orange",
+    "names": {
+      "en": "Burnt Orange"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#CD6834",
+    "swatch": "swatches/253.png"
+  },
+  {
+    "code": "254",
+    "name": "Grey Pink",
+    "names": {
+      "en": "Grey Pink"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#C39798",
+    "swatch": "swatches/254.png"
+  },
+  {
+    "code": "255",
+    "name": "Light Mauve",
+    "names": {
+      "en": "Light Mauve"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#A192B9",
+    "swatch": "swatches/255.png"
+  },
+  {
+    "code": "256",
+    "name": "Deep Salmon",
+    "names": {
+      "en": "Deep Salmon"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F3766A",
+    "swatch": "swatches/256.png"
+  },
+  {
+    "code": "257",
+    "name": "Cold Pink",
+    "names": {
+      "en": "Cold Pink"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#E62D89",
+    "swatch": "swatches/257.png"
+  },
+  {
+    "code": "258",
+    "name": "Rose Pink",
+    "names": {
+      "en": "Rose Pink"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D1205D",
+    "swatch": "swatches/258.png"
+  },
+  {
+    "code": "259",
+    "name": "Deep Magenta",
+    "names": {
+      "en": "Deep Magenta"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D01B4B",
+    "swatch": "swatches/259.png"
+  },
+  {
+    "code": "260",
+    "name": "Cadmium Red",
+    "names": {
+      "en": "Cadmium Red"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#EA4759",
+    "swatch": "swatches/260.png"
+  },
+  {
+    "code": "261",
+    "name": "Azure Violet",
+    "names": {
+      "en": "Azure Violet"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#2D296C",
+    "swatch": "swatches/261.png"
+  },
+  {
+    "code": "262",
+    "name": "Light Prussian Blue",
+    "names": {
+      "en": "Light Prussian Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#0D4B7A",
+    "swatch": "swatches/262.png"
+  },
+  {
+    "code": "263",
+    "name": "Medium Azure Violet",
+    "names": {
+      "en": "Medium Azure Violet"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#3F69B2",
+    "swatch": "swatches/263.png"
+  },
+  {
+    "code": "264",
+    "name": "Light Azure Violet",
+    "names": {
+      "en": "Light Azure Violet"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#73A5D8",
+    "swatch": "swatches/264.png"
+  },
+  {
+    "code": "265",
+    "name": "Ice Blue",
+    "names": {
+      "en": "Ice Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#93D3F3",
+    "swatch": "swatches/265.png"
+  },
+  {
+    "code": "266",
+    "name": "Pale Green",
+    "names": {
+      "en": "Pale Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#A1D292",
+    "swatch": "swatches/266.png"
+  },
+  {
+    "code": "267",
+    "name": "Olive Light",
+    "names": {
+      "en": "Olive Light"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#53A046",
+    "swatch": "swatches/267.png"
+  },
+  {
+    "code": "268",
+    "name": "Light Emerald Green",
+    "names": {
+      "en": "Light Emerald Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#16986C",
+    "swatch": "swatches/268.png"
+  },
+  {
+    "code": "269",
+    "name": "Light Moss Green",
+    "names": {
+      "en": "Light Moss Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#2E6335",
+    "swatch": "swatches/269.png"
+  },
+  {
+    "code": "270",
+    "name": "Green Grey",
+    "names": {
+      "en": "Green Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#364E57",
+    "swatch": "swatches/270.png"
+  },
+  {
+    "code": "271",
+    "name": "Verona Green",
+    "names": {
+      "en": "Verona Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#334C42",
+    "swatch": "swatches/271.png"
+  },
+  {
+    "code": "272",
+    "name": "Dark Cool Grey",
+    "names": {
+      "en": "Dark Cool Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#1C3549",
+    "swatch": "swatches/272.png"
+  },
+  {
+    "code": "273",
+    "name": "Ivory White",
+    "names": {
+      "en": "Ivory White"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F3F5F2",
+    "swatch": "swatches/273.png"
+  },
+  {
+    "code": "274",
+    "name": "Cream",
+    "names": {
+      "en": "Cream"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F4F4CB",
+    "swatch": "swatches/274.png"
+  },
+  {
+    "code": "275",
+    "name": "Vibrant Orange",
+    "names": {
+      "en": "Vibrant Orange"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#EF4E24",
+    "swatch": "swatches/275.png"
+  },
+  {
+    "code": "276",
+    "name": "Jazzberry Jam",
+    "names": {
+      "en": "Jazzberry Jam"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B81236",
+    "swatch": "swatches/276.png"
+  },
+  {
+    "code": "277",
+    "name": "Light Pink",
+    "names": {
+      "en": "Light Pink"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#EC6282",
+    "swatch": "swatches/277.png"
+  },
+  {
+    "code": "278",
+    "name": "Light Peach",
+    "names": {
+      "en": "Light Peach"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F7E8E5",
+    "swatch": "swatches/278.png"
+  },
+  {
+    "code": "279",
+    "name": "Millennial Pink",
+    "names": {
+      "en": "Millennial Pink"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F7ADB7",
+    "swatch": "swatches/279.png"
+  },
+  {
+    "code": "280",
+    "name": "Pure Pink",
+    "names": {
+      "en": "Pure Pink"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F0D9EB",
+    "swatch": "swatches/280.png"
+  },
+  {
+    "code": "281",
+    "name": "Light Purple",
+    "names": {
+      "en": "Light Purple"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D890BE",
+    "swatch": "swatches/281.png"
+  },
+  {
+    "code": "282",
+    "name": "Pastel Purple",
+    "names": {
+      "en": "Pastel Purple"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#9DA2BE",
+    "swatch": "swatches/282.png"
+  },
+  {
+    "code": "283",
+    "name": "Royal Purple",
+    "names": {
+      "en": "Royal Purple"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#944A96",
+    "swatch": "swatches/283.png"
+  },
+  {
+    "code": "284",
+    "name": "Purple Amethyst",
+    "names": {
+      "en": "Purple Amethyst"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#552F8C",
+    "swatch": "swatches/284.png"
+  },
+  {
+    "code": "285",
+    "name": "Ivory",
+    "names": {
+      "en": "Ivory"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F8F1E9",
+    "swatch": "swatches/285.png"
+  },
+  {
+    "code": "286",
+    "name": "Powder Blue",
+    "names": {
+      "en": "Powder Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D2E1F4",
+    "swatch": "swatches/286.png"
+  },
+  {
+    "code": "287",
+    "name": "Baby Blue",
+    "names": {
+      "en": "Baby Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#DFEBF9",
+    "swatch": "swatches/287.png"
+  },
+  {
+    "code": "288",
+    "name": "Powder Lime Blue",
+    "names": {
+      "en": "Powder Lime Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#95D4C7",
+    "swatch": "swatches/288.png"
+  },
+  {
+    "code": "289",
+    "name": "Ice Blue Light",
+    "names": {
+      "en": "Ice Blue Light"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#CCD6E0",
+    "swatch": "swatches/289.png"
+  },
+  {
+    "code": "290",
+    "name": "Light Blue",
+    "names": {
+      "en": "Light Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#62C1CB",
+    "swatch": "swatches/290.png"
+  },
+  {
+    "code": "291",
+    "name": "Light Ultramarine Blue",
+    "names": {
+      "en": "Light Ultramarine Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#379CD5",
+    "swatch": "swatches/291.png"
+  },
+  {
+    "code": "292",
+    "name": "Azura Blue",
+    "names": {
+      "en": "Azura Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#0077BF",
+    "swatch": "swatches/292.png"
+  },
+  {
+    "code": "293",
+    "name": "Brandies Blue",
+    "names": {
+      "en": "Brandies Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#1B4499",
+    "swatch": "swatches/293.png"
+  },
+  {
+    "code": "294",
+    "name": "Catalina Blue",
+    "names": {
+      "en": "Catalina Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#2D3574",
+    "swatch": "swatches/294.png"
+  },
+  {
+    "code": "295",
+    "name": "Bondi Blue",
+    "names": {
+      "en": "Bondi Blue"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#0089B5",
+    "swatch": "swatches/295.png"
+  },
+  {
+    "code": "296",
+    "name": "Aero Green",
+    "names": {
+      "en": "Aero Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B1C6C9",
+    "swatch": "swatches/296.png"
+  },
+  {
+    "code": "297",
+    "name": "Dark Turquoise",
+    "names": {
+      "en": "Dark Turquoise"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#006572",
+    "swatch": "swatches/297.png"
+  },
+  {
+    "code": "298",
+    "name": "Dark Sage",
+    "names": {
+      "en": "Dark Sage"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#52744E",
+    "swatch": "swatches/298.png"
+  },
+  {
+    "code": "299",
+    "name": "Light Emerald Green",
+    "names": {
+      "en": "Light Emerald Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#007A53",
+    "swatch": "swatches/299.png"
+  },
+  {
+    "code": "300",
+    "name": "Jade Green",
+    "names": {
+      "en": "Jade Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#10A9AE",
+    "swatch": "swatches/300.png"
+  },
+  {
+    "code": "301",
+    "name": "Bright Mint",
+    "names": {
+      "en": "Bright Mint"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#CAD5CF",
+    "swatch": "swatches/301.png"
+  },
+  {
+    "code": "302",
+    "name": "Willow Green",
+    "names": {
+      "en": "Willow Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#BBC67E",
+    "swatch": "swatches/302.png"
+  },
+  {
+    "code": "303",
+    "name": "Mint",
+    "names": {
+      "en": "Mint"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#8CD2C9",
+    "swatch": "swatches/303.png"
+  },
+  {
+    "code": "304",
+    "name": "Lemon Green",
+    "names": {
+      "en": "Lemon Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D0D257",
+    "swatch": "swatches/304.png"
+  },
+  {
+    "code": "305",
+    "name": "Chartreuse Green",
+    "names": {
+      "en": "Chartreuse Green"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#8DA139",
+    "swatch": "swatches/305.png"
+  },
+  {
+    "code": "306",
+    "name": "Dark Lemon Lime",
+    "names": {
+      "en": "Dark Lemon Lime"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#79AE50",
+    "swatch": "swatches/306.png"
+  },
+  {
+    "code": "307",
+    "name": "Cocoa Brown",
+    "names": {
+      "en": "Cocoa Brown"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#482E3B",
+    "swatch": "swatches/307.png"
+  },
+  {
+    "code": "308",
+    "name": "Dark Sepia",
+    "names": {
+      "en": "Dark Sepia"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#633A39",
+    "swatch": "swatches/308.png"
+  },
+  {
+    "code": "309",
+    "name": "Pastel Brown",
+    "names": {
+      "en": "Pastel Brown"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#7F6044",
+    "swatch": "swatches/309.png"
+  },
+  {
+    "code": "310",
+    "name": "Caramel",
+    "names": {
+      "en": "Caramel"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#87452F",
+    "swatch": "swatches/310.png"
+  },
+  {
+    "code": "311",
+    "name": "Tea Rose",
+    "names": {
+      "en": "Tea Rose"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FCE5D5",
+    "swatch": "swatches/311.png"
+  },
+  {
+    "code": "312",
+    "name": "Champagne",
+    "names": {
+      "en": "Champagne"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D3C48A",
+    "swatch": "swatches/312.png"
+  },
+  {
+    "code": "313",
+    "name": "Beige",
+    "names": {
+      "en": "Beige"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#C3AB76",
+    "swatch": "swatches/313.png"
+  },
+  {
+    "code": "314",
+    "name": "Linen",
+    "names": {
+      "en": "Linen"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D8D5CE",
+    "swatch": "swatches/314.png"
+  },
+  {
+    "code": "315",
+    "name": "Rose Brown",
+    "names": {
+      "en": "Rose Brown"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#CE8092",
+    "swatch": "swatches/315.png"
+  },
+  {
+    "code": "316",
+    "name": "Pastel Grey",
+    "names": {
+      "en": "Pastel Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B6B4B9",
+    "swatch": "swatches/316.png"
+  },
+  {
+    "code": "317",
+    "name": "Warm Grey",
+    "names": {
+      "en": "Warm Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D3CAC1",
+    "swatch": "swatches/317.png"
+  },
+  {
+    "code": "318",
+    "name": "Cloud Grey",
+    "names": {
+      "en": "Cloud Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#A6AEAF",
+    "swatch": "swatches/318.png"
+  },
+  {
+    "code": "319",
+    "name": "Neutral Grey",
+    "names": {
+      "en": "Neutral Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#828483",
+    "swatch": "swatches/319.png"
+  },
+  {
+    "code": "320",
+    "name": "Charcoal Grey",
+    "names": {
+      "en": "Charcoal Grey"
+    },
+    "transparency": null,
+    "pigments": [],
+    "lightfastness": null,
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#43444D",
+    "swatch": "swatches/320.png"
+  }
+]

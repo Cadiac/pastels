@@ -15,12 +15,12 @@ const ROWS: { name: string; offsets: number[] }[] = [
 
 function pick(
   all: ColorWithInventory[],
-  selfCode: string,
+  selfId: string,
   targetHue: number,
   count: number,
 ): ColorWithInventory[] {
   return all
-    .filter((c) => c.code !== selfCode && hexToHue(c.hex) < 360)
+    .filter((c) => c.id !== selfId && hexToHue(c.hex) < 360)
     .map((c) => ({ c, d: hueDistance(hexToHue(c.hex), targetHue) }))
     .filter((x) => x.d <= TOLERANCE)
     .sort((a, b) => a.d - b.d)
@@ -28,12 +28,20 @@ function pick(
     .map((x) => x.c);
 }
 
-/** Colour-theory companions for a colour, picked from the actual catalogue. */
-export function Harmonies({ code, hex }: { code: string; hex: string }) {
+/** Colour-theory companions, picked from the colour's own brand catalogue. */
+export function Harmonies({
+  selfId,
+  catalogue,
+  hex,
+}: {
+  selfId: string;
+  catalogue: string;
+  hex: string;
+}) {
   // Same key shape as the catalogue page, so this usually hits the cache.
   const { data } = useQuery({
-    queryKey: ["colors", { sort: "code" }],
-    queryFn: () => api.colors({ sort: "code" }),
+    queryKey: ["colors", { sort: "code", catalogue }],
+    queryFn: () => api.colors({ sort: "code", catalogue }),
   });
 
   const hue = hexToHue(hex);
@@ -43,8 +51,8 @@ export function Harmonies({ code, hex }: { code: string; hex: string }) {
     const perTarget = offsets.length === 1 ? 4 : 2;
     const seen = new Set<string>();
     const colors = offsets
-      .flatMap((o) => pick(data, code, (hue + o + 360) % 360, perTarget))
-      .filter((c) => !seen.has(c.code) && seen.add(c.code));
+      .flatMap((o) => pick(data, selfId, (hue + o + 360) % 360, perTarget))
+      .filter((c) => !seen.has(c.id) && seen.add(c.id));
     return { name, colors };
   }).filter((r) => r.colors.length > 0);
 
@@ -64,8 +72,8 @@ export function Harmonies({ code, hex }: { code: string; hex: string }) {
                 const owned = !!c.inventory;
                 return (
                   <Link
-                    key={c.code}
-                    to={`/c/${c.code}`}
+                    key={c.id}
+                    to={`/c/${c.id}`}
                     title={c.name}
                     className={`flex items-center gap-1.5 rounded-full border py-1 pl-1 pr-2 transition active:scale-95 ${
                       owned ? "border-stone-300 bg-white" : "border-stone-200 bg-white/40 opacity-70"

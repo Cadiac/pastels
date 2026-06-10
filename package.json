@@ -1,9 +1,9 @@
 {
-  "name": "sennelier-pastels",
+  "name": "pastels",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Personal inventory app for Sennelier oil pastels",
+  "description": "Personal inventory app for oil pastels",
   "packageManager": "pnpm@10.4.1",
   "engines": {
     "node": ">=22.5.0"
@@ -20,6 +20,8 @@
     "concurrently": "^9.1.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

@@ -20,10 +20,10 @@ A live instance runs at **pastels.cadi.ac**.
   analogous, triadic) picked from real catalogue colours, with owned ones
   marked.
 - **Installable PWA**, designed for phone and tablet use first.
-
-The catalogue currently covers the Sennelier oil pastel range (120 colours);
-the data model and UI aren't tied to a single brand, and more brands are on
-the way.
+- **Multiple brand catalogues** — currently Sennelier Oil Pastels (120
+  colours) and Mungyo Gallery Artists' Soft Oil Pastels (the MOPV-120
+  "Renewal Color" assortment, 120 colours), switchable in the app. Inventory,
+  favourites and notes are kept per colour across all of them.
 
 ## Stack
 
@@ -73,62 +73,84 @@ documented in [`deploy/`](deploy/README.md).
 
 ## Catalogue data
 
-The colour data lives in `data/` and the server seeds the database from it on
-first start.
+Colour data lives in `data/`, one directory per brand catalogue, and the
+server (re)seeds the database from it on every boot:
 
 | Path | What |
 |------|------|
-| `data/colors.json` | The catalogue — 120 entries (see schema below). |
-| `data/swatches/<code>.png` | Cropped swatch image of each colour's real stroke. |
-| `data/names.json` | Authoritative 6-language names, transcribed from the chart. |
-| `scripts/extract_colors.py` | Regenerates `colors.json` + swatches from the PDF. |
-| `Colourchart_Oilpastels.pdf` / `.png` | Original source chart. |
+| `data/catalogues.json` | The list of brand catalogues. |
+| `data/<brand>/colors.json` | One catalogue's colours (see schema below). |
+| `data/<brand>/swatches/<code>.png` | Cropped swatch image per colour. |
+| `data/<brand>/source/` | The original colour charts the data was extracted from. |
+| `data/sennelier/names.json` | Authoritative 6-language names, transcribed from the chart. |
+| `scripts/<brand>/extract_colors.py` | Regenerates that brand's `colors.json` + swatches. |
+
+Each colour is identified app-wide as `<catalogue>-<code>` (e.g.
+`sennelier-038`, `mungyo-201`), since plain codes collide across brands.
 
 ### `colors.json` schema
 
 ```json
 {
-  "code": "038",                     // colour code (string, may have leading zeros)
+  "code": "038",                     // brand colour code (string, may have leading zeros)
   "name": "Vermilion",               // English name (convenience copy of names.en)
-  "names": {                         // all six languages from the chart
+  "names": {                         // chart languages; "en" required, others optional
     "fr": "Vermillon", "en": "Vermilion", "de": "Zinnober",
     "es": "Bermellón", "it": "Vermiglione", "nl": "Vermiljoen"
   },
-  "transparency": "T",               // "T" (transparent) | "O" (opaque) | "T/O" (semi)
-  "pigments": ["PO 20", "PR 108"],   // Colour Index pigment codes; [] for the medium
-  "lightfastness": "I",              // "I" (***) | "II" (**) | "III" (*)  — I is most lightfast
-  "iridescent": false,               // true for the metallic / pearlescent range
+  "transparency": "T",               // "T" | "O" | "T/O", or null if unpublished
+  "pigments": ["PO 20", "PR 108"],   // Colour Index pigment codes; [] if unpublished
+  "lightfastness": "I",              // brand's own scale as printed, or null
+  "iridescent": false,               // true for metallic / pearlescent colours
   "new": false,                      // chart flagged the colour "New"
-  "giant": false,                    // also sold as a 78 ml "giant" stick (▲); only 001 & 023
-  "hex": "#E8503E",                  // representative colour sampled from the printed swatch
-  "swatch": "swatches/038.png"       // path to the cropped swatch image
+  "giant": false,                    // Sennelier 78 ml "giant" stick (▲); only 001 & 023
+  "hex": "#E8503E",                  // representative colour sampled from the chart swatch
+  "swatch": "swatches/038.png"       // path within the catalogue directory
 }
 ```
 
-`hex` is sampled from the *printed* chart swatch (median of the stroke
-pixels), so it approximates the pastel — good enough to render in a UI, not a
-colorimetric match. The catalogue includes the `221` Transparent medium and
-the iridescent metallics, which is how it comes to 120 entries.
+`hex` is sampled from the chart swatch (median of the stroke pixels), so it
+approximates the pastel — good enough to render in a UI, not a colorimetric
+match.
 
 ### Extracting the Sennelier chart
 
-The catalogue was extracted from Sennelier's official colour chart PDF.
-Regenerating it requires [poppler](https://poppler.freedesktop.org/)
-(`pdftotext`, `pdftoppm`); no Python packages needed:
+Extracted from Sennelier's official colour chart PDF, which has a text layer.
+The catalogue includes the `221` Transparent medium and the iridescent
+metallics, which is how it comes to 120 entries. Regenerating requires
+[poppler](https://poppler.freedesktop.org/) (`pdftotext`, `pdftoppm`); no
+Python packages needed:
 
 ```sh
-python3 scripts/extract_colors.py
+python3 scripts/sennelier/extract_colors.py
 ```
 
 The chart is an 8-band × 15-column grid. Each cell is anchored on its 3-digit
 code (`pdftotext -bbox` gives word coordinates). The tricky part is that long
 names and pigment lists overflow horizontally into neighbouring columns, so:
 
-- **names** come from `data/names.json` (read directly from the chart); the
-  geometric FR name is parsed only as a cross-check.
+- **names** come from `data/sennelier/names.json` (read directly from the
+  chart); the geometric FR name is parsed only as a cross-check.
 - **transparency + pigments** are recovered by splitting each band's pigment row
   on the `T`/`O`/`T/O` tokens (short, reliably anchored at each cell's left edge —
   every band splits into exactly 15 cells).
 - **lightfastness** comes from the `*` group at each cell's line-3 anchor.
 - **swatches/hex** are cropped/sampled from a render of the region just above
   each code (`[code.x, next_code.x)`).
+
+### Extracting the Mungyo chart
+
+Extracted from Mungyo's own MOPV colour chart image (`data/mungyo/source/`),
+whose bottom "MOPV 120 COLORS _ Renewal Color" section is the current
+MOPV-120* assortment. The chart is a raster with no text layer, so the
+extractor works geometrically: it fits the 6×20 swatch grid from saturation
+histograms, samples each swatch's median colour, and OCRs each cell's
+"`<code> <Name>`" with the macOS Vision framework — two passes (full strip +
+per-cell 4× upscale) that cross-check each other, plus a small human-verified
+fix-up table for the handful of cells both passes misread. Mungyo publishes
+no pigment, transparency or lightfastness data, so those fields are null.
+macOS-only (`sips` + Vision):
+
+```sh
+python3 scripts/mungyo/extract_colors.py
+```

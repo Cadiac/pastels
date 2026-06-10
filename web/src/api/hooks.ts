@@ -10,36 +10,36 @@ export function useSetInventory() {
   const qc = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ code, input }: { code: string; input: InventoryInput }) =>
-      api.setInventory(code, input),
+    mutationFn: ({ id, input }: { id: string; input: InventoryInput }) =>
+      api.setInventory(id, input),
 
-    onMutate: async ({ code, input }) => {
+    onMutate: async ({ id, input }) => {
       await qc.cancelQueries({ queryKey: ["colors"] });
       const previous = qc.getQueriesData<ColorWithInventory[]>({ queryKey: ["colors"] });
-      const previousDetail = qc.getQueryData<ColorWithInventory>(["color", code]);
+      const previousDetail = qc.getQueryData<ColorWithInventory>(["color", id]);
 
       const nextInventory =
         input.quantity > 0 ? { quantity: input.quantity, level: input.level } : null;
       const patch = (c: ColorWithInventory): ColorWithInventory =>
-        c.code === code ? { ...c, inventory: nextInventory } : c;
+        c.id === id ? { ...c, inventory: nextInventory } : c;
 
       qc.setQueriesData<ColorWithInventory[]>({ queryKey: ["colors"] }, (list) =>
         list?.map(patch),
       );
-      if (previousDetail) qc.setQueryData(["color", code], patch(previousDetail));
+      if (previousDetail) qc.setQueryData(["color", id], patch(previousDetail));
 
-      return { previous, previousDetail, code };
+      return { previous, previousDetail, id };
     },
 
     onError: (_err, _vars, ctx) => {
       ctx?.previous.forEach(([key, data]) => qc.setQueryData(key, data));
-      if (ctx?.previousDetail) qc.setQueryData(["color", ctx.code], ctx.previousDetail);
+      if (ctx?.previousDetail) qc.setQueryData(["color", ctx.id], ctx.previousDetail);
     },
 
-    onSettled: (_data, _err, { code }) => {
+    onSettled: (_data, _err, { id }) => {
       qc.invalidateQueries({ queryKey: ["colors"] });
-      qc.invalidateQueries({ queryKey: ["color", code] });
-      qc.invalidateQueries({ queryKey: ["history", code] });
+      qc.invalidateQueries({ queryKey: ["color", id] });
+      qc.invalidateQueries({ queryKey: ["history", id] });
     },
   });
 }
@@ -49,33 +49,33 @@ export function useSetMeta() {
   const qc = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ code, input }: { code: string; input: ColorMetaInput }) =>
-      api.setMeta(code, input),
+    mutationFn: ({ id, input }: { id: string; input: ColorMetaInput }) =>
+      api.setMeta(id, input),
 
-    onMutate: async ({ code, input }) => {
+    onMutate: async ({ id, input }) => {
       await qc.cancelQueries({ queryKey: ["colors"] });
       const previous = qc.getQueriesData<ColorWithInventory[]>({ queryKey: ["colors"] });
-      const previousDetail = qc.getQueryData<ColorWithInventory>(["color", code]);
+      const previousDetail = qc.getQueryData<ColorWithInventory>(["color", id]);
 
       const patch = (c: ColorWithInventory): ColorWithInventory =>
-        c.code === code ? { ...c, ...input, notes: input.notes !== undefined ? input.notes : c.notes } : c;
+        c.id === id ? { ...c, ...input, notes: input.notes !== undefined ? input.notes : c.notes } : c;
 
       qc.setQueriesData<ColorWithInventory[]>({ queryKey: ["colors"] }, (list) =>
         list?.map(patch),
       );
-      if (previousDetail) qc.setQueryData(["color", code], patch(previousDetail));
+      if (previousDetail) qc.setQueryData(["color", id], patch(previousDetail));
 
-      return { previous, previousDetail, code };
+      return { previous, previousDetail, id };
     },
 
     onError: (_err, _vars, ctx) => {
       ctx?.previous.forEach(([key, data]) => qc.setQueryData(key, data));
-      if (ctx?.previousDetail) qc.setQueryData(["color", ctx.code], ctx.previousDetail);
+      if (ctx?.previousDetail) qc.setQueryData(["color", ctx.id], ctx.previousDetail);
     },
 
-    onSettled: (_data, _err, { code }) => {
+    onSettled: (_data, _err, { id }) => {
       qc.invalidateQueries({ queryKey: ["colors"] });
-      qc.invalidateQueries({ queryKey: ["color", code] });
+      qc.invalidateQueries({ queryKey: ["color", id] });
     },
   });
 }
