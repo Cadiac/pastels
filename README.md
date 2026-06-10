@@ -1,14 +1,47 @@
-# Sennelier Oil Pastels
+# Pastels
 
-A mobile-first web app to track a personal inventory of Sennelier oil pastels,
-built on a structured catalogue of the **120** colours extracted from the
-official colour chart (`Colourchart_Oilpastels.pdf`).
+A mobile-first web app for keeping track of an oil pastel collection. Browse
+the full colour catalogue, mark what you own and how much of each stick is
+left, and keep favourites, a want list, and notes per colour.
 
-## Web app
+A live instance runs at **pastels.cadi.ac**.
 
-Monorepo (pnpm workspaces): `web/` (React + Vite + Tailwind), `server/`
-(Hono + `node:sqlite`), `shared/` (Zod schemas + types used by both). Username/
-password login, per-colour quantity + a remaining-level chip (Full → Empty).
+## Features
+
+- **Catalogue browser** — every colour as a swatch card, searchable by name
+  (in six languages), code, or pigment; filter by owned / missing / running
+  low / favourites / wanted; sort by code, name, hue, or value (lightness);
+  grid and list views.
+- **Inventory** — stick count per colour plus a "remaining" level for the
+  stick in use (Full → Empty), with a usage history of every change.
+- **Favourites, want list, notes** — per-colour, per-user.
+- **Colour detail pages** — pigment, transparency and lightfastness data, a
+  value-scale placement, and harmonic colour suggestions (complementary,
+  analogous, triadic) picked from real catalogue colours, with owned ones
+  marked.
+- **Installable PWA**, designed for phone and tablet use first.
+
+The catalogue currently covers the Sennelier oil pastel range (120 colours);
+the data model and UI aren't tied to a single brand, and more brands are on
+the way.
+
+## Stack
+
+pnpm workspace monorepo:
+
+| Package | What |
+|---------|------|
+| `web/` | React + Vite + Tailwind SPA |
+| `server/` | Hono API on Node's built-in `node:sqlite` |
+| `shared/` | Zod schemas, types and colour math used by both |
+
+Accounts are username/password with session cookies; each user sees only
+their own inventory.
+
+## Development
+
+Requires Node ≥ 22.5 (for `node:sqlite` — no native modules, so it runs on
+any recent-Node host).
 
 ```sh
 pnpm install
@@ -16,39 +49,32 @@ pnpm seed     # create SQLite db (server/var/app.db) + load the catalogue
 pnpm dev      # web on http://localhost:5173, API on :3000 (Vite proxies /api, /swatches)
 ```
 
-Open `http://localhost:5173`, register an account, and browse. Other scripts:
-`pnpm build` + `pnpm start` (single Node process serving API + `web/dist`),
-`pnpm test`, `pnpm typecheck`.
+Open `http://localhost:5173` and register an account. Delete
+`server/var/app.db` to reset the local database.
 
-- **Requirements:** Node ≥ 22.5 (uses the built-in `node:sqlite`; no native
-  build needed — portable to any recent-Node host). Register an account in the
-  app to get started; delete `server/var/app.db` to reset the local db.
-- **Auth:** session cookie; registration is open. OAuth social login is a planned
-  follow-up (the schema leaves room for it).
+Other scripts: `pnpm build` + `pnpm start` (single Node process serving the
+API and `web/dist`), `pnpm test`, `pnpm typecheck`.
 
 ## Deployment
 
-A live instance runs at **pastels.cadi.ac**, deployed without Docker: the single
-Node process (serving the API, the built SPA, and the swatch images) runs as a
-**systemd** service behind **nginx**, which terminates TLS via **Let's Encrypt**.
-Data is the built-in `node:sqlite` file under `server/var/` — gitignored and
-**persisted across redeploys**.
+The production instance runs the single Node process (API, built SPA, and
+swatch images) as a systemd service behind nginx, which terminates TLS via
+Let's Encrypt. The SQLite database lives under `server/var/` — gitignored and
+persisted across redeploys.
 
-Update after pushing to `main` (on the server, as root):
+To update after pushing to `main` (on the server, as root):
 
 ```sh
 bash /opt/pastels/deploy/update.sh   # git pull → pnpm install → build → restart
 ```
 
-First-time server provisioning (Node, the systemd unit, the nginx site, and
-certbot) is scripted in [`deploy/`](deploy/README.md).
+First-time provisioning (Node, the systemd unit, the nginx site, certbot) is
+documented in [`deploy/`](deploy/README.md).
 
-## Colour data
+## Catalogue data
 
-Structured catalogue extracted from the official chart; the app seeds from it and
-the extractor (`scripts/extract_colors.py`) remains its single source of truth.
-
-## Files
+The colour data lives in `data/` and the server seeds the database from it on
+first start.
 
 | Path | What |
 |------|------|
@@ -58,11 +84,11 @@ the extractor (`scripts/extract_colors.py`) remains its single source of truth.
 | `scripts/extract_colors.py` | Regenerates `colors.json` + swatches from the PDF. |
 | `Colourchart_Oilpastels.pdf` / `.png` | Original source chart. |
 
-## `colors.json` schema
+### `colors.json` schema
 
 ```json
 {
-  "code": "038",                     // Sennelier colour code (string, may have leading zeros)
+  "code": "038",                     // colour code (string, may have leading zeros)
   "name": "Vermilion",               // English name (convenience copy of names.en)
   "names": {                         // all six languages from the chart
     "fr": "Vermillon", "en": "Vermilion", "de": "Zinnober",
@@ -79,25 +105,24 @@ the extractor (`scripts/extract_colors.py`) remains its single source of truth.
 }
 ```
 
-Notes:
-- `hex` is sampled from the *printed* chart swatch (median of the stroke pixels),
-  so it approximates the pastel — good enough to render in a UI, not a colorimetric match.
-- The catalogue includes `221` Transparent medium and the iridescent metallics
-  (`111`–`135`, `125`, `123`), which is why the count is 120 cells.
+`hex` is sampled from the *printed* chart swatch (median of the stroke
+pixels), so it approximates the pastel — good enough to render in a UI, not a
+colorimetric match. The catalogue includes the `221` Transparent medium and
+the iridescent metallics, which is how it comes to 120 entries.
 
-## Regenerating
+### Extracting the Sennelier chart
 
-Requires [poppler](https://poppler.freedesktop.org/) (`pdftotext`, `pdftoppm`); no
-Python packages needed.
+The catalogue was extracted from Sennelier's official colour chart PDF.
+Regenerating it requires [poppler](https://poppler.freedesktop.org/)
+(`pdftotext`, `pdftoppm`); no Python packages needed:
 
 ```sh
 python3 scripts/extract_colors.py
 ```
 
-### How it works
 The chart is an 8-band × 15-column grid. Each cell is anchored on its 3-digit
 code (`pdftotext -bbox` gives word coordinates). The tricky part is that long
-names and pigment lists **overflow horizontally** into neighbouring columns, so:
+names and pigment lists overflow horizontally into neighbouring columns, so:
 
 - **names** come from `data/names.json` (read directly from the chart); the
   geometric FR name is parsed only as a cross-check.
