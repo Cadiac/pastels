@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { LogOut } from "lucide-react";
 import {
@@ -61,10 +61,22 @@ export function Catalog() {
   const [owned, setOwned] = useState<OwnedFilter>(() => loadPrefs().owned);
   const [sort, setSort] = useState<Sort>(() => loadPrefs().sort);
   const [view, setView] = useState<"grid" | "list">(() => loadPrefs().view);
+  const [stuck, setStuck] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     localStorage.setItem(PREFS_KEY, JSON.stringify({ owned, sort, view }));
   }, [owned, sort, view]);
+
+  // The filter bar "lifts" (shadow + border) only once it's actually stuck:
+  // a zero-height sentinel right above it leaves the viewport exactly then.
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setStuck(!e.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   // Fetch the full catalogue (server sorts); search/owned are filtered locally.
   const { data, isLoading, isError } = useQuery({
@@ -88,7 +100,9 @@ export function Catalog() {
       <div className="mx-auto w-full max-w-[1280px] px-3 pt-3">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-bold leading-none text-stone-900">Oil Pastels - Sennelier</h1>
+            <h1 className="font-display text-xl font-bold leading-none text-stone-900">
+              Oil Pastels - Sennelier
+            </h1>
             <p className="mt-0.5 text-xs text-stone-500">
               {ownedCount}/{all.length} owned
               {lowCount > 0 && <> · {lowCount} low</>}
@@ -105,7 +119,12 @@ export function Catalog() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-10 border-b border-black/10 bg-[#f3ebd5]/90 backdrop-blur">
+      <div ref={sentinelRef} aria-hidden />
+      <header
+        className={`sticky top-0 z-10 border-b bg-[#f3ebd5]/90 backdrop-blur transition-[box-shadow,border-color] duration-200 ${
+          stuck ? "border-black/10 shadow-md shadow-stone-900/5" : "border-transparent"
+        }`}
+      >
         <div className="mx-auto max-w-[1280px] px-3 py-2">
           <FilterBar
             q={q}
@@ -123,7 +142,19 @@ export function Catalog() {
       </header>
 
       <main className="mx-auto w-full max-w-[1280px] flex-1 animate-rise-in p-3">
-        {isLoading && <p className="py-12 text-center text-sm text-stone-500">Loading…</p>}
+        {isLoading && (
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+            {Array.from({ length: 12 }, (_, i) => (
+              <div key={i} className="animate-pulse overflow-hidden rounded-card bg-white/60 ring-1 ring-black/5">
+                <div className="h-28 w-full bg-stone-200/70" />
+                <div className="flex flex-col gap-2 p-2.5">
+                  <div className="h-3.5 w-2/3 rounded-full bg-stone-200/80" />
+                  <div className="h-6 w-16 rounded-full bg-stone-100" />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
         {isError && (
           <p className="py-12 text-center text-sm text-red-500">Couldn’t load the catalogue.</p>
         )}

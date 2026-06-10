@@ -1,4 +1,4 @@
-import { type MouseEvent } from "react";
+import { type CSSProperties, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { Bookmark, Heart, Plus, Sparkles, Trash2 } from "lucide-react";
 import { isLight, type ColorWithInventory, type Level } from "shared";
@@ -105,7 +105,7 @@ export function ColorCard({ color, view }: Props) {
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1">
             <span
-              className={`truncate text-sm font-semibold ${owned ? "text-stone-800" : "text-stone-400"}`}
+              className={`truncate font-display text-[15px] font-semibold ${owned ? "text-stone-800" : "text-stone-400"}`}
             >
               {color.name}
             </span>
@@ -126,8 +126,9 @@ export function ColorCard({ color, view }: Props) {
   return (
     <Link
       to={`/c/${color.code}`}
+      style={{ "--tint": color.hex } as CSSProperties}
       className={`flex flex-col overflow-hidden rounded-card ring-1 transition active:scale-[0.99] hover:-translate-y-px ${
-        owned ? "bg-white shadow-md ring-black/5 hover:shadow-lg" : "bg-white/25 ring-black/10"
+        owned ? "bg-white shadow-tinted ring-black/5 hover:shadow-tinted-lg" : "bg-white/25 ring-black/10"
       }`}
     >
       {/* colour hero with a corner code chip → name → controls */}
@@ -135,6 +136,9 @@ export function ColorCard({ color, view }: Props) {
         style={{ backgroundColor: color.hex }}
         className="relative h-28 w-full border-b border-black/[0.06]"
       >
+        {color.iridescent && (
+          <div className="pointer-events-none absolute inset-0 animate-shimmer bg-gradient-to-br from-white/0 via-white/25 to-white/0 bg-[length:300%_300%]" />
+        )}
         <span
           style={{ backgroundColor: codeChipBg, color: color.hex }}
           className="absolute left-2 top-2 rounded-chip px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none shadow-sm"
@@ -165,7 +169,7 @@ export function ColorCard({ color, view }: Props) {
       <div className="flex flex-1 flex-col p-2.5">
         <div className="flex items-center gap-1.5">
           <span
-            className={`min-w-0 truncate text-sm font-semibold leading-tight ${
+            className={`min-w-0 truncate font-display text-[15px] font-semibold leading-tight ${
               owned ? "text-stone-900" : "text-stone-400"
             }`}
           >

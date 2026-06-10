@@ -1,8 +1,14 @@
 import { useState, type FormEvent } from "react";
 import { Navigate } from "react-router-dom";
-import { CredentialsSchema } from "shared";
+import { CredentialsSchema, hexToHue } from "shared";
 import { useAuth } from "../auth/AuthProvider";
 import { ApiError } from "../api/client";
+import { CATALOG_HEXES } from "../rainbow";
+
+// Every colour in the range, hue-ordered, as one thin decorative band.
+const RAINBOW = `linear-gradient(to right, ${[...CATALOG_HEXES]
+  .sort((a, b) => hexToHue(a) - hexToHue(b))
+  .join(", ")})`;
 
 export function Login() {
   const { user, loading, login, register } = useAuth();
@@ -35,10 +41,17 @@ export function Login() {
   return (
     <div className="flex min-h-full items-center justify-center p-4">
       <div className="w-full max-w-sm">
-        <h1 className="mb-1 text-center text-2xl font-bold text-stone-900">Oil Pastels</h1>
-        <p className="mb-6 text-center text-sm text-stone-500">
+        <h1 className="mb-1 text-center font-display text-3xl font-bold text-stone-900">
+          Oil Pastels
+        </h1>
+        <p className="mb-5 text-center text-sm text-stone-500">
           {mode === "login" ? "Sign in to your inventory" : "Create an account"}
         </p>
+        <div
+          style={{ background: RAINBOW }}
+          className="mx-auto mb-6 h-1.5 w-48 rounded-full"
+          aria-hidden
+        />
 
         <form onSubmit={submit} className="flex flex-col gap-3 rounded-card bg-white p-5 text-stone-800 shadow-md ring-1 ring-black/5">
           <label className="flex flex-col gap-1 text-sm font-medium text-stone-700">

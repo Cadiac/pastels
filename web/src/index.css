@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource-variable/fraunces";
 
 /* Single source of truth for corner rounding. Adjust these to restyle the whole
    app: `rounded-card` (cards/panels/menus/inputs), `rounded-chip` (small chips).
@@ -6,6 +7,10 @@
 @theme {
   --radius-card: 1rem;
   --radius-chip: 0.375rem;
+
+  /* Display face for colour names & titles — warm, printed-catalogue feel.
+     UI controls stay on the system sans. */
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
 
   /* Micro-interactions: a springy pop for toggles/counters, a quick scale-fade
      for menus, and a gentle rise for page content. Kept deliberately subtle —
@@ -45,6 +50,31 @@
       transform: none;
     }
   }
+
+  /* Slow sheen sweep for iridescent colours' hero blocks. */
+  --animate-shimmer: shimmer 4s ease-in-out infinite;
+
+  @keyframes shimmer {
+    0% {
+      background-position: 150% 150%;
+    }
+    100% {
+      background-position: -50% -50%;
+    }
+  }
+}
+
+/* Shadows tinted by the card's own colour (set `--tint` inline): colourful
+   cards cast colourful shadows instead of dirty grey ones. */
+@utility shadow-tinted {
+  box-shadow:
+    0 1px 2px color-mix(in oklab, var(--tint, #57534e) 20%, transparent),
+    0 6px 16px -6px color-mix(in oklab, var(--tint, #57534e) 32%, transparent);
+}
+@utility shadow-tinted-lg {
+  box-shadow:
+    0 2px 4px color-mix(in oklab, var(--tint, #57534e) 22%, transparent),
+    0 12px 28px -8px color-mix(in oklab, var(--tint, #57534e) 45%, transparent);
 }
 
 /* Tailwind v4's preflight leaves buttons at the browser default (cursor: default);
@@ -93,4 +123,17 @@ body {
   -webkit-tap-highlight-color: transparent;
   background: #f3ebd5; /* warm cream — light & fresh, matches the detail view */
   color: #292524; /* stone-800 */
+}
+
+/* Paper grain: a faint tiled noise over everything, so the cream reads as
+   paper stock rather than flat beige. Non-interactive and very low contrast. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }

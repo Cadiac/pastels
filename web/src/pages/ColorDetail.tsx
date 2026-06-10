@@ -58,7 +58,20 @@ export function ColorDetail() {
   const favPop = usePop(color?.favorite);
   const wantPop = usePop(color?.want);
 
-  if (isLoading) return <p className="p-8 text-center text-sm text-stone-300">Loading…</p>;
+  if (isLoading)
+    return (
+      <div className="mx-auto min-h-full w-full max-w-[1280px] animate-pulse">
+        <div className="h-44 w-full bg-stone-200/80" />
+        <div className="grid gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6">
+          <div className="flex flex-col gap-6">
+            <div className="h-10 rounded-full bg-white/60" />
+            <div className="h-36 rounded-card bg-white/60" />
+            <div className="h-16 max-w-[260px] rounded-card bg-white/60" />
+          </div>
+          <div className="h-44 rounded-card bg-white/40" />
+        </div>
+      </div>
+    );
   if (isError || !color)
     return <p className="p-8 text-center text-sm text-red-300">Colour not found.</p>;
 
@@ -90,7 +103,10 @@ export function ColorDetail() {
   return (
     <div className="mx-auto min-h-full w-full max-w-[1280px] bg-[#f3ebd5] text-stone-800">
       {/* colour hero — the chosen colour, with name and a popping ID chip */}
-      <div style={{ backgroundColor: color.hex, color: fg }} className="px-4 pb-6 pt-3">
+      <div style={{ backgroundColor: color.hex, color: fg }} className="relative px-4 pb-6 pt-3">
+        {color.iridescent && (
+          <div className="pointer-events-none absolute inset-0 animate-shimmer bg-gradient-to-br from-white/0 via-white/20 to-white/0 bg-[length:300%_300%]" />
+        )}
         <Link
           to="/"
           className="-ml-2 inline-flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-medium opacity-90 transition active:bg-black/10"
@@ -100,7 +116,7 @@ export function ColorDetail() {
 
         <div className="mt-3 flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h1 className="flex items-center gap-2 text-2xl font-bold leading-tight">
+            <h1 className="flex items-center gap-2 font-display text-3xl font-bold leading-tight">
               {color.name}
               {color.iridescent && <Sparkles size={20} className="shrink-0 opacity-90" />}
             </h1>
@@ -122,8 +138,14 @@ export function ColorDetail() {
         </div>
       </div>
 
-      {/* content — single column on phones, two columns on tablet+ */}
-      <div className="grid animate-rise-in gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16">
+      {/* content — single column on phones, two columns on tablet+.
+          The hero's colour bleeds softly into the page, like pigment on paper. */}
+      <div
+        style={{
+          background: `linear-gradient(to bottom, color-mix(in oklab, ${color.hex} 14%, transparent), transparent 260px)`,
+        }}
+        className="grid animate-rise-in gap-x-10 gap-y-6 p-4 md:grid-cols-2 md:p-6 lg:gap-x-16"
+      >
         <div className="flex flex-col gap-6">
           {/* Favourite / want list toggles */}
           <div className="flex gap-2">
