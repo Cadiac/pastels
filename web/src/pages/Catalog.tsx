@@ -123,7 +123,7 @@ export function Catalog() {
 
       <div ref={sentinelRef} aria-hidden />
       <header
-        className={`sticky top-0 z-10 border-b bg-[#f3ebd5]/90 backdrop-blur transition-[box-shadow,border-color] duration-200 ${
+        className={`sticky top-0 z-10 border-b bg-[#f3ebd5] transition-[box-shadow,border-color] duration-200 ${
           stuck ? "border-black/10 shadow-md shadow-stone-900/5" : "border-transparent"
         }`}
       >
