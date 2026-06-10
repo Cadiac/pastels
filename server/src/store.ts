@@ -64,12 +64,15 @@ const SELECT = `
 `;
 
 export function getColorsForUser(userId: number, catalogue?: string): ColorWithInventory[] {
+  // length-aware code order: Holbein's "5A-1" sorts before "10A-1"
   const rows = (
     catalogue
       ? db
-          .prepare(`${SELECT} WHERE c.catalogue = @catalogue ORDER BY c.code`)
+          .prepare(`${SELECT} WHERE c.catalogue = @catalogue ORDER BY length(c.code), c.code`)
           .all({ userId, catalogue })
-      : db.prepare(`${SELECT} ORDER BY c.catalogue, c.code`).all({ userId })
+      : db
+          .prepare(`${SELECT} ORDER BY c.catalogue, length(c.code), c.code`)
+          .all({ userId })
   ) as unknown as ColorRow[];
   return rows.map(mapRow);
 }

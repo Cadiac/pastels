@@ -51,7 +51,7 @@ describe("API smoke test", () => {
     const cats = await app.request("/api/catalogues", { headers: { cookie } });
     expect(cats.status).toBe(200);
     const catList = (await cats.json()) as Array<{ id: string; total: number; owned: number }>;
-    expect(catList.map((c) => c.id)).toEqual(["sennelier", "mungyo", "vangogh"]);
+    expect(catList.map((c) => c.id)).toEqual(["sennelier", "mungyo", "vangogh", "holbein"]);
     expect(catList.find((c) => c.id === "sennelier")).toMatchObject({ total: 120, owned: 0 });
 
     const put = await app.request("/api/inventory/sennelier-038", {

@@ -27,6 +27,10 @@ const LIGHTFAST: Record<string, string> = {
   "++": "25–100 years (++)",
   "+": "10–25 years (+)",
   o: "0–10 years (o)",
+  // Holbein's permanency stars
+  "***": "Absolutely permanent (***)",
+  "**": "Permanent (**)",
+  "*": "Moderately durable (*)",
 };
 
 function describeEvent(e: HistoryEvent): string {

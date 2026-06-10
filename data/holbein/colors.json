@@ -1,0 +1,2837 @@
+[
+  {
+    "code": "5A-1",
+    "name": "Hansa Yellow",
+    "names": {
+      "en": "Hansa Yellow",
+      "fr": "Jaune de Hansa Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 3"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F5EE3C",
+    "swatch": "swatches/5A-1.png"
+  },
+  {
+    "code": "5A-3",
+    "name": "Hansa Yellow",
+    "names": {
+      "en": "Hansa Yellow",
+      "fr": "Jaune de Hansa Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 3"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FBF7A8",
+    "swatch": "swatches/5A-3.png"
+  },
+  {
+    "code": "5A-5",
+    "name": "Hansa Yellow",
+    "names": {
+      "en": "Hansa Yellow",
+      "fr": "Jaune de Hansa Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 3"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F9F8CA",
+    "swatch": "swatches/5A-5.png"
+  },
+  {
+    "code": "5B-1",
+    "name": "Chrome Yellow",
+    "names": {
+      "en": "Chrome Yellow",
+      "fr": "Jaune de Chrome Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PY 83"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F8EF25",
+    "swatch": "swatches/5B-1.png"
+  },
+  {
+    "code": "5B-3",
+    "name": "Chrome Yellow",
+    "names": {
+      "en": "Chrome Yellow",
+      "fr": "Jaune de Chrome Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PY 83"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F6F16F",
+    "swatch": "swatches/5B-3.png"
+  },
+  {
+    "code": "5B-5",
+    "name": "Chrome Yellow",
+    "names": {
+      "en": "Chrome Yellow",
+      "fr": "Jaune de Chrome Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PY 83"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F8F7BE",
+    "swatch": "swatches/5B-5.png"
+  },
+  {
+    "code": "5C-1",
+    "name": "Antique Yellow",
+    "names": {
+      "en": "Antique Yellow",
+      "fr": "Jaune Antique Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 83",
+      "PO 43"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F9AE1A",
+    "swatch": "swatches/5C-1.png"
+  },
+  {
+    "code": "5C-3",
+    "name": "Antique Yellow",
+    "names": {
+      "en": "Antique Yellow",
+      "fr": "Jaune Antique Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 83",
+      "PO 43"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FECA72",
+    "swatch": "swatches/5C-3.png"
+  },
+  {
+    "code": "5C-5",
+    "name": "Antique Yellow",
+    "names": {
+      "en": "Antique Yellow",
+      "fr": "Jaune Antique Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 83",
+      "PO 43"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FBF5A1",
+    "swatch": "swatches/5C-5.png"
+  },
+  {
+    "code": "10A-1",
+    "name": "Antique Orange",
+    "names": {
+      "en": "Antique Orange",
+      "fr": "Orangé Antique Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PO 43",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F5822B",
+    "swatch": "swatches/10A-1.png"
+  },
+  {
+    "code": "10A-3",
+    "name": "Antique Orange",
+    "names": {
+      "en": "Antique Orange",
+      "fr": "Orangé Antique Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PO 43",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FAB17D",
+    "swatch": "swatches/10A-3.png"
+  },
+  {
+    "code": "10A-5",
+    "name": "Antique Orange",
+    "names": {
+      "en": "Antique Orange",
+      "fr": "Orangé Antique Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PO 43",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FDDCCC",
+    "swatch": "swatches/10A-5.png"
+  },
+  {
+    "code": "10B-1",
+    "name": "Vermilion",
+    "names": {
+      "en": "Vermilion",
+      "fr": "Vermilion Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PO 34"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F2673D",
+    "swatch": "swatches/10B-1.png"
+  },
+  {
+    "code": "10B-3",
+    "name": "Vermilion",
+    "names": {
+      "en": "Vermilion",
+      "fr": "Vermilion Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PO 34"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FAB27A",
+    "swatch": "swatches/10B-3.png"
+  },
+  {
+    "code": "10B-5",
+    "name": "Vermilion",
+    "names": {
+      "en": "Vermilion",
+      "fr": "Vermilion Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PO 34"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FCC8AB",
+    "swatch": "swatches/10B-5.png"
+  },
+  {
+    "code": "13A-1",
+    "name": "Scarlet",
+    "names": {
+      "en": "Scarlet",
+      "fr": "Écarlate Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PO 34"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#E24D4C",
+    "swatch": "swatches/13A-1.png"
+  },
+  {
+    "code": "13A-3",
+    "name": "Scarlet",
+    "names": {
+      "en": "Scarlet",
+      "fr": "Écarlate Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PO 34"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F48273",
+    "swatch": "swatches/13A-3.png"
+  },
+  {
+    "code": "13A-5",
+    "name": "Scarlet",
+    "names": {
+      "en": "Scarlet",
+      "fr": "Écarlate Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PO 34"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#EDCFCF",
+    "swatch": "swatches/13A-5.png"
+  },
+  {
+    "code": "13C-1",
+    "name": "Permanent Red",
+    "names": {
+      "en": "Permanent Red",
+      "fr": "Rouge Permanent Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PO 34"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#C42548",
+    "swatch": "swatches/13C-1.png"
+  },
+  {
+    "code": "13C-3",
+    "name": "Permanent Red",
+    "names": {
+      "en": "Permanent Red",
+      "fr": "Rouge Permanent Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PO 34"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#E26A8D",
+    "swatch": "swatches/13C-3.png"
+  },
+  {
+    "code": "13C-5",
+    "name": "Permanent Red",
+    "names": {
+      "en": "Permanent Red",
+      "fr": "Rouge Permanent Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PO 34"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F5A0C3",
+    "swatch": "swatches/13C-5.png"
+  },
+  {
+    "code": "13E-1",
+    "name": "Carmine",
+    "names": {
+      "en": "Carmine",
+      "fr": "Carmin Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PR 213"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D4294E",
+    "swatch": "swatches/13E-1.png"
+  },
+  {
+    "code": "13E-3",
+    "name": "Carmine",
+    "names": {
+      "en": "Carmine",
+      "fr": "Carmin Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PR 213"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F27981",
+    "swatch": "swatches/13E-3.png"
+  },
+  {
+    "code": "13E-5",
+    "name": "Carmine",
+    "names": {
+      "en": "Carmine",
+      "fr": "Carmin Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PR 213"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F7B1BB",
+    "swatch": "swatches/13E-5.png"
+  },
+  {
+    "code": "13F-1",
+    "name": "Crimson",
+    "names": {
+      "en": "Crimson",
+      "fr": "Cramoisie Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 146",
+      "PV 19"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#C33857",
+    "swatch": "swatches/13F-1.png"
+  },
+  {
+    "code": "13F-3",
+    "name": "Crimson",
+    "names": {
+      "en": "Crimson",
+      "fr": "Cramoisie Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 146",
+      "PV 19"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#C75E88",
+    "swatch": "swatches/13F-3.png"
+  },
+  {
+    "code": "13F-5",
+    "name": "Crimson",
+    "names": {
+      "en": "Crimson",
+      "fr": "Cramoisie Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 146",
+      "PV 19"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F294BD",
+    "swatch": "swatches/13F-5.png"
+  },
+  {
+    "code": "13G-1",
+    "name": "Rose Pink",
+    "names": {
+      "en": "Rose Pink",
+      "fr": "Rose Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 213"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D84A7D",
+    "swatch": "swatches/13G-1.png"
+  },
+  {
+    "code": "13G-3",
+    "name": "Rose Pink",
+    "names": {
+      "en": "Rose Pink",
+      "fr": "Rose Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 213"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F285B4",
+    "swatch": "swatches/13G-3.png"
+  },
+  {
+    "code": "13G-5",
+    "name": "Rose Pink",
+    "names": {
+      "en": "Rose Pink",
+      "fr": "Rose Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 213"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F8C3D6",
+    "swatch": "swatches/13G-5.png"
+  },
+  {
+    "code": "20A-1",
+    "name": "Purple",
+    "names": {
+      "en": "Purple",
+      "fr": "Pourpre Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PV 19",
+      "PR 122"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#82315E",
+    "swatch": "swatches/20A-1.png"
+  },
+  {
+    "code": "20A-3",
+    "name": "Purple",
+    "names": {
+      "en": "Purple",
+      "fr": "Pourpre Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PV 19",
+      "PR 122"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#C25A8C",
+    "swatch": "swatches/20A-3.png"
+  },
+  {
+    "code": "20A-5",
+    "name": "Purple",
+    "names": {
+      "en": "Purple",
+      "fr": "Pourpre Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 5",
+      "PV 19",
+      "PR 122"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#DEA5CB",
+    "swatch": "swatches/20A-5.png"
+  },
+  {
+    "code": "20B-1",
+    "name": "Magenta",
+    "names": {
+      "en": "Magenta",
+      "fr": "Magenta Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PR 146",
+      "PV 19",
+      "PBk 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#6C2546",
+    "swatch": "swatches/20B-1.png"
+  },
+  {
+    "code": "20B-3",
+    "name": "Magenta",
+    "names": {
+      "en": "Magenta",
+      "fr": "Magenta Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PR 146",
+      "PV 19",
+      "PBk 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#884277",
+    "swatch": "swatches/20B-3.png"
+  },
+  {
+    "code": "20B-5",
+    "name": "Magenta",
+    "names": {
+      "en": "Magenta",
+      "fr": "Magenta Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PR 146",
+      "PV 19",
+      "PBk 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D09BC6",
+    "swatch": "swatches/20B-5.png"
+  },
+  {
+    "code": "20C-1",
+    "name": "Blue Violet",
+    "names": {
+      "en": "Blue Violet",
+      "fr": "Bleu Violet Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PV 23",
+      "PB 15:2",
+      "PBk 11"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#32306F",
+    "swatch": "swatches/20C-1.png"
+  },
+  {
+    "code": "20C-3",
+    "name": "Blue Violet",
+    "names": {
+      "en": "Blue Violet",
+      "fr": "Bleu Violet Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PV 23",
+      "PB 15:2",
+      "PBk 11"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#5F51A3",
+    "swatch": "swatches/20C-3.png"
+  },
+  {
+    "code": "20C-5",
+    "name": "Blue Violet",
+    "names": {
+      "en": "Blue Violet",
+      "fr": "Bleu Violet Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PV 23",
+      "PB 15:2",
+      "PBk 11"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#A295C8",
+    "swatch": "swatches/20C-5.png"
+  },
+  {
+    "code": "20F-1",
+    "name": "Red Violet",
+    "names": {
+      "en": "Red Violet",
+      "fr": "Rouge Violet Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PV 23"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#3F346B",
+    "swatch": "swatches/20F-1.png"
+  },
+  {
+    "code": "20F-3",
+    "name": "Red Violet",
+    "names": {
+      "en": "Red Violet",
+      "fr": "Rouge Violet Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PV 23"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#916CAE",
+    "swatch": "swatches/20F-3.png"
+  },
+  {
+    "code": "20F-5",
+    "name": "Red Violet",
+    "names": {
+      "en": "Red Violet",
+      "fr": "Rouge Violet Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PV 23"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B89ECA",
+    "swatch": "swatches/20F-5.png"
+  },
+  {
+    "code": "26A-1",
+    "name": "Oxide Yellow",
+    "names": {
+      "en": "Oxide Yellow",
+      "fr": "Jaune d’Oxide Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 42",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#DFC52C",
+    "swatch": "swatches/26A-1.png"
+  },
+  {
+    "code": "26A-3",
+    "name": "Oxide Yellow",
+    "names": {
+      "en": "Oxide Yellow",
+      "fr": "Jaune d’Oxide Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 42",
+      "PY 97"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#ECD341",
+    "swatch": "swatches/26A-3.png"
+  },
+  {
+    "code": "26A-5",
+    "name": "Oxide Yellow",
+    "names": {
+      "en": "Oxide Yellow",
+      "fr": "Jaune d’Oxide Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 42",
+      "PY 97"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FAF6AB",
+    "swatch": "swatches/26A-5.png"
+  },
+  {
+    "code": "26B-1",
+    "name": "Raw Umber",
+    "names": {
+      "en": "Raw Umber",
+      "fr": "Terre d’Ombre Nat. Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 97",
+      "PBk 7"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#A46529",
+    "swatch": "swatches/26B-1.png"
+  },
+  {
+    "code": "26B-3",
+    "name": "Raw Umber",
+    "names": {
+      "en": "Raw Umber",
+      "fr": "Terre d’Ombre Nat. Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 97",
+      "PBk 7"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#CA9D64",
+    "swatch": "swatches/26B-3.png"
+  },
+  {
+    "code": "26B-5",
+    "name": "Raw Umber",
+    "names": {
+      "en": "Raw Umber",
+      "fr": "Terre d’Ombre Nat. Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 97",
+      "PBk 7"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#E8CEA5",
+    "swatch": "swatches/26B-5.png"
+  },
+  {
+    "code": "26C-1",
+    "name": "Raw Sienna",
+    "names": {
+      "en": "Raw Sienna",
+      "fr": "Terre de Sienne Nat. Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B56634",
+    "swatch": "swatches/26C-1.png"
+  },
+  {
+    "code": "26C-3",
+    "name": "Raw Sienna",
+    "names": {
+      "en": "Raw Sienna",
+      "fr": "Terre de Sienne Nat. Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#EEB15C",
+    "swatch": "swatches/26C-3.png"
+  },
+  {
+    "code": "26C-5",
+    "name": "Raw Sienna",
+    "names": {
+      "en": "Raw Sienna",
+      "fr": "Terre de Sienne Nat. Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F1D5AB",
+    "swatch": "swatches/26C-5.png"
+  },
+  {
+    "code": "26D-1",
+    "name": "English Red",
+    "names": {
+      "en": "English Red",
+      "fr": "Rouge Anglais Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#913827",
+    "swatch": "swatches/26D-1.png"
+  },
+  {
+    "code": "26D-3",
+    "name": "English Red",
+    "names": {
+      "en": "English Red",
+      "fr": "Rouge Anglais Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#C5624A",
+    "swatch": "swatches/26D-3.png"
+  },
+  {
+    "code": "26D-5",
+    "name": "English Red",
+    "names": {
+      "en": "English Red",
+      "fr": "Rouge Anglais Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#ECB5A1",
+    "swatch": "swatches/26D-5.png"
+  },
+  {
+    "code": "26E-1",
+    "name": "Vandyke Brown",
+    "names": {
+      "en": "Vandyke Brown",
+      "fr": "Brun Vandyke Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#432419",
+    "swatch": "swatches/26E-1.png"
+  },
+  {
+    "code": "26E-3",
+    "name": "Vandyke Brown",
+    "names": {
+      "en": "Vandyke Brown",
+      "fr": "Brun Vandyke Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#876865",
+    "swatch": "swatches/26E-3.png"
+  },
+  {
+    "code": "26E-5",
+    "name": "Vandyke Brown",
+    "names": {
+      "en": "Vandyke Brown",
+      "fr": "Brun Vandyke Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#CABCBA",
+    "swatch": "swatches/26E-5.png"
+  },
+  {
+    "code": "26F-1",
+    "name": "Burnt Sienna",
+    "names": {
+      "en": "Burnt Sienna",
+      "fr": "Terre de Sienne Brûlée Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 97"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#954932",
+    "swatch": "swatches/26F-1.png"
+  },
+  {
+    "code": "26F-3",
+    "name": "Burnt Sienna",
+    "names": {
+      "en": "Burnt Sienna",
+      "fr": "Terre de Sienne Brûlée Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 97"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B0603E",
+    "swatch": "swatches/26F-3.png"
+  },
+  {
+    "code": "26F-5",
+    "name": "Burnt Sienna",
+    "names": {
+      "en": "Burnt Sienna",
+      "fr": "Terre de Sienne Brûlée Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 97"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#DFB08A",
+    "swatch": "swatches/26F-5.png"
+  },
+  {
+    "code": "26G-1",
+    "name": "Venetian Red",
+    "names": {
+      "en": "Venetian Red",
+      "fr": "Rouge de Venise Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#833C32",
+    "swatch": "swatches/26G-1.png"
+  },
+  {
+    "code": "26G-3",
+    "name": "Venetian Red",
+    "names": {
+      "en": "Venetian Red",
+      "fr": "Rouge de Venise Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#AB6651",
+    "swatch": "swatches/26G-3.png"
+  },
+  {
+    "code": "26G-5",
+    "name": "Venetian Red",
+    "names": {
+      "en": "Venetian Red",
+      "fr": "Rouge de Venise Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#DFB1A3",
+    "swatch": "swatches/26G-5.png"
+  },
+  {
+    "code": "26H-1",
+    "name": "Red Ochre",
+    "names": {
+      "en": "Red Ochre",
+      "fr": "Ocre Rouge Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 42"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#994235",
+    "swatch": "swatches/26H-1.png"
+  },
+  {
+    "code": "26H-3",
+    "name": "Red Ochre",
+    "names": {
+      "en": "Red Ochre",
+      "fr": "Ocre Rouge Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 42"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D47362",
+    "swatch": "swatches/26H-3.png"
+  },
+  {
+    "code": "26H-5",
+    "name": "Red Ochre",
+    "names": {
+      "en": "Red Ochre",
+      "fr": "Ocre Rouge Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PY 42"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#F5AD9C",
+    "swatch": "swatches/26H-5.png"
+  },
+  {
+    "code": "26K-1",
+    "name": "Burnt Umber",
+    "names": {
+      "en": "Burnt Umber",
+      "fr": "Terre d’Ombre Brûlée Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 42",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#543627",
+    "swatch": "swatches/26K-1.png"
+  },
+  {
+    "code": "26K-3",
+    "name": "Burnt Umber",
+    "names": {
+      "en": "Burnt Umber",
+      "fr": "Terre d’Ombre Brûlée Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 42",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#927A66",
+    "swatch": "swatches/26K-3.png"
+  },
+  {
+    "code": "26K-5",
+    "name": "Burnt Umber",
+    "names": {
+      "en": "Burnt Umber",
+      "fr": "Terre d’Ombre Brûlée Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 42",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D2C3AC",
+    "swatch": "swatches/26K-5.png"
+  },
+  {
+    "code": "26L-1",
+    "name": "Indian Red",
+    "names": {
+      "en": "Indian Red",
+      "fr": "Rouge Indien Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11",
+      "PR 213"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#833F3F",
+    "swatch": "swatches/26L-1.png"
+  },
+  {
+    "code": "26L-3",
+    "name": "Indian Red",
+    "names": {
+      "en": "Indian Red",
+      "fr": "Rouge Indien Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11",
+      "PR 213"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B57B7B",
+    "swatch": "swatches/26L-3.png"
+  },
+  {
+    "code": "26L-5",
+    "name": "Indian Red",
+    "names": {
+      "en": "Indian Red",
+      "fr": "Rouge Indien Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11",
+      "PR 213"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#DBB7BC",
+    "swatch": "swatches/26L-5.png"
+  },
+  {
+    "code": "32A-1",
+    "name": "Black",
+    "names": {
+      "en": "Black",
+      "fr": "Noir"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#141819",
+    "swatch": "swatches/32A-1.png"
+  },
+  {
+    "code": "32A-2",
+    "name": "Non Color #1",
+    "names": {
+      "en": "Non Color #1",
+      "fr": "Non-Couleur #1"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#202B2F",
+    "swatch": "swatches/32A-2.png"
+  },
+  {
+    "code": "32A-3",
+    "name": "Non Color #1",
+    "names": {
+      "en": "Non Color #1",
+      "fr": "Non-Couleur #1"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#5A5B5D",
+    "swatch": "swatches/32A-3.png"
+  },
+  {
+    "code": "32A-4",
+    "name": "Non Color #1",
+    "names": {
+      "en": "Non Color #1",
+      "fr": "Non-Couleur #1"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#7A8187",
+    "swatch": "swatches/32A-4.png"
+  },
+  {
+    "code": "32A-5",
+    "name": "White",
+    "names": {
+      "en": "White",
+      "fr": "Blanc"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#FFFFFF",
+    "swatch": "swatches/32A-5.png"
+  },
+  {
+    "code": "32B-1",
+    "name": "Non Color #2",
+    "names": {
+      "en": "Non Color #2",
+      "fr": "Non-Couleur #2"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 11",
+      "PB 29"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#3D4751",
+    "swatch": "swatches/32B-1.png"
+  },
+  {
+    "code": "32B-2",
+    "name": "Non Color #2",
+    "names": {
+      "en": "Non Color #2",
+      "fr": "Non-Couleur #2"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 11",
+      "PB 29"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#586669",
+    "swatch": "swatches/32B-2.png"
+  },
+  {
+    "code": "32B-3",
+    "name": "Non Color #2",
+    "names": {
+      "en": "Non Color #2",
+      "fr": "Non-Couleur #2"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 11",
+      "PB 29"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#859DA3",
+    "swatch": "swatches/32B-3.png"
+  },
+  {
+    "code": "32B-4",
+    "name": "Non Color #2",
+    "names": {
+      "en": "Non Color #2",
+      "fr": "Non-Couleur #2"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 11",
+      "PB 29"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#A7BBBE",
+    "swatch": "swatches/32B-4.png"
+  },
+  {
+    "code": "32B-5",
+    "name": "Non Color #2",
+    "names": {
+      "en": "Non Color #2",
+      "fr": "Non-Couleur #2"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PBk 11",
+      "PB 29"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#BDCFCD",
+    "swatch": "swatches/32B-5.png"
+  },
+  {
+    "code": "32C-1",
+    "name": "Warm Grey",
+    "names": {
+      "en": "Warm Grey",
+      "fr": "Gris Chaud 1"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#67625B",
+    "swatch": "swatches/32C-1.png"
+  },
+  {
+    "code": "32C-2",
+    "name": "Warm Grey",
+    "names": {
+      "en": "Warm Grey",
+      "fr": "Gris Chaud 2"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#938E86",
+    "swatch": "swatches/32C-2.png"
+  },
+  {
+    "code": "32C-3",
+    "name": "Warm Grey",
+    "names": {
+      "en": "Warm Grey",
+      "fr": "Gris Chaud 3"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#A7A8A4",
+    "swatch": "swatches/32C-3.png"
+  },
+  {
+    "code": "32C-4",
+    "name": "Warm Grey",
+    "names": {
+      "en": "Warm Grey",
+      "fr": "Gris Chaud 4"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#C4C4BF",
+    "swatch": "swatches/32C-4.png"
+  },
+  {
+    "code": "32C-5",
+    "name": "Warm Grey",
+    "names": {
+      "en": "Warm Grey",
+      "fr": "Gris Chaud 5"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PR 101",
+      "PBk 11"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#D2D5D1",
+    "swatch": "swatches/32C-5.png"
+  },
+  {
+    "code": "38B-1",
+    "name": "Cobalt Blue",
+    "names": {
+      "en": "Cobalt Blue",
+      "fr": "Bleu de Cobalt Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#1C528B",
+    "swatch": "swatches/38B-1.png"
+  },
+  {
+    "code": "38B-3",
+    "name": "Cobalt Blue",
+    "names": {
+      "en": "Cobalt Blue",
+      "fr": "Bleu de Cobalt Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#2FA4D7",
+    "swatch": "swatches/38B-3.png"
+  },
+  {
+    "code": "38B-5",
+    "name": "Cobalt Blue",
+    "names": {
+      "en": "Cobalt Blue",
+      "fr": "Bleu de Cobalt Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#75CBF2",
+    "swatch": "swatches/38B-5.png"
+  },
+  {
+    "code": "38C-1",
+    "name": "Ultramarine Blue",
+    "names": {
+      "en": "Ultramarine Blue",
+      "fr": "Bleu Outremer Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 29",
+      "PB 15:2"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#4458A7",
+    "swatch": "swatches/38C-1.png"
+  },
+  {
+    "code": "38C-3",
+    "name": "Ultramarine Blue",
+    "names": {
+      "en": "Ultramarine Blue",
+      "fr": "Bleu Outremer Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 29",
+      "PB 15:2"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#5472B7",
+    "swatch": "swatches/38C-3.png"
+  },
+  {
+    "code": "38C-5",
+    "name": "Ultramarine Blue",
+    "names": {
+      "en": "Ultramarine Blue",
+      "fr": "Bleu Outremer Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 29",
+      "PB 15:2"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#97B8E1",
+    "swatch": "swatches/38C-5.png"
+  },
+  {
+    "code": "38D-1",
+    "name": "Prussian Blue",
+    "names": {
+      "en": "Prussian Blue",
+      "fr": "Bleu de Prusse Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PB 27"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#2F3E6F",
+    "swatch": "swatches/38D-1.png"
+  },
+  {
+    "code": "38D-3",
+    "name": "Prussian Blue",
+    "names": {
+      "en": "Prussian Blue",
+      "fr": "Bleu de Prusse Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PB 27"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#1273BA",
+    "swatch": "swatches/38D-3.png"
+  },
+  {
+    "code": "38D-5",
+    "name": "Prussian Blue",
+    "names": {
+      "en": "Prussian Blue",
+      "fr": "Bleu de Prusse Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PB 27"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#5DB1E3",
+    "swatch": "swatches/38D-5.png"
+  },
+  {
+    "code": "38E-1",
+    "name": "Indigo",
+    "names": {
+      "en": "Indigo",
+      "fr": "Indigo Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PBk 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#13131B",
+    "swatch": "swatches/38E-1.png"
+  },
+  {
+    "code": "38E-3",
+    "name": "Indigo",
+    "names": {
+      "en": "Indigo",
+      "fr": "Indigo Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PBk 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#2A65A3",
+    "swatch": "swatches/38E-3.png"
+  },
+  {
+    "code": "38E-5",
+    "name": "Indigo",
+    "names": {
+      "en": "Indigo",
+      "fr": "Indigo Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PBk 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#5AA4D1",
+    "swatch": "swatches/38E-5.png"
+  },
+  {
+    "code": "38F-1",
+    "name": "Cerulean Blue",
+    "names": {
+      "en": "Cerulean Blue",
+      "fr": "Bleu Céruléum Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PG 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#1D5D92",
+    "swatch": "swatches/38F-1.png"
+  },
+  {
+    "code": "38F-3",
+    "name": "Cerulean Blue",
+    "names": {
+      "en": "Cerulean Blue",
+      "fr": "Bleu Céruléum Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PG 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#1387BA",
+    "swatch": "swatches/38F-3.png"
+  },
+  {
+    "code": "38F-5",
+    "name": "Cerulean Blue",
+    "names": {
+      "en": "Cerulean Blue",
+      "fr": "Bleu Céruléum Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PG 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#79D0E3",
+    "swatch": "swatches/38F-5.png"
+  },
+  {
+    "code": "38G-1",
+    "name": "Ultramarine Light",
+    "names": {
+      "en": "Ultramarine Light",
+      "fr": "Outremer Clair Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 29"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#33449B",
+    "swatch": "swatches/38G-1.png"
+  },
+  {
+    "code": "38G-3",
+    "name": "Ultramarine Light",
+    "names": {
+      "en": "Ultramarine Light",
+      "fr": "Outremer Clair Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 29"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#4166B0",
+    "swatch": "swatches/38G-3.png"
+  },
+  {
+    "code": "38G-5",
+    "name": "Ultramarine Light",
+    "names": {
+      "en": "Ultramarine Light",
+      "fr": "Outremer Clair Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 29"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#8AAFDD",
+    "swatch": "swatches/38G-5.png"
+  },
+  {
+    "code": "38J-1",
+    "name": "Sky Blue",
+    "names": {
+      "en": "Sky Blue",
+      "fr": "Bleu Ciel Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 29",
+      "PB 68"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#0D7695",
+    "swatch": "swatches/38J-1.png"
+  },
+  {
+    "code": "38J-3",
+    "name": "Sky Blue",
+    "names": {
+      "en": "Sky Blue",
+      "fr": "Bleu Ciel Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 29",
+      "PB 68"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#159FCC",
+    "swatch": "swatches/38J-3.png"
+  },
+  {
+    "code": "38J-5",
+    "name": "Sky Blue",
+    "names": {
+      "en": "Sky Blue",
+      "fr": "Bleu Ciel Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 29",
+      "PB 68"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#75C5E3",
+    "swatch": "swatches/38J-5.png"
+  },
+  {
+    "code": "45A-1",
+    "name": "Emerald Green",
+    "names": {
+      "en": "Emerald Green",
+      "fr": "Vert Véronèse Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PG 7",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#2EB459",
+    "swatch": "swatches/45A-1.png"
+  },
+  {
+    "code": "45A-3",
+    "name": "Emerald Green",
+    "names": {
+      "en": "Emerald Green",
+      "fr": "Vert Véronèse Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PG 7",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#54BD7E",
+    "swatch": "swatches/45A-3.png"
+  },
+  {
+    "code": "45A-5",
+    "name": "Emerald Green",
+    "names": {
+      "en": "Emerald Green",
+      "fr": "Vert Véronèse Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PG 7",
+      "PY 97"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#83CCAA",
+    "swatch": "swatches/45A-5.png"
+  },
+  {
+    "code": "45B-1",
+    "name": "Permanent Green",
+    "names": {
+      "en": "Permanent Green",
+      "fr": "Vert Permanent Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#1EA74A",
+    "swatch": "swatches/45B-1.png"
+  },
+  {
+    "code": "45B-3",
+    "name": "Permanent Green",
+    "names": {
+      "en": "Permanent Green",
+      "fr": "Vert Permanent Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#73C261",
+    "swatch": "swatches/45B-3.png"
+  },
+  {
+    "code": "45B-5",
+    "name": "Permanent Green",
+    "names": {
+      "en": "Permanent Green",
+      "fr": "Vert Permanent Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#ABD69A",
+    "swatch": "swatches/45B-5.png"
+  },
+  {
+    "code": "45C-1",
+    "name": "Turquoise Green",
+    "names": {
+      "en": "Turquoise Green",
+      "fr": "Vert Turquoise Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 27",
+      "PY 97",
+      "PG 7"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#103F41",
+    "swatch": "swatches/45C-1.png"
+  },
+  {
+    "code": "45C-3",
+    "name": "Turquoise Green",
+    "names": {
+      "en": "Turquoise Green",
+      "fr": "Vert Turquoise Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 27",
+      "PY 97",
+      "PG 7"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#179A7E",
+    "swatch": "swatches/45C-3.png"
+  },
+  {
+    "code": "45C-5",
+    "name": "Turquoise Green",
+    "names": {
+      "en": "Turquoise Green",
+      "fr": "Vert Turquoise Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 27",
+      "PY 97",
+      "PG 7"
+    ],
+    "lightfastness": "*",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#74C8B0",
+    "swatch": "swatches/45C-5.png"
+  },
+  {
+    "code": "45D-1",
+    "name": "Deep Green",
+    "names": {
+      "en": "Deep Green",
+      "fr": "Vert Foncé Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PG 7",
+      "PY 83"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#093B21",
+    "swatch": "swatches/45D-1.png"
+  },
+  {
+    "code": "45D-3",
+    "name": "Deep Green",
+    "names": {
+      "en": "Deep Green",
+      "fr": "Vert Foncé Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PG 7",
+      "PY 83"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#158950",
+    "swatch": "swatches/45D-3.png"
+  },
+  {
+    "code": "45D-5",
+    "name": "Deep Green",
+    "names": {
+      "en": "Deep Green",
+      "fr": "Vert Foncé Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 15:2",
+      "PG 7",
+      "PY 83"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#71C597",
+    "swatch": "swatches/45D-5.png"
+  },
+  {
+    "code": "45E-1",
+    "name": "Olive Green",
+    "names": {
+      "en": "Olive Green",
+      "fr": "Vert d’Olive Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#407B3B",
+    "swatch": "swatches/45E-1.png"
+  },
+  {
+    "code": "45E-3",
+    "name": "Olive Green",
+    "names": {
+      "en": "Olive Green",
+      "fr": "Vert d’Olive Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#95CC69",
+    "swatch": "swatches/45E-3.png"
+  },
+  {
+    "code": "45E-5",
+    "name": "Olive Green",
+    "names": {
+      "en": "Olive Green",
+      "fr": "Vert d’Olive Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#B8DB99",
+    "swatch": "swatches/45E-5.png"
+  },
+  {
+    "code": "45F-1",
+    "name": "Oxide Of Olive",
+    "names": {
+      "en": "Oxide Of Olive",
+      "fr": "Oxide d’Olive Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 83",
+      "PB 27",
+      "PR 101"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#4C7F3B",
+    "swatch": "swatches/45F-1.png"
+  },
+  {
+    "code": "45F-3",
+    "name": "Oxide Of Olive",
+    "names": {
+      "en": "Oxide Of Olive",
+      "fr": "Oxide d’Olive Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 83",
+      "PB 27",
+      "PR 101"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#90C865",
+    "swatch": "swatches/45F-3.png"
+  },
+  {
+    "code": "45F-5",
+    "name": "Oxide Of Olive",
+    "names": {
+      "en": "Oxide Of Olive",
+      "fr": "Oxide d’Olive Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 83",
+      "PB 27",
+      "PR 101"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#C0DD9A",
+    "swatch": "swatches/45F-5.png"
+  },
+  {
+    "code": "45G-1",
+    "name": "May Green",
+    "names": {
+      "en": "May Green",
+      "fr": "Vert de Mai Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#0D934C",
+    "swatch": "swatches/45G-1.png"
+  },
+  {
+    "code": "45G-3",
+    "name": "May Green",
+    "names": {
+      "en": "May Green",
+      "fr": "Vert de Mai Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#55BA52",
+    "swatch": "swatches/45G-3.png"
+  },
+  {
+    "code": "45G-5",
+    "name": "May Green",
+    "names": {
+      "en": "May Green",
+      "fr": "Vert de Mai Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#93CFA0",
+    "swatch": "swatches/45G-5.png"
+  },
+  {
+    "code": "45H-1",
+    "name": "Focus Green",
+    "names": {
+      "en": "Focus Green",
+      "fr": "Vert Foyer Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#28663C",
+    "swatch": "swatches/45H-1.png"
+  },
+  {
+    "code": "45H-3",
+    "name": "Focus Green",
+    "names": {
+      "en": "Focus Green",
+      "fr": "Vert Foyer Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#2DAB51",
+    "swatch": "swatches/45H-3.png"
+  },
+  {
+    "code": "45H-5",
+    "name": "Focus Green",
+    "names": {
+      "en": "Focus Green",
+      "fr": "Vert Foyer Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#7DC893",
+    "swatch": "swatches/45H-5.png"
+  },
+  {
+    "code": "45J-1",
+    "name": "Viridian",
+    "names": {
+      "en": "Viridian",
+      "fr": "Vert Émeraude Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#10754F",
+    "swatch": "swatches/45J-1.png"
+  },
+  {
+    "code": "45J-3",
+    "name": "Viridian",
+    "names": {
+      "en": "Viridian",
+      "fr": "Vert Émeraude Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#27B677",
+    "swatch": "swatches/45J-3.png"
+  },
+  {
+    "code": "45J-5",
+    "name": "Viridian",
+    "names": {
+      "en": "Viridian",
+      "fr": "Vert Émeraude Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#63C199",
+    "swatch": "swatches/45J-5.png"
+  },
+  {
+    "code": "45K-1",
+    "name": "Foggy Green",
+    "names": {
+      "en": "Foggy Green",
+      "fr": "Vert Brumeux Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#1CB055",
+    "swatch": "swatches/45K-1.png"
+  },
+  {
+    "code": "45K-3",
+    "name": "Foggy Green",
+    "names": {
+      "en": "Foggy Green",
+      "fr": "Vert Brumeux Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#72C594",
+    "swatch": "swatches/45K-3.png"
+  },
+  {
+    "code": "45K-5",
+    "name": "Foggy Green",
+    "names": {
+      "en": "Foggy Green",
+      "fr": "Vert Brumeux Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PY 97",
+      "PG 7",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#A4D7BB",
+    "swatch": "swatches/45K-5.png"
+  },
+  {
+    "code": "45L-1",
+    "name": "Sap Green",
+    "names": {
+      "en": "Sap Green",
+      "fr": "Vert de Vessie Foncé"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 68",
+      "PY 83",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#168042",
+    "swatch": "swatches/45L-1.png"
+  },
+  {
+    "code": "45L-3",
+    "name": "Sap Green",
+    "names": {
+      "en": "Sap Green",
+      "fr": "Vert de Vessie Moyen"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 68",
+      "PY 83",
+      "PBk 11"
+    ],
+    "lightfastness": "***",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#5AAB69",
+    "swatch": "swatches/45L-3.png"
+  },
+  {
+    "code": "45L-5",
+    "name": "Sap Green",
+    "names": {
+      "en": "Sap Green",
+      "fr": "Vert de Vessie Clair"
+    },
+    "transparency": null,
+    "pigments": [
+      "PW 6",
+      "PB 68",
+      "PY 83",
+      "PBk 11"
+    ],
+    "lightfastness": "**",
+    "iridescent": false,
+    "new": false,
+    "giant": false,
+    "hex": "#94CF9A",
+    "swatch": "swatches/45L-5.png"
+  }
+]

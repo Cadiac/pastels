@@ -16,5 +16,11 @@
     "brand": "Royal Talens",
     "name": "Van Gogh Oil Pastels",
     "shortName": "Van Gogh"
+  },
+  {
+    "id": "holbein",
+    "brand": "Holbein",
+    "name": "Holbein Artists' Oil Pastels",
+    "shortName": "Holbein"
   }
 ]

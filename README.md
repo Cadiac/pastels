@@ -20,11 +20,11 @@ A live instance runs at **pastels.cadi.ac**.
   analogous, triadic) picked from real catalogue colours, with owned ones
   marked.
 - **Installable PWA**, designed for phone and tablet use first.
-- **Multiple brand catalogues** — currently Sennelier Oil Pastels (120
-  colours), Mungyo Gallery Artists' Soft Oil Pastels (the MOPV-120 "Renewal
-  Color" assortment, 120 colours), and Van Gogh Oil Pastels by Royal Talens
-  (60 colours), switchable in the app. Inventory, favourites and notes are
-  kept per colour across all of them.
+- **Multiple brand catalogues**, switchable in the app — currently Sennelier
+  Oil Pastels (120 colours), Mungyo Gallery Artists' Soft Oil Pastels (the
+  MOPV-120 "Renewal Color" assortment, 120), Van Gogh Oil Pastels by Royal
+  Talens (60), and Holbein Artists' Oil Pastels (141). Inventory, favourites
+  and notes are kept per colour across all of them.
 
 ## Stack
 
@@ -153,6 +153,22 @@ poppler:
 
 ```sh
 python3 scripts/vangogh/extract_colors.py
+```
+
+### Extracting the Holbein chart
+
+Two official Holbein US documents, both with text layers: the digital colour
+chart (codes, English + French names, permanency stars `***`/`**`/`*`) and
+the technical data sheet (Colour Index pigments per pigment family). Codes
+are `<family>-<tint>` — 45 families in tint depths 1/3/5 (deep/medium/light,
+the French names carry the qualifier), plus three grey families running
+1–5, 141 sticks in all. English names come from the chart cells (the TDS
+only knows family names; the chart distinguishes Black/White inside
+"Non-Color No.1"), pigments from the TDS with continuation-line handling.
+Swatch boxes are detected from the raster like Van Gogh's. Requires poppler:
+
+```sh
+python3 scripts/holbein/extract_colors.py
 ```
 
 ### Extracting the Mungyo chart
