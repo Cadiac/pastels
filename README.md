@@ -23,8 +23,9 @@ A live instance runs at **pastels.cadi.ac**.
 - **Multiple brand catalogues**, switchable in the app — currently Sennelier
   Oil Pastels (120 colours), Mungyo Gallery Artists' Soft Oil Pastels (the
   MOPV-120 "Renewal Color" assortment, 120), Van Gogh Oil Pastels by Royal
-  Talens (60), and Holbein Artists' Oil Pastels (141). Inventory, favourites
-  and notes are kept per colour across all of them.
+  Talens (60), Holbein Artists' Oil Pastels (141), Caran d'Ache Neopastel
+  (96), and Caran d'Ache Neoart 6901 (48). Inventory, favourites and notes
+  are kept per colour across all of them.
 
 ## Stack
 
@@ -169,6 +170,34 @@ Swatch boxes are detected from the raster like Van Gogh's. Requires poppler:
 
 ```sh
 python3 scripts/holbein/extract_colors.py
+```
+
+### Extracting the Caran d'Ache charts
+
+**Neopastel** comes from the official "NEOPASTEL® COLOUR CHART" PDF (vector
+text): per colour a code, name, slash-separated CI pigments and a UV star
+rating. The row's colour is a pale-to-full gradient bar whose right end
+carries the full-strength colour, located per row from the rendered raster
+(the metallics print a pigment description — "Poudre de Bronze" — instead of
+CI codes, kept verbatim). Requires poppler:
+
+```sh
+python3 scripts/neopastel/extract_colors.py
+```
+
+**Neoart 6901** (2025) has no published chart PDF yet; the source is Caran
+d'Ache's official 48-cell chart image as circulated by stockists
+(`data/neoart/source/neoart-colour-chart.jpg`). Each cell has a painted
+stroke, a code badge, the per-colour ASTM D-6901 rating (LFI/LFII), names in
+six languages and a CI pigment line. It's a raster, so cells are anchored on
+code badges read with macOS Vision OCR (grid-fit recovers badges OCR drops),
+with a per-cell 4× retry pass and a small human-verified fix-up table; codes
+and names are cross-checked against the open-stock variant list
+(`openstock-variants.json`). The extracted LFI/LFII counts must match the
+official aggregate (34 + 14). macOS-only:
+
+```sh
+python3 scripts/neoart/extract_colors.py
 ```
 
 ### Extracting the Mungyo chart

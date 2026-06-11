@@ -31,6 +31,13 @@ const LIGHTFAST: Record<string, string> = {
   "***": "Absolutely permanent (***)",
   "**": "Permanent (**)",
   "*": "Moderately durable (*)",
+  // Caran d'Ache UV-resistance stars (Neopastel)
+  "★★★": "Excellent UV resistance (★★★)",
+  "★★": "Good UV resistance (★★)",
+  "★": "Fair UV resistance (★)",
+  // ASTM D-6901 categories (Neoart 6901)
+  LFI: "Excellent — 100 years (LFI)",
+  LFII: "Very good — 50–100 years (LFII)",
 };
 
 function describeEvent(e: HistoryEvent): string {

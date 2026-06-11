@@ -22,5 +22,17 @@
     "brand": "Holbein",
     "name": "Holbein Artists' Oil Pastels",
     "shortName": "Holbein"
+  },
+  {
+    "id": "neopastel",
+    "brand": "Caran d'Ache",
+    "name": "Caran d'Ache Neopastel",
+    "shortName": "Neopastel"
+  },
+  {
+    "id": "neoart",
+    "brand": "Caran d'Ache",
+    "name": "Caran d'Ache Neoart 6901",
+    "shortName": "Neoart 6901"
   }
 ]
