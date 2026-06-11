@@ -58,6 +58,7 @@ describe("API smoke test", () => {
       "holbein",
       "neopastel",
       "neoart",
+      "craypas",
     ]);
     expect(catList.find((c) => c.id === "sennelier")).toMatchObject({ total: 120, owned: 0 });
 

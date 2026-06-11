@@ -38,6 +38,12 @@ const LIGHTFAST: Record<string, string> = {
   // ASTM D-6901 categories (Neoart 6901)
   LFI: "Excellent — 100 years (LFI)",
   LFII: "Very good — 50–100 years (LFII)",
+  // Sakura's signs reuse Talens' symbols but with their own legend, so they
+  // are keyed per catalogue (looked up before the bare value).
+  "craypas:+++": "Excellent (+++)",
+  "craypas:++": "Very good (++)",
+  "craypas:+": "Fair (+)",
+  "craypas:–": "Fugitive (–)",
 };
 
 function describeEvent(e: HistoryEvent): string {
@@ -147,7 +153,9 @@ export function ColorDetail() {
                 {color.name}
                 {color.iridescent && <Sparkles size={20} className="shrink-0 animate-twinkle opacity-90" />}
               </h1>
-              {color.names.fr && <p className="mt-0.5 text-sm opacity-80">{color.names.fr}</p>}
+              {(color.names.fr ?? color.names.ja) && (
+                <p className="mt-0.5 text-sm opacity-80">{color.names.fr ?? color.names.ja}</p>
+              )}
               {color.new && (
                 <span className="mt-2 inline-block rounded-full bg-black/15 px-2 py-0.5 text-xs font-semibold">
                   New
@@ -267,7 +275,11 @@ export function ColorDetail() {
             {color.lightfastness && (
               <Row
                 label="Lightfastness"
-                value={LIGHTFAST[color.lightfastness] ?? color.lightfastness}
+                value={
+                  LIGHTFAST[`${color.catalogue}:${color.lightfastness}`] ??
+                  LIGHTFAST[color.lightfastness] ??
+                  color.lightfastness
+                }
               />
             )}
             {color.pigments.length > 0 && <Row label="Pigments" value={color.pigments.join(", ")} />}

@@ -34,5 +34,11 @@
     "brand": "Caran d'Ache",
     "name": "Caran d'Ache Neoart 6901",
     "shortName": "Neoart 6901"
+  },
+  {
+    "id": "craypas",
+    "brand": "Sakura",
+    "name": "Sakura Cray-Pas Specialist",
+    "shortName": "Cray-Pas"
   }
 ]

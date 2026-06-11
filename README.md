@@ -24,8 +24,8 @@ A live instance runs at **pastels.cadi.ac**.
   Oil Pastels (120 colours), Mungyo Gallery Artists' Soft Oil Pastels (the
   MOPV-120 "Renewal Color" assortment, 120), Van Gogh Oil Pastels by Royal
   Talens (60), Holbein Artists' Oil Pastels (141), Caran d'Ache Neopastel
-  (96), and Caran d'Ache Neoart 6901 (48). Inventory, favourites and notes
-  are kept per colour across all of them.
+  (96), Caran d'Ache Neoart 6901 (48), and Sakura Cray-Pas Specialist (85).
+  Inventory, favourites and notes are kept per colour across all of them.
 
 ## Stack
 
@@ -215,4 +215,31 @@ macOS-only (`sips` + Vision):
 
 ```sh
 python3 scripts/mungyo/extract_colors.py
+```
+
+### Extracting the Cray-Pas Specialist charts
+
+Sakura (Osaka) invented the oil pastel in 1925; Specialist is their
+artist-grade line — 84 colours plus the colourless Extender. No single
+official document has everything, so three sources combine:
+
+- **Sakura of America's colour chart** (vector text, 2010, recovered via the
+  Wayback Machine): painted swatches, names and Sakura's own lightfastness
+  signs (`+++` excellent / `++` very good / `+` fair / `–` fugitive — the
+  five fluorescents) for 83 colours. It predates ESP-024 Mauve.
+- **Sakura of America's 2020 product brochure**: the current 85-stick
+  open-stock list, used as the authoritative lineup cross-check and for
+  Mauve's name.
+- **Sakura Japan's current chart image** (craypas.co.jp, raster): Japanese
+  names for every colour (`names.ja`), plus the swatch dot for the two cells
+  the 2010 chart lacks (Mauve and the Extender). The chart has no codes, so
+  each dot is matched to its colour by transliterating the English name to
+  katakana via a word table and comparing it with the Vision-OCR'd cell text
+  (insensitively to dakuten — 10px kana OCR confuses ヒ/ビ and the like).
+
+Sakura publishes no pigment or transparency data, so those stay null.
+Requires poppler; the JP-chart pass is macOS-only (sips + Vision):
+
+```sh
+python3 scripts/craypas/extract_colors.py
 ```
