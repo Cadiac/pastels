@@ -40,6 +40,8 @@ export function useSetInventory() {
       qc.invalidateQueries({ queryKey: ["colors"] });
       qc.invalidateQueries({ queryKey: ["color", id] });
       qc.invalidateQueries({ queryKey: ["history", id] });
+      // The owned/total counts on the catalogue chips come from this query.
+      qc.invalidateQueries({ queryKey: ["catalogues"] });
     },
   });
 }
