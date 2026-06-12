@@ -8,6 +8,7 @@ import { LevelChip } from "../components/LevelChip";
 import { QuantityStepper } from "../components/QuantityStepper";
 import { ValueScale } from "../components/ValueScale";
 import { Harmonies } from "../components/Harmonies";
+import { SimilarColors } from "../components/SimilarColors";
 import { useSetInventory, useSetMeta } from "../api/hooks";
 import { useThemeColor } from "../useThemeColor";
 import { usePop } from "../usePop";
@@ -260,7 +261,21 @@ export function ColorDetail() {
 
           <ValueScale hex={color.hex} />
 
-          <Harmonies selfId={color.id} catalogue={color.catalogue} hex={color.hex} />
+          {/* Notes */}
+          <section className="rounded-card bg-white p-4 shadow-sm ring-1 ring-black/5">
+            <div className="mb-2 flex items-baseline justify-between">
+              <h2 className="text-sm font-semibold text-stone-700">Notes</h2>
+              {setMeta.isPending && <span className="text-xs text-stone-400">Saving…</span>}
+            </div>
+            <textarea
+              value={notesDraft ?? color.notes ?? ""}
+              onChange={(e) => setNotesDraft(e.target.value)}
+              onBlur={saveNotes}
+              rows={3}
+              placeholder="Add a note…"
+              className="w-full resize-y rounded-chip border border-stone-200 bg-stone-50 p-2.5 text-base text-stone-800 outline-none placeholder:text-stone-400 focus:border-stone-400"
+            />
+          </section>
         </div>
 
         <div className="flex flex-col gap-6">
@@ -286,21 +301,9 @@ export function ColorDetail() {
             <Row label="Hex" value={<span className="font-mono">{color.hex.toUpperCase()}</span>} />
           </dl>
 
-          {/* Notes */}
-          <section className="rounded-card bg-white p-4 shadow-sm ring-1 ring-black/5">
-            <div className="mb-2 flex items-baseline justify-between">
-              <h2 className="text-sm font-semibold text-stone-700">Notes</h2>
-              {setMeta.isPending && <span className="text-xs text-stone-400">Saving…</span>}
-            </div>
-            <textarea
-              value={notesDraft ?? color.notes ?? ""}
-              onChange={(e) => setNotesDraft(e.target.value)}
-              onBlur={saveNotes}
-              rows={3}
-              placeholder="Add a note…"
-              className="w-full resize-y rounded-chip border border-stone-200 bg-stone-50 p-2.5 text-base text-stone-800 outline-none placeholder:text-stone-400 focus:border-stone-400"
-            />
-          </section>
+          <SimilarColors self={color} />
+
+          <Harmonies selfId={color.id} catalogue={color.catalogue} hex={color.hex} />
 
           {/* Usage history */}
           {history && history.length > 0 && (

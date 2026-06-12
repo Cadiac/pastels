@@ -78,6 +78,33 @@ export function greyHex(value: number): string {
   return `#${h}${h}${h}`;
 }
 
+/** OKLab coordinates of a `#rrggbb` colour: L 0..1, a/b roughly ±0.4. */
+export function hexToOklab(hex: string): [number, number, number] {
+  const m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
+  if (!m) return [0, 0, 0];
+  const lin = (c: number) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+  const [r, g, b] = [m[1], m[2], m[3]].map((h) => lin(parseInt(h, 16) / 255));
+  const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+  const mm = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+  const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+  return [
+    0.2104542553 * l + 0.793617785 * mm - 0.0040720468 * s,
+    1.9779984951 * l - 2.428592205 * mm + 0.4505937099 * s,
+    0.0259040371 * l + 0.7827717662 * mm - 0.808675766 * s,
+  ];
+}
+
+/**
+ * Perceptual distance between two `#rrggbb` colours: Euclidean in OKLab.
+ * ~0.01 is a just-noticeable difference; ~0.05 is the same colour off two
+ * differently printed charts; black to white is 1.
+ */
+export function colorDistance(a: string, b: string): number {
+  const [l1, a1, b1] = hexToOklab(a);
+  const [l2, a2, b2] = hexToOklab(b);
+  return Math.hypot(l1 - l2, a1 - a2, b1 - b2);
+}
+
 export function hexToHue(hex: string): number {
   const m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
   if (!m) return 999;

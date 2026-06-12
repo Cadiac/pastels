@@ -16,9 +16,10 @@ A live instance runs at **pastels.cadi.ac**.
   stick in use (Full → Empty), with a usage history of every change.
 - **Favourites, want list, notes** — per-colour, per-user.
 - **Colour detail pages** — pigment, transparency and lightfastness data, a
-  value-scale placement, and harmonic colour suggestions (complementary,
-  analogous, triadic) picked from real catalogue colours, with owned ones
-  marked.
+  value-scale placement, the closest equivalent in each other brand's
+  catalogue (nearest neighbour in OKLab), and harmonic colour suggestions
+  (complementary, analogous, triadic) picked from real catalogue colours,
+  with owned ones marked.
 - **Installable PWA**, designed for phone and tablet use first.
 - **Multiple brand catalogues**, switchable in the app — currently Sennelier
   Oil Pastels (120 colours), Mungyo Gallery Artists' Soft Oil Pastels (the
